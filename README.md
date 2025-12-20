@@ -35,6 +35,7 @@ project3/
         CMakeLists.txt (ή Makefile)
         include/
         src/
+          utils_functions/
         bin/               # binaries
           lsh_main
           hypercube_main
@@ -61,7 +62,7 @@ project3/
       swissprot_db/        # makeblastdb outputs
       blast_results.tsv
 
-  Results/
+  results/
     runs/
       2025-12-20_001/
         results.txt
