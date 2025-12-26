@@ -1,15 +1,8 @@
-#pragma once    // apofeugoume pollapli eisagwgh tou arxeiou (header guard)
-
-#include <fstream>
-#include <iostream>
-#include <cstdlib>    
-#include <random>      
+// fvecs_loader.h
+#pragma once
+#include <string>
 #include <vector>
+
 using namespace std;
 
-
-// load the mnist dataset
-vector<vector<float>> load_mnist_dataset(const string &filename);
-// load the sift dataset
-vector<vector<float>> load_sift_dataset(const string& filename);
-
+vector<vector<float>> load_fvecs(const std::string& filename, int& out_dim);

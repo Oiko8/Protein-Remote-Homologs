@@ -56,79 +56,22 @@ static void search_in_dataset(Args args , string type){
 
     vector<vector<float>> pts;
     vector<vector<float>> queries;
-    if (type == "mnist"){
-        // From the input file extract the data and transform the correct way
-        string input_file = args.data_path;
-        cout << "Loading dataset: " << input_file << endl;
-        pts = load_mnist_dataset(input_file);
-        cout << "Loaded " << pts.size() << " images of dimension " << pts[0].size() << endl;
     
-        cout << "*************************************************\n";
+    // From the input file extract the data and transform the correct way
+    string input_file = args.data_path;
+    int out_dim = 0;
+    cout << "Loading dataset: " << input_file << endl;
+    pts = load_fvecs(input_file, out_dim);
+    cout << "Loaded " << pts.size() << " proteins' vectors of dimension " << (pts.empty()?0:out_dim) << endl;
+
+    cout << "*************************************************\n";
+
+    // From the query file extract the data and transform the correct way
+    string query_file = args.query_path;
+    cout << "Loading queries: " << query_file << endl;
+    queries = load_fvecs(query_file, out_dim);
+    cout << "Loaded " << queries.size() << " test proteins' vectors of dimension " << (queries.empty()?0:out_dim) << endl;
     
-        // From the query file extract the data and transform the correct way
-        string query_file = args.query_path;
-        cout << "Loading queries: " << query_file << endl;
-        queries = load_mnist_dataset(query_file);
-        cout << "Loaded " << queries.size() << " test images of dimension " << queries[0].size() << endl;
-        
-        // Normalize the vectors: 0-255 --> 0-1
-        // find max number of the set
-        float max = pts[0][0];
-        for (auto p : pts) {
-            for (auto v : p) {
-                if (v > max) max = v;
-            }
-        }
-        if (args.norm == true) {
-            for (auto &point : pts){
-                for (float &dim : point) {
-                    dim /= max;
-                }
-            }
-            for (auto &query : queries){
-                for (float &dim : query) {
-                    dim /= max;
-                }
-            }
-        }
-    }
-    else if (type == "sift") {
-        // From the input file extract the data and transform the correct way
-        string input_file = args.data_path;
-        cout << "Loading dataset: " << input_file << endl;
-        pts = load_sift_dataset(input_file);
-        cout << "Loaded " << pts.size() << " images of dimension " << pts[0].size() << endl;
-
-        cout << "*************************************************\n";
-
-        // From the query file extract the data and transform the correct way
-        string query_file = args.query_path;
-        cout << "Loading queries: " << query_file << endl;
-        queries = load_sift_dataset(query_file);
-        cout << "Loaded " << queries.size() << " test images of dimension " << queries[0].size() << endl;
-
-        // Normalize the vectors: --> 0-1
-        // find max number of the set
-        float max = pts[0][0];
-        for (auto p : pts) {
-            for (auto v : p) {
-                if (v > max) max = v;
-            }
-        }
-        if (args.norm == true) {
-            for (auto &point : pts){
-                for (float &dim : point) {
-                    dim /= max;
-                }
-            }
-            for (auto &query : queries){
-                for (float &dim : query) {
-                    dim /= max;
-                }
-            }
-        }
-    }
-
     int L = args.L, khash = args.khash, N = args.k;
     float w = args.w;
     
