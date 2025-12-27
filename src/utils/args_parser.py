@@ -5,7 +5,8 @@ def parse_arguments_embed():
 
     # required 
     parser.add_argument("-i", "--proteins_path", required=True, type=str, help="Input file for the proteins")
-    # parser.add_argument("-o", "--embeddings", required=True, type=str, help="Output file with the generated embeddings from the proteins")
+    parser.add_argument("-o", "--out_embeds", required=True, type=str, help="Output file with the generated embeddings from the proteins")
+    parser.add_argument("-out_ids", help="Output txt file for mapping index->protein ids")
 
     parser.add_argument("-model", type=str, help="ESM2 model to be used")
 
