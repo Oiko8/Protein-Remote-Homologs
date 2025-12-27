@@ -35,7 +35,7 @@ For the experiments for the best hyperparameters, we used random search based on
 | 6  | 18 | 4.0 | 0.917     | 174.35      | 5.74         | 10.99      |
 | 8  | 20 | 4.0 | 0.817     | 551.08      | 1.81         | 7.68       |
 
-![LSH Trade-off Recall@5 vs QPS](plots/LSH_plot.png)
+<img src="plots/LSH_plot.png" width="500">
 
 
 Balanced configuration:
@@ -80,11 +80,52 @@ QPS ≈ 364
 |    18 | 10.0 | 10 |     20 |  5 |     0.833333 | 286.154 |        3.495 |      9.084 | 
 |    12 |  6.0 | 10 |     20 |  5 | **0.916667** | 111.200 |        8.993 |      7.895 | 
 
-![Hypercube Trade-off Recall@5 vs QPS](plots/HC_plot.png)
+<img src="plots/HC_plot.png" width="500">
 
 Balanced configuration:
 ```
 kproj=18, w=10, M=10, probes=20
 Recall@5 = 0.8333
 QPS ≈ 310
+```
+
+## IVFFlat
+
+| C (kclusters) | nprobe |   Recall@5 |      QPS | tApprox (ms) | tTrue (ms) | Avg AF |
+| ------------: | -----: | ---------: | -------: | -----------: | ---------: | -----: |
+|            64 |      2 |     0.5833 |     3000 |       0.3333 |    10.1667 | 1.0873 |
+|            64 |      4 | **1.0000** |     1200 |       0.8333 |     9.6667 | 1.0000 |
+|            64 |      8 | **1.0000** |      500 |       2.0000 |    11.1667 | 1.0000 |
+|           128 |      4 |     0.9167 |     4000 |       0.2500 |     8.5000 | 1.0012 |
+|           128 |      8 | **1.0000** |     1200 |       0.8333 |     8.0000 | 1.0000 |
+|           256 |      8 |     0.9167 | **6000** |       0.1667 |     9.5833 | 1.0054 |
+
+<img src="plots/IVFlat_plot.png" width="500">
+
+Balanced configuration:
+```
+C=64, nprobe=4  
+Recall@5 = 1.0  
+QPS ≈ 1200  
+```
+
+## IVFPQ
+
+| kclusters | nprobe |  M | nbits | Recall@5 |     QPS |   AF |
+|----------:|-------:|---:|------:|---------:|--------:|-----:|
+|       128 |      8 | 32 |     8 |     0.75 | 1084.92 | 1.32221 |
+|       64  |      4 | 16 |     8 |     0.75 | 4632.22 | 1.44005 |
+|       256 |      8 | 16 |     8 | 0.666667 | 5755.72 | 1.43741 |
+|       128 |      4 | 16 |     8 | 0.666667 | 6784.00 | 1.43741 |
+|       256 |      8 | 16 |     6 | 0.666667 | 7445.95 | 1.56527 |
+|       128 |      2 | 16 |     8 | 0.583333 | 9130.85 | 1.43741 |
+|       256 |      4 | 16 |     8 | 0.583333 | 7825.61 | 1.43741 |
+
+<img src="plots/IVFPQ_plot.png" width="500">
+
+Balanced configuration:
+```
+C=64, nprobe=4, M=16, nbits=8  
+Recall@5 = 0.75  
+QPS ≈ 4632.22   
 ```
