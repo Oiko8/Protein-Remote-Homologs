@@ -35,6 +35,8 @@ For the experiments for the best hyperparameters, we used random search based on
 | 6  | 18 | 4.0 | 0.917     | 174.35      | 5.74         | 10.99      |
 | 8  | 20 | 4.0 | 0.817     | 551.08      | 1.81         | 7.68       |
 
+![LSH Trade-off Recall@5 vs QPS](plots/LSH_plot.png)
+
 
 Balanced configuration:
 ```
@@ -77,6 +79,8 @@ QPS ≈ 364
 |    14 | 10.0 | 10 |     14 |  5 |     0.783333 | 91.6207 |       10.915 |     11.537 | 
 |    18 | 10.0 | 10 |     20 |  5 |     0.833333 | 286.154 |        3.495 |      9.084 | 
 |    12 |  6.0 | 10 |     20 |  5 | **0.916667** | 111.200 |        8.993 |      7.895 | 
+
+![Hypercube Trade-off Recall@5 vs QPS](plots/HC_plot.png)
 
 Balanced configuration:
 ```
