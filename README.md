@@ -8,6 +8,7 @@ My plan :
 3. Update the project 1 to take as base the generated protein vectors from step 2 and the queries so i can test how the algorithms works. for this new dataset and choose the best set of parameters. 
 4. Train the model of neural LSH on the new dataset of proteins' vectors as well to find the best configuration of parameters. 
 5. Making wrappers for each ANN algorithm. Four wrappers that the will run using subprocess for the algorithms written in C++ from the project 1 (LSH, HYPERCUBE, INVFLAT, INVFLATQP) and one wrapper for the neural LSH that is already in python.
+6. Include neural LSH in the project, test it for the best hyperparameters. Update the graph creation to use knn-neighbors from sklearn and not the LSH.
 
 ### Structure
 ```
@@ -77,6 +78,12 @@ project3/
         summary.csv
         params.json
     plots/ 
+
+  plots/
+    HC_plot.png
+    LSH_plot.png
+    IVFFlat_plot.png
+    IVFPQ_plot.png
 
   README.md
   Report.md
