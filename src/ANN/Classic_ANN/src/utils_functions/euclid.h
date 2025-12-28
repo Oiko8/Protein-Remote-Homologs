@@ -4,5 +4,7 @@
 #include <cmath>    // periexei mathimatikes synarthseis (px pow, sqrt)
 #include <vector>
 using namespace std;
-/* =============================== helper function to calculate euclidean distance ============================ */
+
+// dilwsi inline synarthshs gia ypologismo tetragwnikhs apostashs L2 (euclidean distance)
+float eucliddistance(const float* a, const float* b, size_t d); 
 float euclidean_distance(const vector<float> &p1, const vector<float> &p2);
