@@ -129,3 +129,11 @@ C=64, nprobe=4, M=16, nbits=8
 Recall@5 = 0.75  
 QPS ≈ 4632.22   
 ```
+
+## Neural_LSH
+```
+python src/nlsh_search.py -d data/Proteins_data/protein_vectors.dat -q data/Proteins_data/protein_queries.dat -i index_files/index_ivf_protein.txt -N 5 -type protein -o results/results_protein.txt -T 10 -N 5
+```
+```
+python src/nlsh_build.py -d data/Proteins_data/protein_vectors.dat --knn 10 -m 100 --epochs 100 --nodes 512 --layers 3 --kahip_mode 0 -type protein -i index_files/index_ivf_protein.txt
+```
