@@ -20,7 +20,7 @@ def run_make(build_dir):
         raise RuntimeError("Compilation failed")
 
 
-def LSH(exe_path, data_path, query_path, k_neighbors, khash=10,
+def LSH(exe_path, data_path, query_path, k_neighbors=10, khash=10,
                       L=18, w=5.5):
     """
     Run LSHmain with dataset=data_path and query=data_path and return
@@ -92,8 +92,9 @@ def main():
     query_path = base_dir.parent / "artifacts" / "embeddings" / "protein_queries.dat"
 
     run_make(classic_ann_dir / "src")
-    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path)
-    print(neighbors)
+    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=5)
+    for vector_ann in neighbors:
+        print(vector_ann)
 
 
 if __name__=="__main__":

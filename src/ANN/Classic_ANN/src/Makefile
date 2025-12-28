@@ -5,6 +5,7 @@ LDFLAGS  = -fopenmp
 
 TARGET := LSHmain
 SRCS := LSHmain.cpp Euclidean_Hashing.cpp
+SRCS += hypercube/HCmain.cpp hypercube/Hypercube.cpp 
 SRCS += utils_functions/Data_loader.cpp utils_functions/euclid.cpp
 OBJS   := $(SRCS:.cpp=.o)
 
