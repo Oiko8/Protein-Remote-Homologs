@@ -2,7 +2,7 @@ import subprocess
 import os
 from pathlib import Path
 
-def run_make(build_dir, target="lsh"):
+def run_make(build_dir, target="hc"):
     """ run make file to create the executables """
     result = subprocess.run(
         ["make", target],
@@ -17,9 +17,9 @@ def run_make(build_dir, target="lsh"):
         print("STDERR:\n", result.stderr)
         raise RuntimeError("Compilation failed")
 
-
-def LSH(exe_path, data_path, query_path, k_neighbors=10, khash=10,
-                      L=18, w=5.5):
+# best set: kproj=18, w=10, M=10, probes=20
+def LSH(exe_path, data_path, query_path, k_neighbors=10, kproj=18,
+                      w=5.5, M=10, probes=20):
     """
     Run LSHmain with dataset=data_path and query=data_path and return
     neighbors[q] = list of k_neighbors indices.
@@ -29,9 +29,10 @@ def LSH(exe_path, data_path, query_path, k_neighbors=10, khash=10,
         exe_path,
         "-d", data_path,
         "-q", query_path,
-        "-k", str(khash),
-        "-L", str(L),
+        "-kproj", str(kproj),
         "-w", str(w),
+        "-M", str(M),
+        "-probes", str(probes),
         "-N", str(k_neighbors)]
     
 
@@ -84,7 +85,7 @@ def main():
     # Path to the executable 
     base_dir = Path(__file__).resolve().parent.parent
     classic_ann_dir = base_dir / "ANN" / "Classic_ANN" 
-    exe_path = classic_ann_dir / "src" / "bin" / "LSHmain"
+    exe_path = classic_ann_dir / "src" / "bin" / "HCmain"
 
     data_path = base_dir.parent / "artifacts" / "embeddings" / "protein_vectors.dat"
     query_path = base_dir.parent / "artifacts" / "embeddings" / "protein_queries.dat"
@@ -93,8 +94,9 @@ def main():
     neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=5)
     for vector_ann in neighbors:
         print(vector_ann)
-    
+
     run_make(classic_ann_dir / "src", "clean")
+
 
 
 if __name__=="__main__":
