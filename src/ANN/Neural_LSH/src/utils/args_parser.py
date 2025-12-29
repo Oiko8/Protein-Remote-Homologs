@@ -35,7 +35,6 @@ def parse_arguments_search():
     parser.add_argument("-d", "--data", required=True, type=str, help="Input dataset file (e.g., input.dat)")
     parser.add_argument("-q", "--query", required=True, type=str, help="query dataset file (e.g., query.dat)")
     parser.add_argument("-i", "--index_path", required=True, type=str, help="Created index path (directory or prefix)")
-    parser.add_argument("-o", "--output", required=True, type=str, help="Output file for the results")
 
     parser.add_argument("-type", required=True, choices=["sift", "mnist", "protein"], help="Dataset type")
     

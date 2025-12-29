@@ -144,8 +144,7 @@ def main():
     inv_file = load_ivf_index(args.index_path)
     number_of_nn = args.k
     range_on = False
-    # open output file for the results
-    out = open(args.output, "w")
+ 
 
     # preparing the metrics
     sum_appox_time = 0
@@ -154,8 +153,7 @@ def main():
     sum_AF = 0
     qcount = 0
 
-    # print("[Neural LSH]\n\n")
-    out.write("[Neural LSH]\n\n")
+    
     for qi, q in enumerate(queries[:args.set]):
         
         #### approx search ####
@@ -203,17 +201,14 @@ def main():
         ########################
         ####### results ########
         ########################
-        out.write(f"Query: {qi+1}\n")
+        print(f"Query: {qi}\n")
 
         for i in range(number_of_nn):
-            out.write(f"Nearest neighbor-{i+1}: {approx_ids[i]}\n")
-            out.write(f"DistanceApproximate: {approx_dists[i]:.3f}\n")
-            out.write(f"DistanceTrue: {true_dists[i]:.3f}\n")
-        out.write("R-near neighbors:\n")
-        for id in ids_in_range:
-            out.write(f"{id}\n")
+            print(f"Nearest neighbor-{i+1}: {approx_ids[i]}\n")
+            print(f"DistanceApproximate: {approx_dists[i]:.3f}\n")
+            print(f"DistanceTrue: {true_dists[i]:.3f}\n")
      
-        out.write("\n")
+        print("\n")
 
     
     ##########################
@@ -230,15 +225,7 @@ def main():
     print(f"QPS: {qps:.2f}")
     print(f"tApproximateAverage: {avg_approx_time:.2f}")
     print(f"tTrueAverage: {avg_true_time:.2f}")
-    out.write(f"Average AF: {avg_AF:.2f}\n")
-    out.write(f"Recall@N: {recall:.2f}\n")
-    out.write(f"QPS: {qps:.2f}\n")
-    out.write(f"tApproximateAverage: {avg_approx_time:.2f}\n")
-    out.write(f"tTrueAverage: {avg_true_time:.2f}\n")
-
-    # close the open output file
-    out.close()
-    
+   
 
 if __name__ == "__main__":
     main()
