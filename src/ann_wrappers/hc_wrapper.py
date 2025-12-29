@@ -18,10 +18,10 @@ def run_make(build_dir, target="hc"):
         raise RuntimeError("Compilation failed")
 
 # best set: kproj=18, w=10, M=10, probes=20
-def LSH(exe_path, data_path, query_path, k_neighbors=10, kproj=18,
+def HC(exe_path, data_path, query_path, k_neighbors=10, kproj=18,
                       w=5.5, M=10, probes=20):
     """
-    Run LSHmain with dataset=data_path and query=data_path and return
+    Run HCmain with dataset=data_path and query=data_path and return
     neighbors[q] = list of k_neighbors indices.
     """
     # Build the command as it runs in terminal
@@ -91,7 +91,7 @@ def main():
     query_path = base_dir.parent / "artifacts" / "embeddings" / "protein_queries.dat"
 
     run_make(classic_ann_dir / "src")
-    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=5)
+    neighbors = HC(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=5)
     for vector_ann in neighbors:
         print(vector_ann)
 
