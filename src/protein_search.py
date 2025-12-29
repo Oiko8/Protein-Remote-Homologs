@@ -1,7 +1,7 @@
 import time
 from pathlib import Path
 import sys
-
+import pathlib
 from utils.args_parser import parse_arguments_search
 
 from ann_wrappers.lsh_wrapper import run_lsh
@@ -9,6 +9,7 @@ from ann_wrappers.hc_wrapper import run_hc
 from ann_wrappers.ivfflat_wrapper import run_ivfflat
 from ann_wrappers.ivfpq_wrapper import run_ivfpq
 from ann_wrappers.neural_wrapper import run_neural
+from utils.blast_output_parser import blast_ann_comparison
 
 
 def write_neighbors(path: Path, neighbors):
@@ -61,6 +62,18 @@ def main():
         f.write(f"queries {len(neighbors)}\n")
         f.write(f"time_sec {dt:.6f}\n")
         f.write(f"qps {len(neighbors)/dt:.6f}\n")
+
+
+    base_dir = pathlib.Path(__file__).resolve().parent.parent
+    blast_tsv = base_dir / "artifacts" / "blast" / "blast_results.tsv"
+    protein_ids = base_dir / "artifacts" / "indices" / "protein_ids"
+    queries_ids = base_dir / "artifacts" / "indices" / "queries_ids"
+    avg, per_query = blast_ann_comparison(blast_tsv, out_path, protein_ids, queries_ids, n_ground_truth=knn, ann_n=knn)
+
+    print("Average Recall@50:", avg)
+
+    for q, r in per_query.items():
+        print(q, r)
 
 
 if __name__ == "__main__":

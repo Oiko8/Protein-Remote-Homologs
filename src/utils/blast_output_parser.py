@@ -139,12 +139,7 @@ def recall_at_n(ann_ranked_sseqids, blast_top_set, n):
     return len(ann_top & blast_top_set) / len(blast_top_set)
 
 
-def average_recall(
-    ann_by_qseqid: Dict[str, Sequence[str]],
-    sblast_by_qseqid: Dict[str, Set[str]],
-    *,
-    n: int,
-) -> float:
+def average_recall(ann_by_qseqid, sblast_by_qseqid, n):
     total = 0.0
     count = 0
     for q, blast_set in sblast_by_qseqid.items():
@@ -154,8 +149,9 @@ def average_recall(
     return total / count if count else 0.0
 
 
-def blast_ann_comparison(blast_tsv, ann_results, db_ids_path, query_ids_path, n_ground_truth=50, ann_n=50,
-                            max_evalue=1e-3,):
+def blast_ann_comparison(blast_tsv, ann_results, db_ids_path, query_ids_path, 
+                         n_ground_truth=5, ann_n=5, max_evalue=1e-3,):
+    
     blast_hits = parse_blast_outfmt6_file(blast_tsv)
     blast_by_q = group_blast_by_query(blast_hits)
     sblast_sets = build_sblast_sets(blast_by_q, n_ground_truth=n_ground_truth, max_evalue=max_evalue)
