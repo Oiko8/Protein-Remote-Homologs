@@ -1,9 +1,9 @@
 from __future__ import annotations
+from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Optional
-import math
-import pathlib
+from typing import Dict, List, Optional, Sequence, Set, Tuple
+
 
 @dataclass(frozen=True)
 class BlastHit:
@@ -21,85 +21,157 @@ class BlastHit:
     bitscore: float
 
 
-_OUTFMT6_DEFAULT_COLS = [
-    "qseqid", "sseqid", "pident", "length", "mismatch", "gapopen",
-    "qstart", "qend", "sstart", "send", "evalue", "bitscore",
-]
-
-
-def parse_blast_outfmt6_line(line: str) -> Optional[BlastHit]:
+def parse_blast_outfmt6_line(line):
     line = line.strip()
     if not line or line.startswith("#"):
         return None
-
     parts = line.split("\t")
     if len(parts) != 12:
         return None
-
-    qseqid = parts[0]
-    sseqid = parts[1]
-
     try:
-        pident = float(parts[2])
-        length = int(parts[3])
-        mismatch = int(parts[4])
-        gapopen = int(parts[5])
-        qstart = int(parts[6])
-        qend = int(parts[7])
-        sstart = int(parts[8])
-        send = int(parts[9])
-        evalue = float(parts[10])
-        bitscore = float(parts[11])
+        return BlastHit(
+            qseqid=parts[0],
+            sseqid=parts[1],
+            pident=float(parts[2]),
+            length=int(parts[3]),
+            mismatch=int(parts[4]),
+            gapopen=int(parts[5]),
+            qstart=int(parts[6]),
+            qend=int(parts[7]),
+            sstart=int(parts[8]),
+            send=int(parts[9]),
+            evalue=float(parts[10]),
+            bitscore=float(parts[11]),
+        )
     except ValueError:
         return None
 
-    if math.isnan(evalue) or math.isnan(bitscore):
-        return None
 
-    return BlastHit(
-        qseqid=qseqid,
-        sseqid=sseqid,
-        pident=pident,
-        length=length,
-        mismatch=mismatch,
-        gapopen=gapopen,
-        qstart=qstart,
-        qend=qend,
-        sstart=sstart,
-        send=send,
-        evalue=evalue,
-        bitscore=bitscore,
-    )
-
-
-def parse_blast_outfmt6_file(path: str) -> List[BlastHit]:
+def parse_blast_outfmt6_file(path):
     hits: List[BlastHit] = []
     with open(path, "r", encoding="utf-8") as f:
         for line in f:
-            hit = parse_blast_outfmt6_line(line)
-            if hit is not None:
-                hits.append(hit)
+            h = parse_blast_outfmt6_line(line)
+            if h is not None:
+                hits.append(h)
     return hits
 
 
-def group_hits_by_query(hits: Iterable[BlastHit]) -> Dict[str, List[BlastHit]]:
-    grouped: Dict[str, List[BlastHit]] = {}
+def group_blast_by_query(hits):
+    out: Dict[str, List[BlastHit]] = {}
     for h in hits:
-        grouped.setdefault(h.qseqid, []).append(h)
-    return grouped
+        out.setdefault(h.qseqid, []).append(h)
+    return out
 
 
-def main():
-    base_dir = pathlib.Path(__file__).resolve().parent.parent.parent
-    results_path = base_dir / "artifacts" / "blast" / "blast_results.tsv"
-
-    hits = parse_blast_outfmt6_file(results_path)
-    by_q = group_hits_by_query(hits)
-
-    print(len(hits))
-    print(len(by_q), "queries")
-    print(by_q[list(by_q.keys())[0]][0])
+def build_sblast_sets(blast_by_query, n_ground_truth, max_evalue=1e-3):
+    out: Dict[str, Set[str]] = {}
+    for q, hits in blast_by_query.items():
+        filtered = [h for h in hits if h.evalue <= max_evalue]
+        filtered.sort(key=lambda h: h.bitscore, reverse=True)
+        top = filtered[:n_ground_truth] if n_ground_truth > 0 else []
+        out[q] = {h.sseqid for h in top}
+    return out
 
 
-if __name__=="__main__":
-    main()
+def parse_ann_neighbors_file(path):
+    out: Dict[int, List[int]] = {}
+    q: int | None = None
+    with open(path, "r", encoding="utf-8") as f:
+        for raw in f:
+            line = raw.strip()
+            if not line:
+                continue
+            if line.startswith("Query:"):
+                q = int(line.split(":", 1)[1].strip())
+                out.setdefault(q, [])
+                continue
+            if line.startswith("Nearest neighbor-"):
+                if q is None:
+                    continue
+                idx = int(line.split(":", 1)[1].strip())
+                out[q].append(idx)
+    return out
+
+
+def load_protein_ids(path):
+    ids: List[str] = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            s = line.strip()
+            if s:
+                ids.append(s)
+    return ids
+
+
+def load_query_ids(path):
+    return load_protein_ids(path)
+
+
+def ann_indices_to_sseqids(ann_by_qidx, db_ids):
+    out: Dict[int, List[str]] = {}
+    n = len(db_ids)
+    for qidx, neigh_idxs in ann_by_qidx.items():
+        mapped: List[str] = []
+        for i in neigh_idxs:
+            if 0 <= i < n:
+                mapped.append(db_ids[i])
+            else:
+                mapped.append(f"__OOB__:{i}")
+        out[qidx] = mapped
+    return out
+
+
+def remap_ann_queries_to_qseqid(ann_by_qidx_sseqids, query_ids):
+    out: Dict[str, List[str]] = {}
+    for qidx, neighs in ann_by_qidx_sseqids.items():
+        qseqid = query_ids[qidx] if 0 <= qidx < len(query_ids) else f"__MISSING_QID__:{qidx}"
+        out[qseqid] = neighs
+    return out
+
+
+def recall_at_n(ann_ranked_sseqids, blast_top_set, n):
+    if n <= 0:
+        return 0.0
+    if not blast_top_set:
+        return 0.0
+    ann_top = set(ann_ranked_sseqids[:n])
+    return len(ann_top & blast_top_set) / len(blast_top_set)
+
+
+def average_recall(
+    ann_by_qseqid: Dict[str, Sequence[str]],
+    sblast_by_qseqid: Dict[str, Set[str]],
+    *,
+    n: int,
+) -> float:
+    total = 0.0
+    count = 0
+    for q, blast_set in sblast_by_qseqid.items():
+        ann = ann_by_qseqid.get(q, [])
+        total += recall_at_n(ann, blast_set, n)
+        count += 1
+    return total / count if count else 0.0
+
+
+def blast_ann_comparison(blast_tsv, ann_results, db_ids_path, query_ids_path, n_ground_truth=50, ann_n=50,
+                            max_evalue=1e-3,):
+    blast_hits = parse_blast_outfmt6_file(blast_tsv)
+    blast_by_q = group_blast_by_query(blast_hits)
+    sblast_sets = build_sblast_sets(blast_by_q, n_ground_truth=n_ground_truth, max_evalue=max_evalue)
+
+    ann_by_qidx = parse_ann_neighbors_file(ann_results)
+    db_ids = load_protein_ids(db_ids_path)
+    query_ids = load_query_ids(query_ids_path)
+
+    ann_by_qidx_sseqids = ann_indices_to_sseqids(ann_by_qidx, db_ids)
+    ann_by_qseqid = remap_ann_queries_to_qseqid(ann_by_qidx_sseqids, query_ids)
+
+    per_query: Dict[str, float] = {}
+    for q, blast_set in sblast_sets.items():
+        per_query[q] = recall_at_n(ann_by_qseqid.get(q, []), blast_set, ann_n)
+
+    avg = average_recall(ann_by_qseqid, sblast_sets, n=ann_n)
+    return avg, per_query
+
+
