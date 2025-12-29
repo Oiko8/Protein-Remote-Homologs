@@ -131,9 +131,22 @@ QPS ≈ 4632.22
 ```
 
 ## Neural_LSH
+After several experiments with different sets of hyperparameters, we conclude that this set up build the best model:  
+| knn | m   | epochs | layers | nodes | batch_size | kahip_mode |
+|-----|-----|--------|--------|-------|------------|------------|
+| 10  | 100 |  100   | 3      | 256   |    64      |     2      | 
+
+<img src="plots/Neural_plot.png" width="500">
+
+- The search was random and based on our previous experience on the mnist and sift data.
+- The final build and search commands are displayed below, as well as the recall and the QPS.
+
 ```
+python src/nlsh_build.py -d data/Proteins_data/protein_vectors.dat --knn 10 -m 100 --epochs 100 --nodes 256 --layers 3 --batch_size 64 --kahip_mode 2 -type protein -i index_files/index_ivf
+_protein.txt
 python src/nlsh_search.py -d data/Proteins_data/protein_vectors.dat -q data/Proteins_data/protein_queries.dat -i index_files/index_ivf_protein.txt -N 5 -type protein -o results/results_protein.txt -T 10 -N 5
 ```
 ```
-python src/nlsh_build.py -d data/Proteins_data/protein_vectors.dat --knn 10 -m 100 --epochs 100 --nodes 512 --layers 3 --kahip_mode 0 -type protein -i index_files/index_ivf_protein.txt
+Recall@5 =  1.00
+QPS = 101.57
 ```
