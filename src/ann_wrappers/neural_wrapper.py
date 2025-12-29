@@ -68,7 +68,7 @@ def nlsh_search(exe_python, nlsh_search_py, data_path, query_path, index_path,
 
 
 
-def main():
+def run_neural(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):
     base_dir = Path(__file__).resolve().parent.parent
     neural_root = base_dir / "ANN" / "Neural_LSH"
 
@@ -77,8 +77,8 @@ def main():
 
     nlsh_search_py = neural_root / "src" / "nlsh_search.py"
 
-    data_path = base_dir.parent / "artifacts" / "embeddings" / "protein_vectors.dat"
-    query_path = base_dir.parent / "artifacts" / "embeddings" / "protein_queries.dat"
+    data_path = base_dir.parent / "artifacts" / "embeddings" / data_file
+    query_path = base_dir.parent / "artifacts" / "embeddings" / query_file
     index_path = neural_root / "index_files" / "index_ivf_protein.txt"
 
     neighbors = nlsh_search(
@@ -87,13 +87,15 @@ def main():
         data_path=data_path,
         query_path=query_path,
         index_path=index_path,
-        k_neighbors=5,
+        k_neighbors=knn,
         T=10,
         data_type="protein"
     )
 
-    for vector_ann in neighbors:
-        print(vector_ann)
+    return neighbors
+
+def main():
+    run_neural()
 
 
 if __name__ == "__main__":

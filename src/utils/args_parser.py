@@ -15,6 +15,13 @@ def parse_arguments_embed():
 
 
 def parse_arguments_search():
-    parser = argparse.ArgumentParser(description="nlsh_search arguments")
+    parser = argparse.ArgumentParser(description="protein_search arguments")
+
+    parser.add_argument("-d", "--data", required=True, type=str)
+    parser.add_argument("-q", "--queries", required=True, type=str)
+    parser.add_argument("-o", required=True, type=str)
+    parser.add_argument("-N", required=True, type=int)
+    parser.add_argument("-method", required=True, type=str,
+                        choices=["lsh", "hypercube", "ivfflat", "ivfpq", "neural"])
 
     return parser.parse_args()

@@ -80,21 +80,24 @@ def LSH(exe_path, data_path, query_path, k_neighbors=10, khash=10,
     return neighbors
 
 
-def main():
+def run_lsh(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):
     # Path to the executable 
     base_dir = Path(__file__).resolve().parent.parent
     classic_ann_dir = base_dir / "ANN" / "Classic_ANN" 
     exe_path = classic_ann_dir / "src" / "bin" / "LSHmain"
 
-    data_path = base_dir.parent / "artifacts" / "embeddings" / "protein_vectors.dat"
-    query_path = base_dir.parent / "artifacts" / "embeddings" / "protein_queries.dat"
+    data_path = base_dir.parent / "artifacts" / "embeddings" / data_file
+    query_path = base_dir.parent / "artifacts" / "embeddings" / query_file
 
     run_make(classic_ann_dir / "src")
-    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=5)
-    for vector_ann in neighbors:
-        print(vector_ann)
+    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=knn)
     
     run_make(classic_ann_dir / "src", "clean")
+
+    return neighbors
+
+def main():
+    run_lsh()
 
 
 if __name__=="__main__":

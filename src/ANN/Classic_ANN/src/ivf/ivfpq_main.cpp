@@ -145,25 +145,7 @@ int main(int argc, char** argv) {
             approx_dists.push_back(std::sqrt(p.second)); // push distance sqrt
         }
 
-        // brute-force nearest neighbors
-        t0 = clock_type::now(); // start chrono
-        std::vector<uint32_t> true_ids; std::vector<float> true_dists;
-        nearest_neighbor(base, qptr, args.N, true_ids, true_dists); // brute force
-        t1 = clock_type::now(); // stop chrono
-        double true_ms = std::chrono::duration_cast<ns>(t1 - t0).count(); // ms
-
-        if (!approx_dists.empty() && !true_dists.empty()) { // metrics AF
-            float min_approx = *std::min_element(approx_dists.begin(), approx_dists.end());
-            float true_min = true_dists[0];
-            sum_AF += (true_min > 0.0f) ? (min_approx / true_min) : 1.0; 
-        }
-        if (!true_ids.empty()) { // Recall@N
-            uint32_t t0id = true_ids[0];
-            for (auto id : approx_ids) { if (id == t0id) { hits_at_N++; break; } }
-        }
-
         sum_tApprox_ms += approx_ms; // akumulation times
-        sum_tTrue_ms += true_ms;
         qcount++;
 
         // ------------------- per query output -------------------
@@ -171,41 +153,25 @@ int main(int argc, char** argv) {
         int outN = std::min((int)approx_ids.size(), args.N); // output N
         for (int i = 0; i < outN; ++i) {
             float dA = approx_dists[i]; // approximate
-            float dT = (i < (int)true_dists.size()) ? true_dists[i] : (true_dists.empty() ? 0.0f : true_dists.back()); // true distance
             cout << "Nearest neighbor-" << (i+1) << ": " << approx_ids[i] << "\n"; // print id
             cout << "distanceApproximate: " << dA << "\n"; // print approximate dist
-            cout << "distanceTrue: " << dT << "\n"; // print true dist
-        }
-
-        // ------------------- range search -------------------
-        if (args.range && args.R > 0.0) { // an oristhike range
-            std::vector<int> in_range;
-            auto allcand = pqindex.search(qptr, base, base.n, static_cast<size_t>(args.nprobe), args.R); // get all candidates
-            for (auto &p : allcand) {
-                float d = std::sqrt(p.second);
-                if (d <= static_cast<float>(args.R)) in_range.push_back(static_cast<int>(p.first));
-            }
-            std::sort(in_range.begin(), in_range.end()); // sort
-            in_range.erase(std::unique(in_range.begin(), in_range.end()), in_range.end()); // remove duplicates
-            cout << "\nR-near neighbors:\n";
-            for (int id : in_range) cout << id << "\n"; // print ids
         }
 
         cout << "\n";
     }
 
-    // ------------------- summary -------------------
-    double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0; // average AF
-    double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
-    double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // QPS
-    double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approx time
-    double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0; // avg true time
+    // // ------------------- summary -------------------
+    // double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0; // average AF
+    // double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
+    // double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // QPS
+    // double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approx time
+    // double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0; // avg true time
 
-    cout << "Average AF: " << avgAF << "\n"; // print summary
-    cout << "Recall@N: " << recall << "\n"; 
-    cout << "QPS: " << qps << "\n"; 
-    cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; 
-    cout << "tTrueAverage: " << avgTrueMs << " ms\n"; 
+    // cout << "Average AF: " << avgAF << "\n"; // print summary
+    // cout << "Recall@N: " << recall << "\n"; 
+    // cout << "QPS: " << qps << "\n"; 
+    // cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; 
+    // cout << "tTrueAverage: " << avgTrueMs << " ms\n"; 
 
     return 0; // telos main
 }

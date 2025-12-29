@@ -130,66 +130,33 @@ int main(int argc, char** argv) {
             approx_dists.push_back(std::sqrt(p.second));      // prosthese apostasi (sqrt apo squared)
         }
 
-        t0 = clock_type::now();                                // arxikos xronos true search
-        std::vector<uint32_t> true_ids; std::vector<float> true_dists; // containers gia true nearest
-        nearest_neighbor(base, qptr, args.N, true_ids, true_dists); // brute-force true top-N
-        t1 = clock_type::now();                                // telikos xronos
-        double true_ms = std::chrono::duration_cast<ns>(t1 - t0).count(); // xronos se ms
-
-        if (!approx_dists.empty() && !true_dists.empty()) {    // elegxos na min einai empty
-            float min_approx = *std::min_element(approx_dists.begin(), approx_dists.end()); // elaxisti aprox apostasi
-            float true_min = true_dists[0];                   // mikroteri true apostasi
-            sum_AF += (true_min > 0.0f) ? (min_approx / true_min) : 1.0; // upologismos AF
-        }
-        if (!true_ids.empty()) {                               // elegxos an true_ids den einai empty
-            uint32_t t0id = true_ids[0];                       // prwto true id
-            for (auto id : approx_ids) {                       // loop panw sta approx ids
-                if (id == t0id) { hits_at_N++; break; }       // an breTthei prwto true id, increment hits
-            }
-        }
 
         sum_tApprox_ms += approx_ms;                           // akolouthisi xronou approximate
-        sum_tTrue_ms += true_ms;                               // akolouthisi xronou true
         qcount++;                                              // metritis queries
 
         cout << "Query: " << (qi) << "\n";              // emfanisi query number
         int outN = std::min((int)approx_ids.size(), args.N);  // emfanizomena apotelesmata
         for (int i = 0; i < outN; ++i) {                      
             float dA = approx_dists[i];                       
-            float dT = (i < (int)true_dists.size()) ? true_dists[i] : (true_dists.empty() ? 0.0f : true_dists.back()); // distance true
             cout << "Nearest neighbor-" << (i+1) << ": " << approx_ids[i] << "\n"; // emfanisi id
             cout << "distanceApproximate: " << dA << "\n";   // emfanisi aprox distance
-            cout << "distanceTrue: " << dT << "\n";          // emfanisi true distance
-        }
-
-        if (args.range && args.R > 0.0) {                       // an exoume range search
-            std::vector<int> in_range;                          // container gia R-near ids
-            auto allcand = index.search(qptr, base, base.n, static_cast<size_t>(args.nprobe), args.R); // ola ta candidates
-            for (auto &p : allcand) {                           
-                float d = std::sqrt(p.second);                  // apostasi
-                if (d <= static_cast<float>(args.R)) in_range.push_back(static_cast<int>(p.first)); // prosthese an mesa sto R
-            }
-            std::sort(in_range.begin(), in_range.end());        // sort ids
-            in_range.erase(std::unique(in_range.begin(), in_range.end()), in_range.end()); // remove duplicates
-            cout << "\nR-near neighbors:\n";                 // emfanisi header
-            for (int id : in_range) cout << id << "\n";      // emfanisi ids
         }
 
         cout << "\n";                                         // empty line
     }
 }
 
-double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0;       // average AF
-double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
-double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // queries/sec
-double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approximate ms
-double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0;     // avg true ms
+// double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0;       // average AF
+// double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
+// double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // queries/sec
+// double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approximate ms
+// double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0;     // avg true ms
 
-cout << "Average AF: " << avgAF << "\n";                   // emfanisi AF
-cout << "Recall@N: "   << recall << "\n";                 // emfanisi recall
-cout << "QPS: " << qps << "\n";                            // emfanisi QPS
-cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; // emfanisi tApprox
-cout << "tTrueAverage: "        << avgTrueMs << " ms\n";   // emfanisi tTrue
+// cout << "Average AF: " << avgAF << "\n";                   // emfanisi AF
+// cout << "Recall@N: "   << recall << "\n";                 // emfanisi recall
+// cout << "QPS: " << qps << "\n";                            // emfanisi QPS
+// cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; // emfanisi tApprox
+// cout << "tTrueAverage: "        << avgTrueMs << " ms\n";   // emfanisi tTrue
 
 return 0;                                                     // telos main function
 }
