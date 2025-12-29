@@ -9,6 +9,16 @@ My plan :
 4. Train the model of neural LSH on the new dataset of proteins' vectors as well to find the best configuration of parameters. 
 5. Making wrappers for each ANN algorithm. Four wrappers that the will run using subprocess for the algorithms written in C++ from the project 1 (LSH, HYPERCUBE, INVFLAT, INVFLATQP) and one wrapper for the neural LSH that is already in python.
 6. Include neural LSH in the project, test it for the best hyperparameters. Update the graph creation to use knn-neighbors from sklearn and not the LSH.
+7. Polish the wrappers for each algorithm
+8. Implement search.py that calls each wrapper depending on the flag it receives.
+9. Install blast, make blast running in the root directory of the project: 
+  ```
+  makeblastdb -in data/swissprot_50k.fasta -dbtype prot -out artifacts/blast/swissprot_db
+  ```
+10. Search on the blast database for the queries with command: 
+  ```
+  blastp -db artifacts/blast/swissprot_db -query data/targets.fasta -outfmt 6 -out artifacts/blast/blast_results.tsv
+  ```
 
 ### Structure
 ```
@@ -17,42 +27,19 @@ project3/
     protein_embed.py
     protein_search.py
 
-    ann/
-      __init__.py
-      base_wrapper.py
+    ann_wrappers/
       lsh_wrapper.py
       hypercube_wrapper.py
       ivfflat_wrapper.py
       ivfpq_wrapper.py
       neural_wrapper.py
 
-    embedding/
-      __init__.py
-      esm2_embedder.py
-
     utils/
-      __init__.py
-      fasta.py
-      fvecs.py
-      ids.py
-      blast.py
-      timing.py
-      parsing.py
+      args_parser.py
 
     ANN/
       Classic_ANN/
-        CMakeLists.txt (ή Makefile)
-        include/
-        src/
-          utils_functions/
-        bin/               # binaries
-          lsh_main
-          hypercube_main
-          ivfflat_main
-          ivfpq_main
-
       Neural_LSH/
-        # expose Python API ή call it from neural_wrapper
 
   data/
     # swissprot.fasta
@@ -60,24 +47,15 @@ project3/
 
   artifacts/
     embeddings/
-      protein_vectors.fvecs
+      protein_vectors.dat
+      protein_queries.dat
       ids.txt
     indices/
-      lsh/
-      hypercube/
-      ivf/
-      neural/
     blast/
       swissprot_db/        # makeblastdb outputs
       blast_results.tsv
 
   results/
-    runs/
-      2025-12-20_001/
-        results.txt
-        summary.csv
-        params.json
-    plots/ 
 
   plots/
     HC_plot.png
