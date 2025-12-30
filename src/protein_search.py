@@ -69,12 +69,15 @@ def main():
     blast_tsv = base_dir / "artifacts" / "blast" / "blast_results.tsv"
     protein_ids = base_dir / "artifacts" / "indices" / "protein_ids"
     queries_ids = base_dir / "artifacts" / "indices" / "queries_ids"
-    avg, per_query, info = blast_ann_comparison(blast_tsv, out_path, protein_ids, queries_ids, max_evalue=10, 
-                                                n_ground_truth=knn, ann_n=knn, return_identity_metrics=True, close_min_pident=30)
+    # avg, per_query, info = blast_ann_comparison(blast_tsv, out_path, protein_ids, queries_ids, max_evalue=0.01, 
+    #                                             n_ground_truth=knn, ann_n=knn, return_identity_metrics=True, close_min_pident=30)
 
+    avg, per_query = blast_ann_comparison(blast_tsv, out_path, protein_ids, queries_ids, max_evalue=0.001, 
+                                                n_ground_truth=knn, ann_n=knn, return_identity_metrics=False)
+    
     print(f"Average Recall@{knn}: {avg}")
-    print(f"Average RemoteRecall@{knn} (20-30%): {info['avg_remote']}")
-    print(f"Average CloseRecall@{knn} (>=30%): {info['avg_close']}")
+    # print(f"Average RemoteRecall@{knn} (20-30%): {info['avg_remote']}")
+    # print(f"Average CloseRecall@{knn} (>=30%): {info['avg_close']}")
 
 
     for q, r in per_query.items():
