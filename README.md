@@ -2,7 +2,7 @@
 
 
 ### Plan
-My plan : 
+Notes : 
 1. Make the structure of my project, including the ANN algorithms (LSH, HYPERCUB, INVFLAT, NEURAL LSH) from the previous assingments.  
 2. Creating the embeddings of the proteins using esm2 in the file protein_embed.py 
 3. Update the project 1 to take as base the generated protein vectors from step 2 and the queries so i can test how the algorithms works. for this new dataset and choose the best set of parameters. 
@@ -19,6 +19,12 @@ My plan :
   ```
   blastp -db artifacts/blast/swissprot_db -query data/targets.fasta -outfmt 6 -out artifacts/blast/blast_results.tsv
   ```
+11. Comparison between ANN and Blast, Low recall for each query
+12. Trying add L2- normalization to improve recall and possibly cosine distance.
+13. Rebuilding Neural LSH to train the model on the normalized vectors.
+14. Addin Remote and Close recall to see the difference.
+
+
 
 ### Structure
 ```
