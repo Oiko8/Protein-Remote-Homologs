@@ -14,6 +14,9 @@
 #include <vector>                                    // vector
 #include <string>                                    // string
 
+using clock_type = std::chrono::high_resolution_clock; // tipoi gia chronos me high resolution
+using ms = std::chrono::milliseconds;                  // milliseconds
+using ns = std::chrono::nanoseconds;
 
 // helper for reading protein vectors
 static void load_fvecs_into_dataset(const std::string& path, Dataset& out) {
@@ -34,11 +37,6 @@ static void load_fvecs_into_dataset(const std::string& path, Dataset& out) {
         std::copy(vecs[i].begin(), vecs[i].end(), out.row_mut(i));
     }
 }
-
-
-using clock_type = std::chrono::high_resolution_clock; // tipoi gia chronos me high resolution
-using ms = std::chrono::milliseconds;                  // milliseconds
-using ns = std::chrono::nanoseconds;
 
 struct Args { 
     std::string method = "ivfflat"; // default method
@@ -84,7 +82,6 @@ static Args parse_args(int argc, char** argv) {
 int main(int argc, char** argv) {
     Args args = parse_args(argc, argv);   // diabazei arguments
 
-
     Dataset base, queries;
 
     try {
@@ -104,8 +101,10 @@ int main(int argc, char** argv) {
 
 
     int maxQ = std::min((size_t)100, queries.n);       // max 100 queries
-    double sum_AF = 0.0; int hits_at_N = 0;           // metrics
-    double sum_tApprox_ms = 0.0, sum_tTrue_ms = 0.0; int qcount = 0; // timing
+    // ================= METRICS =================
+    double sum_tApprox_ms = 0.0;
+    int qcount = 0;
+    // ===========================================
     if (args.method == "ivfflat") {                                 // an to method einai ivfflat
     cout << "Training IVFFlat with C=" << args.kclusters << "  seed=" << args.seed << " ..." << std::endl; // emfanisi info
 
@@ -121,7 +120,11 @@ int main(int argc, char** argv) {
         std::vector<std::pair<uint32_t,float>> approx = index.search(qptr, base, static_cast<size_t>(args.N),
                                                                      static_cast<size_t>(args.nprobe), args.R); // approximate search
         auto t1 = clock_type::now();                           // telikos xronos
-        double approx_ms = std::chrono::duration_cast<ns>(t1 - t0).count(); // xronos se ms
+        double t_query_ms =
+            std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(t1 - t0).count();
+
+        sum_tApprox_ms += t_query_ms;                           // akolouthisi xronou approximate
+        qcount++;                                              // metritis queries
 
         std::vector<uint32_t> approx_ids; approx_ids.reserve(approx.size()); // ids twn approximate apotelesmatwn
         std::vector<float> approx_dists; approx_dists.reserve(approx.size()); // apostaseis twn approximate apotelesmatwn
@@ -129,10 +132,6 @@ int main(int argc, char** argv) {
             approx_ids.push_back(p.first);                     // prosthese id
             approx_dists.push_back(std::sqrt(p.second));      // prosthese apostasi (sqrt apo squared)
         }
-
-
-        sum_tApprox_ms += approx_ms;                           // akolouthisi xronou approximate
-        qcount++;                                              // metritis queries
 
         cout << "Query: " << (qi) << "\n";              // emfanisi query number
         int outN = std::min((int)approx_ids.size(), args.N);  // emfanizomena apotelesmata
@@ -145,18 +144,12 @@ int main(int argc, char** argv) {
         cout << "\n";                                         // empty line
     }
 }
+    // ================= FINAL METRICS =================
+    double tApprox = (sum_tApprox_ms / qcount) / 1000.0;   // seconds
+    double QPS = qcount / (sum_tApprox_ms / 1000.0);
 
-// double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0;       // average AF
-// double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
-// double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // queries/sec
-// double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approximate ms
-// double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0;     // avg true ms
-
-// cout << "Average AF: " << avgAF << "\n";                   // emfanisi AF
-// cout << "Recall@N: "   << recall << "\n";                 // emfanisi recall
-// cout << "QPS: " << qps << "\n";                            // emfanisi QPS
-// cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; // emfanisi tApprox
-// cout << "tTrueAverage: "        << avgTrueMs << " ms\n";   // emfanisi tTrue
+    std::cout << "tApprox: " << tApprox << " s\n";
+    std::cout << "QPS: " << QPS << "\n";
 
 return 0;                                                     // telos main function
 }
