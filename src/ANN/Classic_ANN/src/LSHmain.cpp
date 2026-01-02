@@ -6,6 +6,8 @@
 #include "utils_functions/Data_loader.h"
 #include "utils_functions/euclid.h"
 #include <fstream>
+#include <chrono>
+#include <iostream>
 
 using clock_type = std::chrono::steady_clock;
 using ms = std::chrono::duration<float, std::milli>;
@@ -84,6 +86,11 @@ static void search_in_dataset(Args args , string type){
     // if a subset is not provided take all the set of queries
     int queries_num = (args.queries_num==0) ? (int)queries.size() : args.queries_num;
     
+    // ================= METRICS =================
+    double sum_tApprox_ms = 0.0;
+    int qcount = 0;
+    // ===========================================
+
     #pragma omp parallel for schedule(dynamic)
     for (int i=0 ; i < queries_num; i++){
         vector <float> q = queries[i];
@@ -93,12 +100,21 @@ static void search_in_dataset(Args args , string type){
         // =====================================================================
 
         // ============= Approximate search (LSH) and the time needed ==========
+        auto t_start = clock_type::now();
         vector<int> nn_idx = query_knn(pts, q, N);
+        auto t_end = clock_type::now();
+
+        double t_query_ms =
+            std::chrono::duration_cast<ms>(t_end - t_start).count();
+
         #pragma omp critical
         {
             // =====================================================================
             // ============================== Results ==============================
             // =====================================================================
+            sum_tApprox_ms += t_query_ms;
+            qcount++;
+
             cout << "Query: " << i << "\n";
             for (int j = 0; j < (int)nn_idx.size(); ++j) {
                 cout << "Nearest neighbor-" << (j+1) << ": " << nn_idx[j] << "\n";
@@ -108,7 +124,13 @@ static void search_in_dataset(Args args , string type){
 
         }
     }
-   
+
+    // ================= FINAL METRICS =================
+    double tApprox = (sum_tApprox_ms / qcount) / 1000.0;
+    double QPS = qcount / (sum_tApprox_ms / 1000.0);
+
+    cout << "tApprox: " << tApprox << " s\n";
+    cout << "QPS: " << QPS << "\n";
     
 }
 

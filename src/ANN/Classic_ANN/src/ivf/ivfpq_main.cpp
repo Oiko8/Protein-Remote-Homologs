@@ -37,8 +37,6 @@ static void load_fvecs_into_dataset(const std::string& path, Dataset& out) {
 
 using clock_type = std::chrono::high_resolution_clock; // tipoi gia chronos
 using ms = std::chrono::milliseconds;                  // tipoi gia milliseconds
-using ns = std::chrono::nanoseconds;
-
 
 // ------------------- struct gia ta command line arguments -------------------
 struct Args {
@@ -110,9 +108,11 @@ int main(int argc, char** argv) {
 
 
     int maxQ = std::min((size_t)100, queries.n); // periorismos 100 queries
-    double sum_AF = 0.0; int hits_at_N = 0;      // metrics arxikopoihsh
-    double sum_tApprox_ms = 0.0, sum_tTrue_ms = 0.0; int qcount = 0; // timing arxikopoihsh
-
+    
+    // ================= METRICS =================
+    double sum_tApprox_ms = 0.0;
+    int qcount = 0;
+    // ===========================================
 
     // ------------------- ivfpq training -------------------
     std::cout << "Training IVFPQ with C=" << args.kclusters
@@ -136,7 +136,11 @@ int main(int argc, char** argv) {
         std::vector<std::pair<uint32_t,float>> approx = pqindex.search(qptr, base, static_cast<size_t>(args.N),
                                                                        static_cast<size_t>(args.nprobe), args.R); // search
         auto t1 = clock_type::now(); // stop chrono
-        double approx_ms = std::chrono::duration_cast<ns>(t1 - t0).count(); // ms
+        double t_query_ms =
+            std::chrono::duration_cast<ms>(t1 - t0).count();
+
+        sum_tApprox_ms += t_query_ms;
+        qcount++;
 
         std::vector<uint32_t> approx_ids; approx_ids.reserve(approx.size()); // ids
         std::vector<float> approx_dists;  approx_dists.reserve(approx.size()); // distances
@@ -144,9 +148,6 @@ int main(int argc, char** argv) {
             approx_ids.push_back(p.first); // push id
             approx_dists.push_back(std::sqrt(p.second)); // push distance sqrt
         }
-
-        sum_tApprox_ms += approx_ms; // akumulation times
-        qcount++;
 
         // ------------------- per query output -------------------
         cout << "Query: " << (qi) << "\n"; // print query number
@@ -160,18 +161,12 @@ int main(int argc, char** argv) {
         cout << "\n";
     }
 
-    // // ------------------- summary -------------------
-    // double avgAF = (qcount > 0) ? (sum_AF / qcount) : 0.0; // average AF
-    // double recall = (qcount > 0) ? ((double)hits_at_N / qcount) : 0.0; // recall@N
-    // double qps = (sum_tApprox_ms > 0.0 && qcount > 0) ? (qcount / (sum_tApprox_ms / 1000000.0)) : 0.0; // QPS
-    // double avgApproxMs = (qcount > 0) ? (sum_tApprox_ms / qcount) : 0.0; // avg approx time
-    // double avgTrueMs = (qcount > 0) ? (sum_tTrue_ms / qcount) : 0.0; // avg true time
+    // ================= FINAL METRICS =================
+    double tApprox = (sum_tApprox_ms / qcount) / 1000.0;   // seconds
+    double QPS = qcount / (sum_tApprox_ms / 1000.0);
 
-    // cout << "Average AF: " << avgAF << "\n"; // print summary
-    // cout << "Recall@N: " << recall << "\n"; 
-    // cout << "QPS: " << qps << "\n"; 
-    // cout << "tApproximateAverage: " << avgApproxMs << " ms\n"; 
-    // cout << "tTrueAverage: " << avgTrueMs << " ms\n"; 
+    std::cout << "tApprox: " << tApprox << " s\n";
+    std::cout << "QPS: " << QPS << "\n";
 
     return 0; // telos main
 }
