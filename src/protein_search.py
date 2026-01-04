@@ -10,6 +10,12 @@ from ann_wrappers.ivfflat_wrapper import run_ivfflat
 from ann_wrappers.ivfpq_wrapper import run_ivfpq
 from ann_wrappers.neural_wrapper import run_neural
 
+BLAST_TOTAL_TIME = 3.932
+BLAST_NUM_QUERIES = 12
+
+BLAST_TIME_QUERY = BLAST_TOTAL_TIME / BLAST_NUM_QUERIES
+BLAST_QPS = BLAST_NUM_QUERIES / BLAST_TOTAL_TIME
+
 
 def read_ids(path: Path):
     ids = []
@@ -223,7 +229,7 @@ def main():
         print_output(report_fh, f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
         print_output(report_fh, "----------------------------------------------------------------------")
         print_output(report_fh, f"{method:<12} | {fmt_float(tApprox, 6):>14} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
-        print_output(report_fh, f"{'BLAST (Ref)':<12} | {'--':>14} | {'--':>7} | {'1.0000':>24}")
+        print_output(report_fh, f"{'BLAST (Ref)':<12} | {BLAST_TIME_QUERY:>14.4f} | {BLAST_QPS:>7.2f} | {'1.0000':>24}")
         print_output(report_fh, "----------------------------------------------------------------------")
         print_output(report_fh, )
         print_output(report_fh, f"[2] Top-N γείτονες ανά μέθοδο")
