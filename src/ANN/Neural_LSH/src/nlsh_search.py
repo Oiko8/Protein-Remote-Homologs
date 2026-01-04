@@ -222,8 +222,8 @@ def main():
 
     print(f"Average AF: {avg_AF:.2f}")
     print(f"Recall@N: {recall:.2f}")
-    print(f"QPS: {qps:.2f}")
-    print(f"tApproximateAverage: {avg_approx_time:.2f}")
+    print(f"QPS: {qps:.6f}")
+    print(f"tApprox: {avg_approx_time/1000:.6f}")
     print(f"tTrueAverage: {avg_true_time:.2f}")
    
 

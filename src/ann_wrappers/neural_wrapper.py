@@ -64,7 +64,13 @@ def nlsh_search(exe_python, nlsh_search_py, data_path, query_path, index_path,
             idx = int(line.split(":")[1].strip())
             neighbors[current_q].append(idx)
 
-    return neighbors
+        elif line.startswith("tApprox"):
+            tApprox = float(line.split(":")[1].strip())
+        
+        elif line.startswith("QPS"):
+            qps = float(line.split(":")[1].strip())
+
+    return neighbors, tApprox, qps
 
 
 
@@ -81,22 +87,24 @@ def run_neural(data_file="protein_vectors.dat", query_file="protein_queries.dat"
     query_path = base_dir.parent / "artifacts" / "embeddings" / query_file
     index_path = neural_root / "index_files" / "index_ivf_protein.txt"
 
-    neighbors = nlsh_search(
+    neighbors, tApprox, qps = nlsh_search(
         exe_python=exe_python,
         nlsh_search_py=nlsh_search_py,
         data_path=data_path,
         query_path=query_path,
         index_path=index_path,
         k_neighbors=knn,
-        T=10,
+        T=7,
         data_type="protein"
     )
 
-    return neighbors
+    return neighbors, tApprox, qps
 
 def main():
-    run_neural()
+    neighbors, tApprox, qps = run_neural()
 
+    print(f"tApprox: {tApprox}")
+    print(f"QPS: {qps}")
 
 if __name__ == "__main__":
     main()

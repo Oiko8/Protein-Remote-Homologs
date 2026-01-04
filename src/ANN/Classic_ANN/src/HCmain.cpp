@@ -91,42 +91,40 @@ static void search_in_dataset(Args args , string type){
     double sum_tApprox_ms = 0.0;
     int qcount =0 ;
     // =============================
+   
+    // =====================================================================
+    // ============================ NN Search===============================
+    // =====================================================================
+
+    // ============= Approximate search (LSH) and the time needed ==========
     #pragma omp parallel for schedule(dynamic)
     for (int i=0 ; i < queries_num; i++){
-        vector <float> q = queries[i];
+        vector<float> q = queries[i];
 
-        // =====================================================================
-        // ============================ NN Search===============================
-        // =====================================================================
+        auto t_start = clock_type::now();
+        vector<int> nn_idx = cube_query_knn(pts, q, N, M, probes);
+        auto t_end = clock_type::now();
 
-        // ============= Approximate search (LSH) and the time needed ==========
-        #pragma omp parallel for schedule(dynamic)
-        for (int i=0 ; i < queries_num; i++){
-            vector<float> q = queries[i];
-
-            auto t_start = clock_type::now();
-            vector<int> nn_idx = cube_query_knn(pts, q, N, M, probes);
-            auto t_end = clock_type::now();
-
-            double t_query_ms =
-                std::chrono::duration_cast<ms>(t_end - t_start).count();
+        double t_query_ms =
+            std::chrono::duration_cast<ms>(t_end - t_start).count();
+            
         #pragma omp critical
         {
-            // =====================================================================
-            // ============================== Results ==============================
-            // =====================================================================
-            sum_tApprox_ms += t_query_ms;
-            qcount++;
+        // =====================================================================
+        // ============================== Results ==============================
+        // =====================================================================
+        sum_tApprox_ms += t_query_ms;
+        qcount++;
 
-            cout << "Query: " << i << "\n";
-            for (int j = 0; j < (int)nn_idx.size(); ++j) {
-                cout << "Nearest neighbor-" << (j+1) << ": " << nn_idx[j] << "\n";
-            }
-            
-            cout << "\n";
+        cout << "Query: " << i << "\n";
+        for (int j = 0; j < (int)nn_idx.size(); ++j) {
+            cout << "Nearest neighbor-" << (j+1) << ": " << nn_idx[j] << "\n";
+        }
+        
+        cout << "\n";
 
         }
-        }
+    }
     // ================= FINAL METRICS =================
     double tApprox = (sum_tApprox_ms / qcount) / 1000.0;
     double QPS = qcount / (sum_tApprox_ms / 1000.0);
@@ -134,7 +132,7 @@ static void search_in_dataset(Args args , string type){
     cout << "tApprox: " << tApprox << "\n";
     cout << "QPS: " << QPS << "\n";
 
-    }
+    
 }
 
 //$./main -d <input file> -q <query file> -kproj <int> -w <float> -M <int> -probes <int> -N <number of nearest> -R <radius> 

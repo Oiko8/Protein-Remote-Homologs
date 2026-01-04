@@ -32,28 +32,26 @@ def main():
     knn = args.N
 
     if not out_path.exists():
-        t0 = time.perf_counter()
 
         if args.method == "lsh":
-            neighbors = run_lsh(data_file, query_file, knn)
+            neighbors, tApprox, qps = run_lsh(data_file, query_file, knn)
 
         elif args.method == "hypercube":
-            neighbors = run_hc(data_file, query_file, knn)
+            neighbors, tApprox, qps = run_hc(data_file, query_file, knn)
 
         elif args.method == "ivfflat":
-            neighbors = run_ivfflat(data_file, query_file, knn)
+            neighbors, tApprox, qps = run_ivfflat(data_file, query_file, knn)
 
         elif args.method == "ivfpq":
-            neighbors = run_ivfpq(data_file, query_file, knn)
+            neighbors, tApprox, qps = run_ivfpq(data_file, query_file, knn)
 
         elif args.method == "neural":
-            neighbors = run_neural(data_file, query_file, knn)
+            neighbors, tApprox, qps = run_neural(data_file, query_file, knn)
                 
 
         else:
             raise ValueError("Unknown method")
 
-        dt = time.perf_counter() - t0
 
         write_neighbors(out_path, neighbors)
 
@@ -61,8 +59,8 @@ def main():
         with open(perf_path, "w", encoding="utf-8") as f:
             f.write(f"method {args.method}\n")
             f.write(f"queries {len(neighbors)}\n")
-            f.write(f"time_sec {dt:.6f}\n")
-            f.write(f"qps {len(neighbors)/dt:.6f}\n")
+            f.write(f"time_sec {tApprox:.6f}\n")
+            f.write(f"qps {qps:.6f}\n")
 
 
     base_dir = pathlib.Path(__file__).resolve().parent.parent
