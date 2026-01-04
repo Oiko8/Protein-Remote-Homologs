@@ -1,6 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
+from utils.l2_distance import add_l2_distances
 
 def run_make(build_dir, target="ivfpq"):
     """ run make file to create the executables """
@@ -104,6 +105,7 @@ def run_ivfpq(data_file="protein_vectors.dat", query_file="protein_queries.dat",
 
     run_make(classic_ann_dir / "src", "clean")
 
+    neighbors = add_l2_distances(neighbors, data_path, query_path)
     return neighbors, tApprox, qps
 
 def main():

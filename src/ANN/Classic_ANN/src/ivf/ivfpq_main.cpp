@@ -37,6 +37,7 @@ static void load_fvecs_into_dataset(const std::string& path, Dataset& out) {
 
 using clock_type = std::chrono::high_resolution_clock; // tipoi gia chronos
 using ms = std::chrono::milliseconds;                  // tipoi gia milliseconds
+using ns = std::chrono::nanoseconds;
 
 // ------------------- struct gia ta command line arguments -------------------
 struct Args {
@@ -137,7 +138,7 @@ int main(int argc, char** argv) {
                                                                        static_cast<size_t>(args.nprobe), args.R); // search
         auto t1 = clock_type::now(); // stop chrono
         double t_query_ms =
-            std::chrono::duration_cast<ms>(t1 - t0).count();
+            std::chrono::duration_cast<ns>(t1 - t0).count();
 
         sum_tApprox_ms += t_query_ms;
         qcount++;
@@ -162,8 +163,8 @@ int main(int argc, char** argv) {
     }
 
     // ================= FINAL METRICS =================
-    double tApprox = (sum_tApprox_ms / qcount) / 1000.0;   // seconds
-    double QPS = qcount / (sum_tApprox_ms / 1000.0);
+    double tApprox = (sum_tApprox_ms / qcount) / 1000000000.0;   // seconds
+    double QPS = qcount / (sum_tApprox_ms / 1000000000.0);
 
     std::cout << "tApprox: " << tApprox << "\n";
     std::cout << "QPS: " << QPS << "\n";

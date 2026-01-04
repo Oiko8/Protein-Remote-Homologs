@@ -1,6 +1,7 @@
 import subprocess
 import os
 from pathlib import Path
+from utils.l2_distance import add_l2_distances
 
 def run_make(build_dir, target="hc"):
     """ run make file to create the executables """
@@ -84,7 +85,10 @@ def HC(exe_path, data_path, query_path, k_neighbors=10, kproj=18,
         elif line.startswith("QPS"):
             qps = float(line.split(":")[1].strip())
 
+    neighbors = add_l2_distances(neighbors, data_path, query_path)
+    
     return neighbors, tApprox, qps
+
 
 
 def run_hc(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):

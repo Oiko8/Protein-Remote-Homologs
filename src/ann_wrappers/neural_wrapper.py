@@ -2,6 +2,7 @@ import subprocess
 import os
 import sys
 from pathlib import Path
+from utils.l2_distance import add_l2_distances
 
 
 def nlsh_search(exe_python, nlsh_search_py, data_path, query_path, index_path,
@@ -70,6 +71,7 @@ def nlsh_search(exe_python, nlsh_search_py, data_path, query_path, index_path,
         elif line.startswith("QPS"):
             qps = float(line.split(":")[1].strip())
 
+    neighbors = add_l2_distances(neighbors, data_path, query_path)
     return neighbors, tApprox, qps
 
 
