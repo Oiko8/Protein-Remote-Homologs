@@ -2,6 +2,7 @@ import pathlib
 from pathlib import Path
 
 from utils.args_parser import parse_arguments_search
+from utils.output_file_prints import print_output
 
 from ann_wrappers.lsh_wrapper import run_lsh
 from ann_wrappers.hc_wrapper import run_hc
@@ -129,11 +130,20 @@ def fmt_pct(x):
 def main():
     args = parse_arguments_search()
 
+
+
     out_path = Path(args.o)
     data_file = args.data
     query_file = args.queries
     knn = args.N
     method = args.method
+    
+    reports_dir = Path("reports")
+    reports_dir.mkdir(exist_ok=True)
+
+    report_path = reports_dir / f"{method}.txt"
+    report_fh = open(report_path, "w", encoding="utf-8")
+
 
     ann_neighbors_idx = None
 
@@ -193,31 +203,46 @@ def main():
         qid = query_ids[qi] if qi < len(query_ids) else str(qi)
         gt = blast_topn.get(qid, set())
 
-        print(f"Query Protein: {qid}")
-        print(f"N = {knn} (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)")
-        print("[1] Συνοπτική σύγκριση μεθόδων")
-        print("----------------------------------------------------------------------")
-        print(f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
-        print("----------------------------------------------------------------------")
-        print(f"{method:<12} | {fmt_float(tApprox, 6):>13} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
-        print(f"{'BLAST (Ref)':<12} | {'--':>13} | {'--':>7} | {'1.0000 (ορίζει το Top-N)':>24}")
-        print("----------------------------------------------------------------------")
-        print()
-        print(f"[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = {min(20, knn)} για εκτύπωση)")
-        print(f"Method: {method}")
+        # print(f"Query Protein: {qid}")
+        # print(f"N = {knn} (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)")
+        # print("[1] Συνοπτική σύγκριση μεθόδων")
+        # print("----------------------------------------------------------------------")
+        # print(f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
+        # print("----------------------------------------------------------------------")
+        # print(f"{method:<12} | {fmt_float(tApprox, 6):>13} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
+        # print(f"{'BLAST (Ref)':<12} | {'--':>13} | {'--':>7} | {'1.0000 (ορίζει το Top-N)':>24}")
+        # print("----------------------------------------------------------------------")
+        # print()
+        # print(f"[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = {min(20, knn)} για εκτύπωση)")
+        # print(f"Method: {method}")
+
+        print_output(report_fh, f"Query Protein: {qid}")
+        print_output(report_fh, f"N = {knn} (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)")
+        print_output(report_fh, "[1] Συνοπτική σύγκριση μεθόδων")
+        print_output(report_fh, "----------------------------------------------------------------------")
+        print_output(report_fh, f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
+        print_output(report_fh, "----------------------------------------------------------------------")
+        print_output(report_fh, f"{method:<12} | {fmt_float(tApprox, 6):>14} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
+        print_output(report_fh, f"{'BLAST (Ref)':<12} | {'--':>14} | {'--':>7} | {'1.0000':>24}")
+        print_output(report_fh, "----------------------------------------------------------------------")
+        print_output(report_fh, )
+        print_output(report_fh, f"[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = {min(50, knn)} για εκτύπωση)")
+        print_output(report_fh, f"Method: {method}")
 
         header = (
             f"{'Rank':>4} | "
-            f"{'Neighbor ID':<21} | "
+            f"{'Neighbor ID':<25} | "
             f"{'L2 Dist':>8} | "
             f"{'BLAST Identity':>14} | "
             f"{'In BLAST Top-N?':^16} | "
             f"{'Bio comment':<40}"
         )
-        print(header)
-        print("-" * len(header))
+        # print(header)
+        # print("-" * len(header))
+        print_output(report_fh, header)
+        print_output(report_fh, "-" * len(header))
 
-        to_print = min(20, knn)
+        to_print = min(50, knn)
         for rank in range(1, to_print + 1):
             if rank - 1 >= len(neigh_list):
                 break
@@ -233,16 +258,30 @@ def main():
             elif pid is not None and pid >= 30.0 and in_blast == "Yes":
                 bio = "Close homolog (>=30%)"
 
-            print(
+            # print(
+            #     f"{rank:>4} | "
+            #     f"{nid:<21} | "
+            #     f"{fmt_float(dist, 4):>8} | "
+            #     f"{fmt_pct(pid):>14} | "
+            #     f"{in_blast:^16} | "
+            #     f"{bio:<40}"
+            # )
+            print_output(
+                report_fh, 
                 f"{rank:>4} | "
-                f"{nid:<21} | "
+                f"{nid:<25} | "
                 f"{fmt_float(dist, 4):>8} | "
                 f"{fmt_pct(pid):>14} | "
                 f"{in_blast:^16} | "
                 f"{bio:<40}"
             )
 
-        print()
+        # print()
+        print_output(report_fh, )
+
+    
+    report_fh.close()
+
 
 
 if __name__ == "__main__":
