@@ -1,0 +1,780 @@
+Query Protein: A0A009I3Y5
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P14181|LICA2_HAEIF     |   1.6867 |             -- |        No        | --                                      
+   2 | sp|A5UG81|KDKA_HAEIG      |   1.7496 |             -- |        No        | --                                      
+   3 | sp|P44033|Y665_HAEIN      |   1.8602 |             -- |        No        | --                                      
+   4 | sp|Q4QLU9|RLMC_HAEI8      |   1.9059 |             -- |        No        | --                                      
+   5 | sp|A9KYL6|UBIB_SHEB9      |   1.9852 |             -- |        No        | --                                      
+   6 | sp|Q8EKA0|SELU_SHEON      |   1.9893 |             -- |        No        | --                                      
+   7 | sp|Q7MHY6|RSMC_VIBVY      |   2.0031 |             -- |        No        | --                                      
+   8 | sp|B2J946|SASA_NOSP7      |   2.0078 |             -- |        No        | --                                      
+   9 | sp|Q6C2A3|BUD32_YARLI     |   2.0189 |             -- |        No        | --                                      
+  10 | sp|A1SW96|MNMC_PSYIN      |   2.0205 |             -- |        No        | --                                      
+  11 | sp|B2K7I7|RAVA_YERPB      |   2.0261 |             -- |        No        | --                                      
+  12 | sp|P44150|Y1273_HAEIN     |   2.0272 |             -- |        No        | --                                      
+  13 | sp|P24362|KRB2_VACCW      |   2.0283 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  14 | sp|Q8EIL1|RSMC_SHEON      |   2.0296 |             -- |        No        | --                                      
+  15 | sp|Q7MAX6|TRMA_PHOLL      |   2.0320 |             -- |        No        | --                                      
+  16 | sp|A2BRQ6|SASA_PROMS      |   2.0325 |             -- |        No        | --                                      
+  17 | sp|Q12SQ2|SELU_SHEDO      |   2.0341 |             -- |        No        | --                                      
+  18 | sp|Q1Q8I2|TPMT_PSYCK      |   2.0367 |             -- |        No        | --                                      
+  19 | sp|Q7VP87|RSMC_HAEDU      |   2.0386 |             -- |        No        | --                                      
+  20 | sp|Q87PM1|KT3K_VIBPA      |   2.0439 |             -- |        No        | --                                      
+  21 | sp|Q9KM66|CQSS_VIBCH      |   2.0461 |             -- |        No        | --                                      
+  22 | sp|A3DA85|SELU_SHEB5      |   2.0474 |             -- |        No        | --                                      
+  23 | sp|Q9J523|V212_FOWPN      |   2.0545 |             -- |        No        | --                                      
+  24 | sp|A3D8E4|RSMC_SHEB5      |   2.0556 |             -- |        No        | --                                      
+  25 | sp|P75612|Y081_MYCPN      |   2.0576 |             -- |        No        | --                                      
+  26 | sp|C1EQQ8|MTNK_BACC3      |   2.0608 |             -- |        No        | --                                      
+  27 | sp|B0VRJ4|RSMC_ACIBS      |   2.0625 |             -- |        No        | --                                      
+  28 | sp|B9IWP6|MTNK_BACCQ      |   2.0811 |             -- |        No        | --                                      
+  29 | sp|Q635P6|MTNK_BACCZ      |   2.0812 |             -- |        No        | --                                      
+  30 | sp|B0BBT2|PKND_CHLTB      |   2.0818 |            50% |       Yes        | Close homolog (>=30%)                   
+  31 | sp|B6EL06|RSMC_ALISL      |   2.0843 |             -- |        No        | --                                      
+  32 | sp|B4F0D4|VIAA_PROMH      |   2.0986 |             -- |        No        | --                                      
+  33 | sp|B8ECC0|TPMT_SHEB2      |   2.1026 |             -- |        No        | --                                      
+  34 | sp|A3QHZ8|RSMC_SHELP      |   2.1062 |             -- |        No        | --                                      
+  35 | sp|P45512|DHAR_CITFR      |   2.1068 |             -- |        No        | --                                      
+  36 | sp|A8GYV6|TRMA_SHEPA      |   2.1070 |             -- |        No        | --                                      
+  37 | sp|B0V636|MNMC_ACIBY      |   2.1085 |             -- |        No        | --                                      
+  38 | sp|P75210|ERA_MYCPN       |   2.1088 |             -- |        No        | --                                      
+  39 | sp|B1KD54|RLMG_SHEWM      |   2.1104 |             -- |        No        | --                                      
+  40 | sp|Q5WWF9|MNMC_LEGPL      |   2.1111 |             -- |        No        | --                                      
+  41 | sp|A9L3X6|TPMT_SHEB9      |   2.1114 |             -- |        No        | --                                      
+  42 | sp|P20098|RCSA_ERWAM      |   2.1121 |             -- |        No        | --                                      
+  43 | sp|A6VLF9|TRMA_ACTSZ      |   2.1141 |             -- |        No        | --                                      
+  44 | sp|E1WH94|MLRA_SALTS      |   2.1160 |             -- |        No        | --                                      
+  45 | sp|Q9CPH1|RLMC_PASMU      |   2.1160 |             -- |        No        | --                                      
+  46 | sp|Q6G4C4|KHSE_BARHE      |   2.1164 |             -- |        No        | --                                      
+  47 | sp|Q9KHI5|CIKA_SYNE7      |   2.1181 |             -- |        No        | --                                      
+  48 | sp|O35044|BCES_BACSU      |   2.1278 |             -- |        No        | --                                      
+  49 | sp|P54504|RSBRD_BACSU     |   2.1311 |             -- |        No        | --                                      
+  50 | sp|P0DMD0|RCSA_ECOLX      |   2.1372 |             -- |        No        | --                                      
+
+Query Protein: A0A009PCK4
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P14181|LICA2_HAEIF     |   1.6715 |             -- |        No        | --                                      
+   2 | sp|A5UG81|KDKA_HAEIG      |   1.7197 |             -- |        No        | --                                      
+   3 | sp|P44033|Y665_HAEIN      |   1.8396 |             -- |        No        | --                                      
+   4 | sp|Q4QLU9|RLMC_HAEI8      |   1.9125 |             -- |        No        | --                                      
+   5 | sp|A9KYL6|UBIB_SHEB9      |   1.9828 |             -- |        No        | --                                      
+   6 | sp|Q8EKA0|SELU_SHEON      |   1.9933 |             -- |        No        | --                                      
+   7 | sp|Q6C2A3|BUD32_YARLI     |   2.0015 |             -- |        No        | --                                      
+   8 | sp|P24362|KRB2_VACCW      |   2.0025 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|B2J946|SASA_NOSP7      |   2.0050 |             -- |        No        | --                                      
+  10 | sp|Q7MHY6|RSMC_VIBVY      |   2.0081 |             -- |        No        | --                                      
+  11 | sp|A1SW96|MNMC_PSYIN      |   2.0153 |             -- |        No        | --                                      
+  12 | sp|P44150|Y1273_HAEIN     |   2.0202 |             -- |        No        | --                                      
+  13 | sp|Q9J523|V212_FOWPN      |   2.0281 |             -- |        No        | --                                      
+  14 | sp|Q1Q8I2|TPMT_PSYCK      |   2.0288 |             -- |        No        | --                                      
+  15 | sp|A2BRQ6|SASA_PROMS      |   2.0319 |             -- |        No        | --                                      
+  16 | sp|Q12SQ2|SELU_SHEDO      |   2.0347 |             -- |        No        | --                                      
+  17 | sp|Q7MAX6|TRMA_PHOLL      |   2.0360 |             -- |        No        | --                                      
+  18 | sp|B2K7I7|RAVA_YERPB      |   2.0366 |             -- |        No        | --                                      
+  19 | sp|Q87PM1|KT3K_VIBPA      |   2.0381 |             -- |        No        | --                                      
+  20 | sp|Q9KM66|CQSS_VIBCH      |   2.0382 |             -- |        No        | --                                      
+  21 | sp|C1EQQ8|MTNK_BACC3      |   2.0383 |             -- |        No        | --                                      
+  22 | sp|Q8EIL1|RSMC_SHEON      |   2.0464 |             -- |        No        | --                                      
+  23 | sp|Q7VP87|RSMC_HAEDU      |   2.0478 |             -- |        No        | --                                      
+  24 | sp|A3DA85|SELU_SHEB5      |   2.0502 |             -- |        No        | --                                      
+  25 | sp|B0BBT2|PKND_CHLTB      |   2.0551 |            33% |       Yes        | Close homolog (>=30%)                   
+  26 | sp|Q635P6|MTNK_BACCZ      |   2.0586 |             -- |        No        | --                                      
+  27 | sp|B9IWP6|MTNK_BACCQ      |   2.0606 |             -- |        No        | --                                      
+  28 | sp|P75612|Y081_MYCPN      |   2.0607 |             -- |        No        | --                                      
+  29 | sp|A3D8E4|RSMC_SHEB5      |   2.0631 |             -- |        No        | --                                      
+  30 | sp|B0VRJ4|RSMC_ACIBS      |   2.0688 |             -- |        No        | --                                      
+  31 | sp|B6EL06|RSMC_ALISL      |   2.0796 |             -- |        No        | --                                      
+  32 | sp|Q6G4C4|KHSE_BARHE      |   2.0877 |             -- |        No        | --                                      
+  33 | sp|B4F0D4|VIAA_PROMH      |   2.0964 |             -- |        No        | --                                      
+  34 | sp|B8ECC0|TPMT_SHEB2      |   2.0970 |             -- |        No        | --                                      
+  35 | sp|B0V636|MNMC_ACIBY      |   2.0981 |             -- |        No        | --                                      
+  36 | sp|Q5WWF9|MNMC_LEGPL      |   2.1029 |             -- |        No        | --                                      
+  37 | sp|P75210|ERA_MYCPN       |   2.1040 |             -- |        No        | --                                      
+  38 | sp|A9L3X6|TPMT_SHEB9      |   2.1041 |             -- |        No        | --                                      
+  39 | sp|A3QHZ8|RSMC_SHELP      |   2.1059 |             -- |        No        | --                                      
+  40 | sp|P45512|DHAR_CITFR      |   2.1069 |             -- |        No        | --                                      
+  41 | sp|P20098|RCSA_ERWAM      |   2.1083 |             -- |        No        | --                                      
+  42 | sp|B1KD54|RLMG_SHEWM      |   2.1120 |             -- |        No        | --                                      
+  43 | sp|A8GYV6|TRMA_SHEPA      |   2.1165 |             -- |        No        | --                                      
+  44 | sp|O35044|BCES_BACSU      |   2.1193 |             -- |        No        | --                                      
+  45 | sp|A6VLF9|TRMA_ACTSZ      |   2.1194 |             -- |        No        | --                                      
+  46 | sp|Q9KHI5|CIKA_SYNE7      |   2.1269 |             -- |        No        | --                                      
+  47 | sp|Q9CPH1|RLMC_PASMU      |   2.1313 |             -- |        No        | --                                      
+  48 | sp|E1WH94|MLRA_SALTS      |   2.1327 |             -- |        No        | --                                      
+  49 | sp|P54504|RSBRD_BACSU     |   2.1335 |             -- |        No        | --                                      
+  50 | sp|P0DMD0|RCSA_ECOLX      |   2.1384 |             -- |        No        | --                                      
+
+Query Protein: A0A001
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P9WQJ3|FATRP_MYCTU     |   1.3396 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q13BH6|NDVA_RHOPS      |   1.4232 |            33% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|Q03024|APRD_PSEAE      |   1.4649 |            38% |       Yes        | Close homolog (>=30%)                   
+   4 | sp|Q20Z38|NDVA_RHOPB      |   1.5256 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q9ZEP3|CSEC_STRCO      |   1.7572 |             -- |        No        | --                                      
+   6 | sp|A0K739|SSUB1_BURCH     |   1.7614 |            36% |        No        | --                                      
+   7 | sp|Q8P8W4|MSBA_XANCP      |   1.7698 |            36% |       Yes        | Close homolog (>=30%)                   
+   8 | sp|Q51719|YCOBA_PROFR     |   1.7701 |            30% |        No        | --                                      
+   9 | sp|Q3JSR6|SSUB_BURP1      |   1.7942 |            37% |        No        | --                                      
+  10 | sp|P23886|CYDC_ECOLI      |   1.8079 |            32% |       Yes        | Close homolog (>=30%)                   
+  11 | sp|Q21BF6|MODC_RHOPB      |   1.8314 |            33% |        No        | --                                      
+  12 | sp|O70595|ABCB6_RAT       |   1.8589 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  13 | sp|Q82MV1|SSUB1_STRAW     |   1.8718 |            33% |        No        | --                                      
+  14 | sp|Q9NP58|ABCB6_HUMAN     |   1.8719 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  15 | sp|Q60AI1|POTA_METCA      |   1.8987 |            31% |        No        | --                                      
+  16 | sp|P9WQJ4|OPPD_MYCTO      |   1.9030 |            29% |        No        | --                                      
+  17 | sp|Q28433|TAP1_GORGO      |   1.9048 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  18 | sp|A3Q5L8|MPRB_MYCSJ      |   1.9097 |             -- |        No        | --                                      
+  19 | sp|Q7WGW1|CYSA_BORBR      |   1.9189 |            33% |        No        | --                                      
+  20 | sp|Q7VZE5|CYSA_BORPE      |   1.9231 |            33% |        No        | --                                      
+  21 | sp|A6W3V7|RECF_KINRD      |   1.9446 |             -- |        No        | --                                      
+  22 | sp|Q2J3T0|HMUV_RHOP2      |   1.9648 |            31% |        No        | --                                      
+  23 | sp|Q57I19|CCMAE_SALCH     |   1.9672 |            36% |        No        | --                                      
+  24 | sp|P9WHR1|RIP3_MYCTU      |   1.9674 |             -- |        No        | --                                      
+  25 | sp|P9WHR0|RIP3_MYCTO      |   1.9674 |             -- |        No        | --                                      
+  26 | sp|Q8YE15|MODC_BRUME      |   1.9683 |            33% |        No        | --                                      
+  27 | sp|Q9CCJ1|MTRB_MYCLE      |   1.9821 |             -- |        No        | --                                      
+  28 | sp|Q2JD94|RUVB_FRACC      |   2.0100 |             -- |        No        | --                                      
+  29 | sp|Q5P6D5|MACB_AROAE      |   2.0144 |            31% |        No        | --                                      
+  30 | sp|Q9K4U8|NORR2_CUPNH     |   2.0239 |             -- |        No        | --                                      
+  31 | sp|Q63NR0|HMUV_BURPS      |   2.0240 |            31% |        No        | --                                      
+  32 | sp|Q0WML0|AB27B_ARATH     |   2.0264 |            37% |       Yes        | Close homolog (>=30%)                   
+  33 | sp|P9WHI9|RECF_MYCTU      |   2.0303 |             -- |        No        | --                                      
+  34 | sp|Q2T751|TAUB_BURTA      |   2.0384 |            31% |        No        | --                                      
+  35 | sp|A1UG51|POTA_MYCSK      |   2.0447 |            40% |        No        | --                                      
+  36 | sp|Q89ER4|SSUB_BRADU      |   2.0536 |            34% |        No        | --                                      
+  37 | sp|C1A4A9|MUTS2_GEMAT     |   2.0590 |             -- |        No        | --                                      
+  38 | sp|Q67JX3|ECFA1_SYMTH     |   2.0608 |            36% |        No        | --                                      
+  39 | sp|Q13RD3|SSUB2_PARXL     |   2.0613 |            34% |        No        | --                                      
+  40 | sp|Q6NDA6|CCMA_RHOPA      |   2.0632 |            31% |        No        | --                                      
+  41 | sp|Q9RKQ4|HMUV_STRCO      |   2.0703 |            33% |        No        | --                                      
+  42 | sp|P9WGD8|FTSY_MYCTO      |   2.0721 |             -- |        No        | --                                      
+  43 | sp|P9WGK4|SENX3_MYCTO     |   2.0763 |             -- |        No        | --                                      
+  44 | sp|A1K323|MACB_AZOSB      |   2.0768 |            32% |        No        | --                                      
+  45 | sp|Q9RQQ9|DIVL_CAUVC      |   2.0784 |             -- |        No        | --                                      
+  46 | sp|A1WZ65|RUVB_HALHL      |   2.0804 |             -- |        No        | --                                      
+  47 | sp|A5WJJ8|MSHA_MYCTF      |   2.0812 |             -- |        No        | --                                      
+  48 | sp|P64708|MSHA_MYCBO      |   2.0812 |             -- |        No        | --                                      
+  49 | sp|P9WMX0|MFTF_MYCTO      |   2.0843 |             -- |        No        | --                                      
+  50 | sp|D3KU66|ASMT_MOUSE      |   2.0852 |             -- |        No        | --                                      
+
+Query Protein: A0A002
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P9WQJ3|FATRP_MYCTU     |   1.3344 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q13BH6|NDVA_RHOPS      |   1.4329 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q03024|APRD_PSEAE      |   1.5033 |            31% |       Yes        | Close homolog (>=30%)                   
+   4 | sp|Q20Z38|NDVA_RHOPB      |   1.5303 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q8P8W4|MSBA_XANCP      |   1.7463 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|P23886|CYDC_ECOLI      |   1.7578 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q51719|YCOBA_PROFR     |   1.7785 |            31% |        No        | --                                      
+   8 | sp|Q82MV1|SSUB1_STRAW     |   1.7931 |            30% |        No        | --                                      
+   9 | sp|A0K739|SSUB1_BURCH     |   1.8263 |            33% |        No        | --                                      
+  10 | sp|Q28433|TAP1_GORGO      |   1.8517 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  11 | sp|Q60AI1|POTA_METCA      |   1.8890 |            34% |        No        | --                                      
+  12 | sp|P9WQJ4|OPPD_MYCTO      |   1.8925 |            27% |        No        | --                                      
+  13 | sp|O70595|ABCB6_RAT       |   1.8981 |            32% |       Yes        | Close homolog (>=30%)                   
+  14 | sp|Q7VZE5|CYSA_BORPE      |   1.8982 |            30% |        No        | --                                      
+  15 | sp|Q7WGW1|CYSA_BORBR      |   1.8988 |            29% |        No        | --                                      
+  16 | sp|Q3JSR6|SSUB_BURP1      |   1.9037 |            33% |        No        | --                                      
+  17 | sp|Q9NP58|ABCB6_HUMAN     |   1.9163 |            32% |       Yes        | Close homolog (>=30%)                   
+  18 | sp|Q2J3T0|HMUV_RHOP2      |   1.9360 |            31% |        No        | --                                      
+  19 | sp|Q21BF6|MODC_RHOPB      |   1.9373 |            30% |        No        | --                                      
+  20 | sp|A6W3V7|RECF_KINRD      |   1.9461 |             -- |        No        | --                                      
+  21 | sp|Q6NDA6|CCMA_RHOPA      |   1.9574 |            30% |        No        | --                                      
+  22 | sp|Q9RKQ4|HMUV_STRCO      |   1.9614 |            31% |        No        | --                                      
+  23 | sp|Q13RD3|SSUB2_PARXL     |   1.9703 |            31% |        No        | --                                      
+  24 | sp|Q67JX3|ECFA1_SYMTH     |   1.9735 |            31% |        No        | --                                      
+  25 | sp|Q2T751|TAUB_BURTA      |   1.9788 |            30% |        No        | --                                      
+  26 | sp|Q57I19|CCMAE_SALCH     |   1.9870 |            34% |        No        | --                                      
+  27 | sp|Q5PKT6|CCMA2_SALPA     |   1.9987 |            34% |        No        | --                                      
+  28 | sp|Q9ZEP3|CSEC_STRCO      |   2.0037 |             -- |        No        | --                                      
+  29 | sp|Q8YE15|MODC_BRUME      |   2.0055 |            30% |        No        | --                                      
+  30 | sp|Q89ER4|SSUB_BRADU      |   2.0110 |            31% |        No        | --                                      
+  31 | sp|Q5P6D5|MACB_AROAE      |   2.0116 |            28% |        No        | --                                      
+  32 | sp|Q1QR47|CCMA_NITHX      |   2.0233 |             -- |        No        | --                                      
+  33 | sp|Q9HYF9|SSUB2_PSEAE     |   2.0249 |            28% |        No        | --                                      
+  34 | sp|Q0WML0|AB27B_ARATH     |   2.0250 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  35 | sp|A3Q5L8|MPRB_MYCSJ      |   2.0268 |             -- |        No        | --                                      
+  36 | sp|P9WHI9|RECF_MYCTU      |   2.0443 |             -- |        No        | --                                      
+  37 | sp|Q65CC1|KANF_STRKN      |   2.0462 |             -- |        No        | --                                      
+  38 | sp|Q87UH7|TAUB_PSESM      |   2.0470 |            26% |        No        | --                                      
+  39 | sp|A1K323|MACB_AZOSB      |   2.0569 |            28% |        No        | --                                      
+  40 | sp|A8LVH1|RECF_SALAI      |   2.0581 |             -- |        No        | --                                      
+  41 | sp|Q83LP0|MSBA_SHIFL      |   2.0706 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  42 | sp|Q63NR0|HMUV_BURPS      |   2.0712 |            29% |        No        | --                                      
+  43 | sp|O69051|PTXA_STUST      |   2.0729 |            28% |        No        | --                                      
+  44 | sp|O07550|YHEI_BACSU      |   2.0745 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  45 | sp|Q5YZY9|CYSA_NOCFA      |   2.0919 |            32% |        No        | --                                      
+  46 | sp|Q5PGH0|MSBA_SALPA      |   2.0958 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  47 | sp|Q4FS42|MSBA_PSYA2      |   2.0958 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  48 | sp|P9WHR1|RIP3_MYCTU      |   2.0993 |             -- |        No        | --                                      
+  49 | sp|P9WHR0|RIP3_MYCTO      |   2.0993 |             -- |        No        | --                                      
+  50 | sp|Q2NUA5|MSBA_SODGM      |   2.1010 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+
+Query Protein: A0A009HL96
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|Q5HI09|GRAR_STAAC      |   0.6392 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|P33112|SPAR_BACIU      |   0.6421 |            31% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|Q99VW2|GRAR_STAAN      |   0.6598 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q8CQ37|GRAR_STAES      |   0.6748 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q99RR6|HSSR_STAAM      |   0.7503 |            31% |       Yes        | Close homolog (>=30%)                   
+   6 | sp|Q9AE24|RPRY_BACFR      |   0.7792 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|P28257|YCF27_GALSU     |   0.7835 |            33% |       Yes        | Close homolog (>=30%)                   
+   8 | sp|P0CAW8|CTRA_CAUVC      |   0.7894 |            31% |       Yes        | Close homolog (>=30%)                   
+   9 | sp|A6WZ81|CTRA_BRUA4      |   0.8532 |            33% |       Yes        | Close homolog (>=30%)                   
+  10 | sp|P45189|PHOB_HAEIN      |   0.8847 |            34% |       Yes        | Close homolog (>=30%)                   
+  11 | sp|A0A0H2UQ68|WALR_STRPN  |   0.9563 |            37% |       Yes        | Close homolog (>=30%)                   
+  12 | sp|P0A4H8|CIAR_STRR6      |   0.9803 |            32% |       Yes        | Close homolog (>=30%)                   
+  13 | sp|Q2FH23|ARLR_STAA3      |   1.0548 |            35% |       Yes        | Close homolog (>=30%)                   
+  14 | sp|P0C000|ARLR_STAAM      |   1.0548 |            35% |       Yes        | Close homolog (>=30%)                   
+  15 | sp|Q5HPC3|ARLR_STAEQ      |   1.1024 |            37% |       Yes        | Close homolog (>=30%)                   
+  16 | sp|Q1XDE4|YCF29_PYRYE     |   1.1693 |            31% |       Yes        | Close homolog (>=30%)                   
+  17 | sp|A0A0H3NGY1|OMPR_SALTS  |   1.2154 |            31% |       Yes        | Close homolog (>=30%)                   
+  18 | sp|P0AA17|OMPR_ECOL6      |   1.2154 |            31% |       Yes        | Close homolog (>=30%)                   
+  19 | sp|Q9KM23|VXRB_VIBCH      |   1.2392 |            33% |       Yes        | Close homolog (>=30%)                   
+  20 | sp|P26319|FIMZ_SALTY      |   1.2483 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  21 | sp|P96686|YDFI_BACSU      |   1.2750 |            31% |       Yes        | Close homolog (>=30%)                   
+  22 | sp|Q55890|RPAA_SYNY3      |   1.3544 |            30% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  23 | sp|Q7A3U5|NREC_STAAN      |   1.3600 |             -- |        No        | --                                      
+  24 | sp|Q5HEP0|VRAR_STAAC      |   1.3708 |             -- |        No        | --                                      
+  25 | sp|Q6GFH3|VRAR_STAAR      |   1.3828 |            25% |        No        | --                                      
+  26 | sp|Q6G850|VRAR_STAAS      |   1.3828 |            25% |        No        | --                                      
+  27 | sp|P44845|NARP_HAEIN      |   1.3831 |             -- |        No        | --                                      
+  28 | sp|P23620|PHOB_PSEAE      |   1.4490 |            34% |       Yes        | Close homolog (>=30%)                   
+  29 | sp|Q52376|GACA_PSEU2      |   1.4939 |             -- |        No        | --                                      
+  30 | sp|E1WA34|TCTD_SALTS      |   1.5011 |            30% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  31 | sp|Q6GCL1|LYTR_STAAS      |   1.6701 |            34% |        No        | --                                      
+  32 | sp|Q8NYH3|LYTR_STAAW      |   1.6701 |            34% |        No        | --                                      
+  33 | sp|P60610|LYTR_STAAN      |   1.6778 |            34% |        No        | --                                      
+  34 | sp|Q8DVB7|LYTR_STRMU      |   1.7043 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  35 | sp|Q87S86|Y538_VIBPA      |   1.7199 |            27% |        No        | --                                      
+  36 | sp|Q52990|PHOB_RHIME      |   1.7328 |            37% |       Yes        | Close homolog (>=30%)                   
+  37 | sp|Q9ZM64|CHEY1_HELPJ     |   1.7444 |            32% |       Yes        | Close homolog (>=30%)                   
+  38 | sp|Q8GVV6|ORR8_ORYSJ      |   1.7501 |            26% |        No        | --                                      
+  39 | sp|A1W0A5|CHEY_CAMJJ      |   1.7520 |            31% |       Yes        | Close homolog (>=30%)                   
+  40 | sp|Q881J7|LOVHK_PSESM     |   1.7624 |             -- |        No        | --                                      
+  41 | sp|A6QJN2|NREB_STAAE      |   1.7721 |             -- |        No        | --                                      
+  42 | sp|Q06065|ATOC_ECOLI      |   1.8018 |            36% |       Yes        | Close homolog (>=30%)                   
+  43 | sp|Q4L8Q7|NREB_STAHJ      |   1.8183 |             -- |        No        | --                                      
+  44 | sp|Q2KCH7|CHEY_RHIEC      |   1.8260 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  45 | sp|A5VUU3|DIVK_BRUO2      |   1.8262 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  46 | sp|A9MBQ2|DIVK_BRUC2      |   1.8262 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  47 | sp|Q12YX1|CHEB_METBU      |   1.8371 |            32% |       Yes        | Close homolog (>=30%)                   
+  48 | sp|Q8D5Z6|LUXQ_VIBVU      |   1.8521 |            35% |       Yes        | Close homolog (>=30%)                   
+  49 | sp|O34311|YKOW_BACSU      |   1.8947 |             -- |        No        | --                                      
+  50 | sp|Q8CR97|NREB_STAES      |   1.8968 |             -- |        No        | --                                      
+
+Query Protein: A0A009HLV9
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P28787|NTRC_PROHU      |   0.5702 |            63% |       Yes        | Close homolog (>=30%)                   
+   2 | sp|Q06065|ATOC_ECOLI      |   0.8873 |            41% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|Q5E3W8|NORR_ALIF1      |   0.9154 |            44% |       Yes        | Close homolog (>=30%)                   
+   4 | sp|P23747|ALGB_PSEAE      |   0.9505 |            40% |       Yes        | Close homolog (>=30%)                   
+   5 | sp|O87455|LUXO_VIBC3      |   0.9553 |            40% |       Yes        | Close homolog (>=30%)                   
+   6 | sp|P59402|NORR_SHIFL      |   0.9873 |            40% |       Yes        | Close homolog (>=30%)                   
+   7 | sp|A8A3I6|NORR_ECOHS      |   0.9989 |            38% |       Yes        | Close homolog (>=30%)                   
+   8 | sp|B6I695|NORR_ECOSE      |   1.0088 |            41% |       Yes        | Close homolog (>=30%)                   
+   9 | sp|A1KU52|RUVB_NEIMF      |   1.0106 |             -- |        No        | --                                      
+  10 | sp|B7N6T9|NORR_ECOLU      |   1.0129 |            45% |       Yes        | Close homolog (>=30%)                   
+  11 | sp|Q0TEH1|NORR_ECOL5      |   1.0145 |            41% |       Yes        | Close homolog (>=30%)                   
+  12 | sp|P36219|WTSA_PANSE      |   1.0268 |            41% |       Yes        | Close homolog (>=30%)                   
+  13 | sp|B4T3B0|NORR_SALNS      |   1.0292 |            38% |       Yes        | Close homolog (>=30%)                   
+  14 | sp|B4TT16|NORR_SALSV      |   1.0390 |            38% |       Yes        | Close homolog (>=30%)                   
+  15 | sp|Q8EEF3|RUVB_SHEON      |   1.0507 |             -- |        No        | --                                      
+  16 | sp|P37931|HRPS_PSESY      |   1.0664 |            42% |       Yes        | Close homolog (>=30%)                   
+  17 | sp|Q3K999|SFNR_PSEPF      |   1.0692 |            38% |       Yes        | Close homolog (>=30%)                   
+  18 | sp|B5F3J7|RUVB_SALA4      |   1.0884 |             -- |        No        | --                                      
+  19 | sp|P66756|RUVB_SALTI      |   1.0884 |             -- |        No        | --                                      
+  20 | sp|P0A812|RUVB_ECOLI      |   1.0946 |             -- |        No        | --                                      
+  21 | sp|Q15RN6|RUVB_PSEA6      |   1.1001 |             -- |        No        | --                                      
+  22 | sp|B7NBL1|RUVB_ECOLU      |   1.1030 |             -- |        No        | --                                      
+  23 | sp|Q03R36|RUVB_LEVBA      |   1.1033 |             -- |        No        | --                                      
+  24 | sp|Q03YJ6|RUVB_LEUMM      |   1.1049 |             -- |        No        | --                                      
+  25 | sp|A5FRK7|RUVB_DEHMB      |   1.1245 |             -- |        No        | --                                      
+  26 | sp|Q220I3|RUVB_ALBFT      |   1.1350 |             -- |        No        | --                                      
+  27 | sp|P37930|HRPR_PSESY      |   1.1417 |            39% |       Yes        | Close homolog (>=30%)                   
+  28 | sp|B0JY77|RUVB_MICAN      |   1.1420 |             -- |        No        | --                                      
+  29 | sp|P71229|HYFR_ECOLI      |   1.1535 |            39% |       Yes        | Close homolog (>=30%)                   
+  30 | sp|A1U1B9|RUVB_MARN8      |   1.1760 |             -- |        No        | --                                      
+  31 | sp|A4STH5|NORR_AERS4      |   1.1876 |            39% |       Yes        | Close homolog (>=30%)                   
+  32 | sp|Q5H2A4|RUVB_XANOR      |   1.1883 |             -- |        No        | --                                      
+  33 | sp|Q3BQF5|RUVB_XANE5      |   1.1907 |             -- |        No        | --                                      
+  34 | sp|Q13UC0|RUVB_PARXL      |   1.1923 |             -- |        No        | --                                      
+  35 | sp|Q7WGB3|RUVB_BORBR      |   1.2135 |             -- |        No        | --                                      
+  36 | sp|P0DF50|RUVB_STRP3      |   1.2204 |             -- |        No        | --                                      
+  37 | sp|Q88V03|RUVB_LACPL      |   1.2286 |             -- |        No        | --                                      
+  38 | sp|Q9KDI8|RUVB_HALH5      |   1.2402 |             -- |        No        | --                                      
+  39 | sp|P61529|RUVB_BDEBA      |   1.2481 |             -- |        No        | --                                      
+  40 | sp|Q503W7|ATD1B_DANRE     |   1.2541 |             -- |        No        | --                                      
+  41 | sp|Q83BE0|RUVB_COXBU      |   1.2589 |             -- |        No        | --                                      
+  42 | sp|Q92BI2|RUVB_LISIN      |   1.2625 |             -- |        No        | --                                      
+  43 | sp|C1DRF8|RUVB_AZOVD      |   1.2823 |             -- |        No        | --                                      
+  44 | sp|Q6HDA6|RUVB_BACHK      |   1.2839 |             -- |        No        | --                                      
+  45 | sp|Q634C4|RUVB_BACCZ      |   1.2839 |             -- |        No        | --                                      
+  46 | sp|Q817W4|RUVB_BACCR      |   1.2885 |             -- |        No        | --                                      
+  47 | sp|B4SDZ7|RUVB_PELPB      |   1.2946 |             -- |        No        | --                                      
+  48 | sp|A5WFF6|RUVB_PSYWF      |   1.3124 |             -- |        No        | --                                      
+  49 | sp|A8ZUH7|RUVB_DESOH      |   1.3127 |             -- |        No        | --                                      
+  50 | sp|Q4FTT9|RUVB_PSYA2      |   1.3155 |             -- |        No        | --                                      
+
+Query Protein: A0A009HN45
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|A7MSB2|RAPA_VIBC1      |   0.6813 |            36% |       Yes        | Close homolog (>=30%)                   
+   2 | sp|Q9ZDW2|UVRB_RICPR      |   0.7404 |             -- |        No        | --                                      
+   3 | sp|B0BT63|RAPA_ACTPJ      |   0.7598 |            34% |       Yes        | Close homolog (>=30%)                   
+   4 | sp|P52126|ABPB_ECOLI      |   0.7920 |             -- |        No        | --                                      
+   5 | sp|Q0HMR2|RAPA_SHESM      |   0.7921 |            30% |       Yes        | Close homolog (>=30%)                   
+   6 | sp|Q0HR19|RAPA_SHESR      |   0.7961 |            30% |       Yes        | Close homolog (>=30%)                   
+   7 | sp|Q99ZA5|UVRB_STRP1      |   0.8060 |             -- |        No        | --                                      
+   8 | sp|Q1JBD1|UVRB_STRPB      |   0.8068 |             -- |        No        | --                                      
+   9 | sp|Q5X0E6|UVRB_LEGPL      |   0.8284 |             -- |        No        | --                                      
+  10 | sp|A1A7A6|RAPA_ECOK1      |   0.8375 |            38% |       Yes        | Close homolog (>=30%)                   
+  11 | sp|Q3K063|SECA2_STRA1     |   0.8402 |             -- |        No        | --                                      
+  12 | sp|A7ZW09|RAPA_ECOHS      |   0.8448 |            38% |       Yes        | Close homolog (>=30%)                   
+  13 | sp|P0C9B2|VF706_ASFWA     |   0.8457 |             -- |        No        | --                                      
+  14 | sp|Q03AL7|UVRB_LACP3      |   0.8561 |             -- |        No        | --                                      
+  15 | sp|Q9ZKA0|UVRB_HELPJ      |   0.8680 |             -- |        No        | --                                      
+  16 | sp|Q50939|UVRB_NEIGO      |   0.8689 |             -- |        No        | --                                      
+  17 | sp|C0MBD7|UVRB_STRE4      |   0.8773 |             -- |        No        | --                                      
+  18 | sp|Q5PDF0|RAPA_SALPA      |   0.8910 |            39% |       Yes        | Close homolog (>=30%)                   
+  19 | sp|Q54986|UVRB_STRPN      |   0.8910 |             -- |        No        | --                                      
+  20 | sp|A7FKM4|UVRB_YERP3      |   0.8912 |             -- |        No        | --                                      
+  21 | sp|Q49VV6|UVRB_STAS1      |   0.8963 |             -- |        No        | --                                      
+  22 | sp|B1IC35|UVRB_STRPI      |   0.8976 |             -- |        No        | --                                      
+  23 | sp|B5FI41|RAPA_SALDC      |   0.8984 |            39% |       Yes        | Close homolog (>=30%)                   
+  24 | sp|Q71WT9|UVRB_LISMF      |   0.9218 |             -- |        No        | --                                      
+  25 | sp|A3CNJ9|UVRB_STRSV      |   0.9222 |             -- |        No        | --                                      
+  26 | sp|Q8CWX7|UVRB_STRMU      |   0.9257 |             -- |        No        | --                                      
+  27 | sp|Q8F8A9|UVRB_LEPIN      |   0.9296 |             -- |        No        | --                                      
+  28 | sp|B1L280|UVRB_CLOBM      |   0.9594 |             -- |        No        | --                                      
+  29 | sp|P0DOQ3|NTP1_VAR67      |   0.9658 |            24% |        No        | --                                      
+  30 | sp|P05807|NTP1_VACCW      |   0.9771 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  31 | sp|C0PWY7|UVRB_SALPC      |   0.9834 |             -- |        No        | --                                      
+  32 | sp|B5F076|UVRB_SALA4      |   0.9834 |             -- |        No        | --                                      
+  33 | sp|A9MTI2|UVRB_SALPB      |   0.9834 |             -- |        No        | --                                      
+  34 | sp|Q57RF9|UVRB_SALCH      |   0.9834 |             -- |        No        | --                                      
+  35 | sp|A4W8C2|UVRB_ENT38      |   0.9897 |             -- |        No        | --                                      
+  36 | sp|Q47EI2|UVRB_DECAR      |   1.0013 |             -- |        No        | --                                      
+  37 | sp|Q5HHR0|UVRB_STAAC      |   1.0093 |             -- |        No        | --                                      
+  38 | sp|Q6GIN3|UVRB_STAAR      |   1.0093 |             -- |        No        | --                                      
+  39 | sp|Q8NXM0|UVRB_STAAW      |   1.0148 |             -- |        No        | --                                      
+  40 | sp|B7NA78|UVRB_ECOLU      |   1.0161 |             -- |        No        | --                                      
+  41 | sp|A7ZY35|UVRB_ECOHS      |   1.0161 |             -- |        No        | --                                      
+  42 | sp|A0KGL5|RAPA_AERHH      |   1.0289 |            37% |       Yes        | Close homolog (>=30%)                   
+  43 | sp|A9WT85|UVRB_RENSM      |   1.0385 |             -- |        No        | --                                      
+  44 | sp|Q3SIK7|UVRB_THIDA      |   1.0386 |             -- |        No        | --                                      
+  45 | sp|C5BEJ2|UVRB_EDWI9      |   1.0401 |             -- |        No        | --                                      
+  46 | sp|Q3Z9B4|UVRB_DEHM1      |   1.0544 |             -- |        No        | --                                      
+  47 | sp|Q631I6|UVRB_BACCZ      |   1.0848 |             -- |        No        | --                                      
+  48 | sp|Q884C9|UVRB_PSESM      |   1.0944 |             -- |        No        | --                                      
+  49 | sp|Q9UR24|RHP26_SCHPO     |   1.0961 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  50 | sp|A6M2Z0|UVRB_CLOB8      |   1.1036 |             -- |        No        | --                                      
+
+Query Protein: A0A009HQC9
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|Q0HR19|RAPA_SHESR      |   0.5187 |            45% |       Yes        | Close homolog (>=30%)                   
+   2 | sp|Q0HMR2|RAPA_SHESM      |   0.5206 |            44% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|A0KGL5|RAPA_AERHH      |   0.5214 |            45% |       Yes        | Close homolog (>=30%)                   
+   4 | sp|A1A7A6|RAPA_ECOK1      |   0.5734 |            42% |       Yes        | Close homolog (>=30%)                   
+   5 | sp|A7ZW09|RAPA_ECOHS      |   0.5787 |            42% |       Yes        | Close homolog (>=30%)                   
+   6 | sp|B0BT63|RAPA_ACTPJ      |   0.5791 |            40% |       Yes        | Close homolog (>=30%)                   
+   7 | sp|A7MSB2|RAPA_VIBC1      |   0.5860 |            44% |       Yes        | Close homolog (>=30%)                   
+   8 | sp|Q48LP5|RAPA_PSE14      |   0.6086 |            44% |       Yes        | Close homolog (>=30%)                   
+   9 | sp|B5FI41|RAPA_SALDC      |   0.6097 |            42% |       Yes        | Close homolog (>=30%)                   
+  10 | sp|Q5PDF0|RAPA_SALPA      |   0.6127 |            42% |       Yes        | Close homolog (>=30%)                   
+  11 | sp|Q3KGV8|RAPA_PSEPF      |   0.6689 |            45% |       Yes        | Close homolog (>=30%)                   
+  12 | sp|Q9HYT6|RAPA_PSEAE      |   0.7451 |            46% |       Yes        | Close homolog (>=30%)                   
+  13 | sp|A7FKM4|UVRB_YERP3      |   0.9403 |             -- |        No        | --                                      
+  14 | sp|C5BEJ2|UVRB_EDWI9      |   0.9428 |             -- |        No        | --                                      
+  15 | sp|C0PWY7|UVRB_SALPC      |   0.9867 |             -- |        No        | --                                      
+  16 | sp|B5F076|UVRB_SALA4      |   0.9867 |             -- |        No        | --                                      
+  17 | sp|A9MTI2|UVRB_SALPB      |   0.9867 |             -- |        No        | --                                      
+  18 | sp|Q57RF9|UVRB_SALCH      |   0.9867 |             -- |        No        | --                                      
+  19 | sp|Q5X0E6|UVRB_LEGPL      |   0.9991 |             -- |        No        | --                                      
+  20 | sp|A4W8C2|UVRB_ENT38      |   1.0273 |             -- |        No        | --                                      
+  21 | sp|B7NA78|UVRB_ECOLU      |   1.0508 |             -- |        No        | --                                      
+  22 | sp|A7ZY35|UVRB_ECOHS      |   1.0508 |             -- |        No        | --                                      
+  23 | sp|Q3K063|SECA2_STRA1     |   1.0672 |             -- |        No        | --                                      
+  24 | sp|B8G8R1|UVRB_CHLAD      |   1.1090 |             -- |        No        | --                                      
+  25 | sp|A9WT85|UVRB_RENSM      |   1.1153 |             -- |        No        | --                                      
+  26 | sp|Q50939|UVRB_NEIGO      |   1.1400 |             -- |        No        | --                                      
+  27 | sp|Q1JBD1|UVRB_STRPB      |   1.1477 |             -- |        No        | --                                      
+  28 | sp|Q99ZA5|UVRB_STRP1      |   1.1537 |             -- |        No        | --                                      
+  29 | sp|C0MBD7|UVRB_STRE4      |   1.1701 |             -- |        No        | --                                      
+  30 | sp|Q9ZDW2|UVRB_RICPR      |   1.1703 |             -- |        No        | --                                      
+  31 | sp|Q8ZQN7|DING_SALTY      |   1.1717 |             -- |        No        | --                                      
+  32 | sp|P52126|ABPB_ECOLI      |   1.1762 |             -- |        No        | --                                      
+  33 | sp|Q54986|UVRB_STRPN      |   1.1962 |             -- |        No        | --                                      
+  34 | sp|B1IC35|UVRB_STRPI      |   1.1985 |             -- |        No        | --                                      
+  35 | sp|Q47EI2|UVRB_DECAR      |   1.2019 |             -- |        No        | --                                      
+  36 | sp|Q884C9|UVRB_PSESM      |   1.2062 |             -- |        No        | --                                      
+  37 | sp|A1VDN0|UVRB_NITV4      |   1.2124 |             -- |        No        | --                                      
+  38 | sp|Q7W8V6|UVRB_BORPA      |   1.2186 |             -- |        No        | --                                      
+  39 | sp|Q03AL7|UVRB_LACP3      |   1.2189 |             -- |        No        | --                                      
+  40 | sp|Q3SIK7|UVRB_THIDA      |   1.2211 |             -- |        No        | --                                      
+  41 | sp|Q8CWX7|UVRB_STRMU      |   1.2266 |             -- |        No        | --                                      
+  42 | sp|A3CNJ9|UVRB_STRSV      |   1.2371 |             -- |        No        | --                                      
+  43 | sp|Q49VV6|UVRB_STAS1      |   1.2411 |             -- |        No        | --                                      
+  44 | sp|P0C9B2|VF706_ASFWA     |   1.2491 |             -- |        No        | --                                      
+  45 | sp|Q3Z9B4|UVRB_DEHM1      |   1.2759 |             -- |        No        | --                                      
+  46 | sp|Q71WT9|UVRB_LISMF      |   1.2879 |             -- |        No        | --                                      
+  47 | sp|B2J6D3|UVRC_NOSP7      |   1.3399 |             -- |        No        | --                                      
+  48 | sp|Q631I6|UVRB_BACCZ      |   1.3428 |             -- |        No        | --                                      
+  49 | sp|Q08346|DNAG_HAEIN      |   1.3525 |             -- |        No        | --                                      
+  50 | sp|B8HY03|RF3_CYAP4       |   1.3566 |             -- |        No        | --                                      
+
+Query Protein: A0A009HPM0
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|Q612F5|PCCA_CAEBR      |   1.2698 |            41% |       Yes        | Close homolog (>=30%)                   
+   2 | sp|Q5I0C3|MCCA_RAT        |   1.2886 |            47% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|Q9CMJ8|RIMK_PASMU      |   1.3521 |             -- |        No        | --                                      
+   4 | sp|B2TWG0|TRMA_SHIB3      |   1.4365 |             -- |        No        | --                                      
+   5 | sp|Q6FAM6|PURT_ACIAD      |   1.4379 |             -- |        No        | --                                      
+   6 | sp|B1LNS5|TRMA_ECOSM      |   1.4492 |             -- |        No        | --                                      
+   7 | sp|Q88XP4|Y1151_LACPL     |   1.4521 |             -- |        No        | --                                      
+   8 | sp|A1RP91|TRMA_SHESW      |   1.4544 |             -- |        No        | --                                      
+   9 | sp|Q5PK68|TRMA_SALPA      |   1.4570 |             -- |        No        | --                                      
+  10 | sp|B5BJN9|TRMA_SALPK      |   1.4570 |             -- |        No        | --                                      
+  11 | sp|Q07YK6|PURT_SHEFN      |   1.4613 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  12 | sp|Q5E320|RLMD_ALIF1      |   1.4799 |             -- |        No        | --                                      
+  13 | sp|B0VRJ4|RSMC_ACIBS      |   1.4815 |             -- |        No        | --                                      
+  14 | sp|Q7MHY6|RSMC_VIBVY      |   1.4859 |             -- |        No        | --                                      
+  15 | sp|A6VLF9|TRMA_ACTSZ      |   1.4871 |             -- |        No        | --                                      
+  16 | sp|Q7MAX6|TRMA_PHOLL      |   1.4953 |             -- |        No        | --                                      
+  17 | sp|A3QHZ8|RSMC_SHELP      |   1.4971 |             -- |        No        | --                                      
+  18 | sp|B0TUZ2|RLMC_SHEHH      |   1.4975 |             -- |        No        | --                                      
+  19 | sp|B0VKL3|RLMD_ACIBS      |   1.5061 |             -- |        No        | --                                      
+  20 | sp|P57029|DNAG_NEIMB      |   1.5073 |             -- |        No        | --                                      
+  21 | sp|A8GL74|TRMA_SERP5      |   1.5123 |             -- |        No        | --                                      
+  22 | sp|Q12SP8|TRMA_SHEDO      |   1.5227 |             -- |        No        | --                                      
+  23 | sp|A3D8E4|RSMC_SHEB5      |   1.5249 |             -- |        No        | --                                      
+  24 | sp|P44150|Y1273_HAEIN     |   1.5309 |             -- |        No        | --                                      
+  25 | sp|B1KD54|RLMG_SHEWM      |   1.5339 |             -- |        No        | --                                      
+  26 | sp|C5BC48|TRMA_EDWI9      |   1.5359 |             -- |        No        | --                                      
+  27 | sp|A5F3L5|MUTL_VIBC3      |   1.5426 |             -- |        No        | --                                      
+  28 | sp|A8GYV6|TRMA_SHEPA      |   1.5426 |             -- |        No        | --                                      
+  29 | sp|B1IRN3|RLMG_ECOLC      |   1.5427 |             -- |        No        | --                                      
+  30 | sp|B6EL06|RSMC_ALISL      |   1.5433 |             -- |        No        | --                                      
+  31 | sp|Q8EBB7|PURT_SHEON      |   1.5458 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  32 | sp|Q081I3|RSMF_SHEFN      |   1.5464 |             -- |        No        | --                                      
+  33 | sp|Q3ILQ9|CYSG_PSET1      |   1.5485 |             -- |        No        | --                                      
+  34 | sp|A2RDW0|DDL_STRPG       |   1.5495 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  35 | sp|A1S1Z8|TRMA_SHEAM      |   1.5520 |             -- |        No        | --                                      
+  36 | sp|A4Y7J8|RSMF_SHEPC      |   1.5524 |             -- |        No        | --                                      
+  37 | sp|A1RIZ0|RSMF_SHESW      |   1.5524 |             -- |        No        | --                                      
+  38 | sp|Q0HS20|PURT_SHESR      |   1.5527 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  39 | sp|Q8EDY2|RSMF_SHEON      |   1.5555 |             -- |        No        | --                                      
+  40 | sp|B4ET17|RLMC_PROMH      |   1.5591 |             -- |        No        | --                                      
+  41 | sp|Q7VKR0|UVRC_HAEDU      |   1.5661 |             -- |        No        | --                                      
+  42 | sp|Q9CL07|GLPB_PASMU      |   1.5665 |             -- |        No        | --                                      
+  43 | sp|Q1C8V8|PURT_YERPA      |   1.5670 |             -- |        No        | --                                      
+  44 | sp|F5ZEI8|RLMD_ALTNA      |   1.5710 |             -- |        No        | --                                      
+  45 | sp|Q08346|DNAG_HAEIN      |   1.5745 |             -- |        No        | --                                      
+  46 | sp|Q3IHQ6|RLMG_PSET1      |   1.5793 |             -- |        No        | --                                      
+  47 | sp|Q65R09|GLPB_MANSM      |   1.5829 |             -- |        No        | --                                      
+  48 | sp|B5BG31|RLMG_SALPK      |   1.5843 |             -- |        No        | --                                      
+  49 | sp|Q8P0H4|Y1360_STRP8     |   1.5848 |             -- |        No        | --                                      
+  50 | sp|A4TQK1|RSMC_YERPP      |   1.5853 |             -- |        No        | --                                      
+
+Query Protein: A0A009IB02
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|P10802|ODP2_AZOVI      |   1.1889 |            46% |       Yes        | Close homolog (>=30%)                   
+   2 | sp|P11961|ODP2_GEOSE      |   1.9830 |            38% |       Yes        | Close homolog (>=30%)                   
+   3 | sp|Q9SQI8|ODP24_ARATH     |   2.0060 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|P49786|BCCP_BACSU      |   2.0085 |             -- |        No        | --                                      
+   5 | sp|P43874|BCCP_HAEIN      |   2.2208 |            41% |       Yes        | Close homolog (>=30%)                   
+   6 | sp|P29337|BCCP_STRMU      |   2.2889 |            41% |       Yes        | Close homolog (>=30%)                   
+   7 | sp|P02904|BCCP_PROFR      |   2.3510 |            40% |       Yes        | Close homolog (>=30%)                   
+   8 | sp|P0ABE1|BCCP_SHIFL      |   2.4434 |             -- |        No        | --                                      
+   9 | sp|P39099|DEGQ_ECOLI      |   2.6563 |             -- |        No        | --                                      
+  10 | sp|P0ADA3|NLPD_ECOLI      |   2.6977 |             -- |        No        | --                                      
+  11 | sp|B0KV30|DEGPL_PSEPG     |   2.7206 |             -- |        No        | --                                      
+  12 | sp|P57003|TONB_NEIMA      |   2.7214 |             -- |        No        | --                                      
+  13 | sp|Q9Z4H7|HTRA_LACHE      |   2.7246 |             -- |        No        | --                                      
+  14 | sp|B4T0Q0|RODZ_SALNS      |   2.7301 |             -- |        No        | --                                      
+  15 | sp|O06432|TONB_NEIGO      |   2.7650 |             -- |        No        | --                                      
+  16 | sp|A5TY84|PKNB_MYCTA      |   2.7668 |             -- |        No        | --                                      
+  17 | sp|Q6G9D9|PTGA_STAAS      |   2.7708 |             -- |        No        | --                                      
+  18 | sp|A1JKX1|MDTA_YERE8      |   2.7722 |             -- |        No        | --                                      
+  19 | sp|P54744|PKNB_MYCLE      |   2.7737 |             -- |        No        | --                                      
+  20 | sp|B5RCZ3|RODZ_SALG2      |   2.7743 |             -- |        No        | --                                      
+  21 | sp|Q1CK59|MDTA_YERPN      |   2.7747 |             -- |        No        | --                                      
+  22 | sp|O05156|ALE1_STACP      |   2.7923 |             -- |        No        | --                                      
+  23 | sp|A1AE54|RODZ_ECOK1      |   2.8005 |             -- |        No        | --                                      
+  24 | sp|Q0TEW9|RODZ_ECOL5      |   2.8017 |             -- |        No        | --                                      
+  25 | sp|Q4R4J7|NUCL_MACFA      |   2.8062 |             -- |        No        | --                                      
+  26 | sp|O51810|TONB_HAEDU      |   2.8090 |             -- |        No        | --                                      
+  27 | sp|A6ZQH3|HS150_YEAS7     |   2.8374 |             -- |        No        | --                                      
+  28 | sp|Q8CWA2|CUSB_ECOL6      |   2.8388 |             -- |        No        | --                                      
+  29 | sp|Q06853|SLAP2_ACET2     |   2.8538 |             -- |        No        | --                                      
+  30 | sp|B0RLE5|TONB_XANCB      |   2.8572 |             -- |        No        | --                                      
+  31 | sp|B7LV38|MDTA_ESCF3      |   2.8633 |             -- |        No        | --                                      
+  32 | sp|B7M457|MDTA_ECO8A      |   2.8652 |             -- |        No        | --                                      
+  33 | sp|P76397|MDTA_ECOLI      |   2.8663 |             -- |        No        | --                                      
+  34 | sp|C4ZSG2|MDTA_ECOBW      |   2.8663 |             -- |        No        | --                                      
+  35 | sp|P19835|CEL_HUMAN       |   2.8670 |             -- |        No        | --                                      
+  36 | sp|B7NQB2|MDTA_ECO7I      |   2.8698 |             -- |        No        | --                                      
+  37 | sp|A0A0M4FTF3|BCP_PETHY   |   2.8712 |             -- |        No        | --                                      
+  38 | sp|Q8G6W2|GRPE_BIFLO      |   2.8765 |             -- |        No        | --                                      
+  39 | sp|B1LNW7|MDTA_ECOSM      |   2.8793 |             -- |        No        | --                                      
+  40 | sp|P15705|STI1_YEAST      |   2.8881 |             -- |        No        | --                                      
+  41 | sp|O52042|TONB_VIBCH      |   2.9039 |             -- |        No        | --                                      
+  42 | sp|O32219|CADA_BACSU      |   2.9089 |             -- |        No        | --                                      
+  43 | sp|Q51368|TONB_PSEAE      |   2.9194 |             -- |        No        | --                                      
+  44 | sp|Q98D88|YIDC_RHILO      |   2.9272 |             -- |        No        | --                                      
+  45 | sp|P08003|PDIA4_MOUSE     |   2.9366 |             -- |        No        | --                                      
+  46 | sp|Q00248|PDI_ASPOR       |   2.9400 |             -- |        No        | --                                      
+  47 | sp|A1V7D5|YIDC_BURMS      |   2.9581 |             -- |        No        | --                                      
+  48 | sp|A3N477|YIDC_BURP6      |   2.9592 |             -- |        No        | --                                      
+  49 | sp|A5TZ78|GRPE_MYCTA      |   2.9598 |             -- |        No        | --                                      
+  50 | sp|B1K0Y4|YIDC_BURO0      |   2.9653 |             -- |        No        | --                                      
+
+Query Protein: A0A010Q3W2
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|D1ZEM6|LIS12_SORMK     |   1.1494 |            28% |        No        | --                                      
+   2 | sp|Q2UUT4|CMR1_ASPOR      |   1.1791 |             -- |        No        | --                                      
+   3 | sp|A2QI22|YTM1_ASPNC      |   1.2346 |             -- |        No        | --                                      
+   4 | sp|P0CS56|CMR1_CRYNJ      |   1.2372 |             -- |        No        | --                                      
+   5 | sp|A1CXL0|YTM1_NEOFI      |   1.2435 |             -- |        No        | --                                      
+   6 | sp|P0CS29|ATG18_CRYNB     |   1.2859 |             -- |        No        | --                                      
+   7 | sp|Q9S7I8|CDC22_ARATH     |   1.2982 |             -- |        No        | --                                      
+   8 | sp|Q9NRL3|STRN4_HUMAN     |   1.3099 |            28% |        No        | --                                      
+   9 | sp|Q9SU78|MSI5_ARATH      |   1.3118 |             -- |        No        | --                                      
+  10 | sp|Q756D0|YTM1_EREGS      |   1.3163 |            23% |        No        | --                                      
+  11 | sp|Q9P7C0|YKU5_SCHPO      |   1.3181 |             -- |        No        | --                                      
+  12 | sp|A2RAG5|ATG18_ASPNC     |   1.3256 |             -- |        No        | --                                      
+  13 | sp|C1GB49|LIS1_PARBD      |   1.3258 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  14 | sp|O35828|CORO7_RAT       |   1.3315 |            30% |        No        | --                                      
+  15 | sp|Q8VYZ5|PWP2_ARATH      |   1.3515 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  16 | sp|O82266|SWA1_ARATH      |   1.3581 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  17 | sp|Q652L2|HIRA_ORYSJ      |   1.3701 |             -- |        No        | --                                      
+  18 | sp|Q20059|WDR48_CAEEL     |   1.3710 |            23% |        No        | --                                      
+  19 | sp|Q6C709|PRP46_YARLI     |   1.3712 |            32% |        No        | --                                      
+  20 | sp|A8NZM5|JIP5_COPC7      |   1.3814 |            22% |        No        | --                                      
+  21 | sp|A1CBB8|ATG18_ASPCL     |   1.3840 |             -- |        No        | --                                      
+  22 | sp|Q8TEB1|DCA11_HUMAN     |   1.3909 |            21% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  23 | sp|Q5NVM2|DC1I2_PONAB     |   1.3927 |             -- |        No        | --                                      
+  24 | sp|A4IGH4|WDR4_DANRE      |   1.3998 |             -- |        No        | --                                      
+  25 | sp|Q4PA27|JIP5_MYCMD      |   1.4083 |             -- |        No        | --                                      
+  26 | sp|C5DF48|LIS1_LACTC      |   1.4098 |            28% |        No        | --                                      
+  27 | sp|A1DE24|ATG18_NEOFI     |   1.4171 |             -- |        No        | --                                      
+  28 | sp|Q96U88|ATG18_NEUCR     |   1.4200 |             -- |        No        | --                                      
+  29 | sp|A8XSW2|WDR48_CAEBR     |   1.4201 |            23% |        No        | --                                      
+  30 | sp|O22785|PR19B_ARATH     |   1.4333 |            30% |        No        | --                                      
+  31 | sp|G5EEG7|SMU1_CAEEL      |   1.4372 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  32 | sp|Q4R4I8|COPB2_MACFA     |   1.4384 |            36% |       Yes        | Close homolog (>=30%)                   
+  33 | sp|Q8BX09|RBBP5_MOUSE     |   1.4406 |             -- |        No        | --                                      
+  34 | sp|Q4P553|HAT2_MYCMD      |   1.4464 |             -- |        No        | --                                      
+  35 | sp|Q8CFJ9|WDR24_MOUSE     |   1.4514 |            27% |        No        | --                                      
+  36 | sp|Q9LJN8|BUB31_ARATH     |   1.4606 |            28% |        No        | --                                      
+  37 | sp|O43660|PLRG1_HUMAN     |   1.4633 |            22% |        No        | --                                      
+  38 | sp|Q9WUC8|PLRG1_RAT       |   1.4666 |            22% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  39 | sp|Q24246|DYIN_DROME      |   1.4748 |             -- |        No        | --                                      
+  40 | sp|Q8R2N2|UTP4_MOUSE      |   1.4787 |             -- |        No        | --                                      
+  41 | sp|Q8BH57|WDR48_MOUSE     |   1.4834 |            26% |        No        | --                                      
+  42 | sp|Q05B30|WDR91_XENTR     |   1.4871 |             -- |        No        | --                                      
+  43 | sp|P0CS37|HAT2_CRYNB      |   1.4892 |            25% |        No        | --                                      
+  44 | sp|Q8GYE0|PHF1_ARATH      |   1.4906 |             -- |        No        | --                                      
+  45 | sp|P0DL28|FBXW8_RAT       |   1.4944 |             -- |        No        | --                                      
+  46 | sp|O74340|DCA13_SCHPO     |   1.4950 |             -- |        No        | --                                      
+  47 | sp|Q2T9T9|FBXW9_BOVIN     |   1.4978 |            32% |        No        | --                                      
+  48 | sp|P91341|PWP2_CAEEL      |   1.5101 |             -- |        No        | --                                      
+  49 | sp|Q2UA71|HAT2_ASPOR      |   1.5108 |            32% |        No        | --                                      
+  50 | sp|Q8C6G8|WDR26_MOUSE     |   1.5123 |            25% |        No        | --                                      
+
+Query Protein: A0A010Q8R4
+N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
+[1] Συνοπτική σύγκριση μεθόδων
+----------------------------------------------------------------------
+Method       | Time/query (s) |     QPS |  Recall@N vs BLAST Top-N
+----------------------------------------------------------------------
+ivfflat      |       0.001186 |  843.28 |                   0.2897
+BLAST (Ref)  |             -- |      -- |                   1.0000
+----------------------------------------------------------------------
+
+[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = 50 για εκτύπωση)
+Method: ivfflat
+Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
+--------------------------------------------------------------------------------------------------------------------------
+   1 | sp|Q9P4R5|CREC_EMENI      |   1.2205 |             -- |        No        | --                                      
+   2 | sp|Q652L2|HIRA_ORYSJ      |   1.2259 |             -- |        No        | --                                      
+   3 | sp|P0CS56|CMR1_CRYNJ      |   1.2439 |             -- |        No        | --                                      
+   4 | sp|P0CS29|ATG18_CRYNB     |   1.2683 |             -- |        No        | --                                      
+   5 | sp|Q5NVM2|DC1I2_PONAB     |   1.3301 |             -- |        No        | --                                      
+   6 | sp|Q2UUT4|CMR1_ASPOR      |   1.3410 |             -- |        No        | --                                      
+   7 | sp|Q6CXX3|HIR1_KLULA      |   1.3490 |             -- |        No        | --                                      
+   8 | sp|A1CBB8|ATG18_ASPCL     |   1.3727 |             -- |        No        | --                                      
+   9 | sp|Q9P7C0|YKU5_SCHPO      |   1.3789 |             -- |        No        | --                                      
+  10 | sp|Q24246|DYIN_DROME      |   1.3855 |             -- |        No        | --                                      
+  11 | sp|A2RAG5|ATG18_ASPNC     |   1.3876 |             -- |        No        | --                                      
+  12 | sp|Q9SU78|MSI5_ARATH      |   1.3966 |             -- |        No        | --                                      
+  13 | sp|A1DE24|ATG18_NEOFI     |   1.4319 |             -- |        No        | --                                      
+  14 | sp|Q9VKK2|WDR59_DROME     |   1.4335 |             -- |        No        | --                                      
+  15 | sp|Q8BX09|RBBP5_MOUSE     |   1.4391 |             -- |        No        | --                                      
+  16 | sp|Q5ZMV9|WDR24_CHICK     |   1.4619 |             -- |        No        | --                                      
+  17 | sp|Q4PA27|JIP5_MYCMD      |   1.4629 |             -- |        No        | --                                      
+  18 | sp|Q20059|WDR48_CAEEL     |   1.4731 |             -- |        No        | --                                      
+  19 | sp|Q9ERG2|STRN3_MOUSE     |   1.4905 |             -- |        No        | --                                      
+  20 | sp|A1DIN7|ATP25_NEOFI     |   1.4913 |             -- |        No        | --                                      
+  21 | sp|O35828|CORO7_RAT       |   1.5027 |             -- |        No        | --                                      
+  22 | sp|A3LNM0|IPI3_PICST      |   1.5067 |             -- |        No        | --                                      
+  23 | sp|A2QI22|YTM1_ASPNC      |   1.5110 |             -- |        No        | --                                      
+  24 | sp|C3VEQ3|NCED_ONCHC      |   1.5196 |             -- |        No        | --                                      
+  25 | sp|Q09499|IRE1_CAEEL      |   1.5209 |             -- |        No        | --                                      
+  26 | sp|Q5BCU8|ATG1_EMENI      |   1.5255 |             -- |        No        | --                                      
+  27 | sp|A1CXL0|YTM1_NEOFI      |   1.5322 |             -- |        No        | --                                      
+  28 | sp|Q96U88|ATG18_NEUCR     |   1.5327 |             -- |        No        | --                                      
+  29 | sp|P0CP70|ATG1_CRYNJ      |   1.5330 |             -- |        No        | --                                      
+  30 | sp|Q8CFJ9|WDR24_MOUSE     |   1.5418 |             -- |        No        | --                                      
+  31 | sp|Q8W4D0|CPY71_ARATH     |   1.5509 |             -- |        No        | --                                      
+  32 | sp|Q9NRL3|STRN4_HUMAN     |   1.5520 |             -- |        No        | --                                      
+  33 | sp|Q9VCE9|EPP_DROME       |   1.5663 |             -- |        No        | --                                      
+  34 | sp|Q7XIT1|IRE1_ORYSJ      |   1.5664 |             -- |        No        | --                                      
+  35 | sp|Q8TEB1|DCA11_HUMAN     |   1.5758 |             -- |        No        | --                                      
+  36 | sp|P36002|PTK1_YEAST      |   1.5825 |             -- |        No        | --                                      
+  37 | sp|Q5VTH9|DNAI4_HUMAN     |   1.5848 |             -- |        No        | --                                      
+  38 | sp|Q4P553|HAT2_MYCMD      |   1.5867 |             -- |        No        | --                                      
+  39 | sp|Q05B30|WDR91_XENTR     |   1.5873 |             -- |        No        | --                                      
+  40 | sp|Q0CEZ9|CLP1_ASPTN      |   1.5905 |             -- |        No        | --                                      
+  41 | sp|Q86U44|MTA70_HUMAN     |   1.5916 |             -- |        No        | --                                      
+  42 | sp|A0A348AXX6|KK1D_CURCL  |   1.5929 |             -- |        No        | --                                      
+  43 | sp|A2QGF0|NAGS_ASPNC      |   1.5937 |             -- |        No        | --                                      
+  44 | sp|Q9S7I8|CDC22_ARATH     |   1.5940 |             -- |        No        | --                                      
+  45 | sp|P0CS37|HAT2_CRYNB      |   1.6026 |             -- |        No        | --                                      
+  46 | sp|A8XSW2|WDR48_CAEBR     |   1.6059 |             -- |        No        | --                                      
+  47 | sp|Q4WVA5|CLP1_ASPFU      |   1.6060 |             -- |        No        | --                                      
+  48 | sp|Q4R4I8|COPB2_MACFA     |   1.6128 |             -- |        No        | --                                      
+  49 | sp|A3GFE3|ATG18_PICST     |   1.6139 |             -- |        No        | --                                      
+  50 | sp|Q6Z690|LDL1_ORYSJ      |   1.6165 |             -- |        No        | --                                      
+
