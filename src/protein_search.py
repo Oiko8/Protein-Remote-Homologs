@@ -226,7 +226,7 @@ def main():
         print_output(report_fh, f"{'BLAST (Ref)':<12} | {'--':>14} | {'--':>7} | {'1.0000':>24}")
         print_output(report_fh, "----------------------------------------------------------------------")
         print_output(report_fh, )
-        print_output(report_fh, f"[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = {min(50, knn)} για εκτύπωση)")
+        print_output(report_fh, f"[2] Top-N γείτονες ανά μέθοδο")
         print_output(report_fh, f"Method: {method}")
 
         header = (
