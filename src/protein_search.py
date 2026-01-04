@@ -26,11 +26,11 @@ def write_neighbors(path: Path, neighbors):
         for qi, lst in enumerate(neighbors):
             f.write(f"Query: {qi}\n")
             for r, it in enumerate(lst, start=1):
-                if isinstance(it, (tuple, list)) and len(it) >= 1:
-                    idx = int(it[0])
+                idx, dist = unwrap_neighbor(it)
+                if dist is None:
+                    f.write(f"Nearest neighbor-{r}: {idx}\n")
                 else:
-                    idx = int(it)
-                f.write(f"Nearest neighbor-{r}: {idx}\n")
+                    f.write(f"Nearest neighbor-{r}: {idx} {dist:.6f}\n")
             f.write("\n")
 
 
@@ -49,7 +49,10 @@ def load_ann_neighbors(path: Path):
                 continue
             if s.startswith("Nearest neighbor-"):
                 v = s.split(":", 1)[1].strip()
-                cur.append(int(v))
+                parts = v.split()
+                idx = int(parts[0])
+                dist = float(parts[1]) if len(parts) > 1 else None
+                cur.append((idx, dist))
     if cur is not None:
         neighbors.append(cur)
     return neighbors
@@ -132,9 +135,12 @@ def main():
     knn = args.N
     method = args.method
 
+    ann_neighbors_idx = None
+
     if not out_path.exists():
         neighbors, tApprox, qps = run_method(method, data_file, query_file, knn)
         write_neighbors(out_path, neighbors)
+        ann_neighbors_idx = neighbors
 
         perf_path = out_path.with_suffix(out_path.suffix + ".perf")
         with open(perf_path, "w", encoding="utf-8") as f:
@@ -142,6 +148,8 @@ def main():
             f.write(f"queries {len(neighbors)}\n")
             f.write(f"time_sec {tApprox:.6f}\n")
             f.write(f"qps {qps:.6f}\n")
+    else:
+        ann_neighbors_idx = load_ann_neighbors(out_path)
 
     base_dir = pathlib.Path(__file__).resolve().parent.parent
     blast_tsv = base_dir / "artifacts" / "blast" / "blast_results.tsv"
@@ -150,8 +158,6 @@ def main():
 
     protein_ids = read_ids(protein_ids_path)
     query_ids = read_ids(queries_ids_path)
-
-    ann_neighbors_idx = load_ann_neighbors(out_path)
 
     hits_by_q = parse_blast_outfmt6(blast_tsv)
     max_evalue = 0.01
@@ -191,16 +197,25 @@ def main():
         print(f"N = {knn} (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)")
         print("[1] Συνοπτική σύγκριση μεθόδων")
         print("----------------------------------------------------------------------")
-        print("Method      | Time/query (s) | QPS | Recall@N vs BLAST Top-N")
+        print(f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
         print("----------------------------------------------------------------------")
-        print(f"{method}   | {fmt_float(tApprox, 6)} | {fmt_float(qps, 2)} | {avg_recall:.4f}")
-        print("BLAST (Ref) |      --        | --  | 1.0000 (ορίζει το Top-N)")
+        print(f"{method:<12} | {fmt_float(tApprox, 6):>13} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
+        print(f"{'BLAST (Ref)':<12} | {'--':>13} | {'--':>7} | {'1.0000 (ορίζει το Top-N)':>24}")
         print("----------------------------------------------------------------------")
         print()
         print(f"[2] Top-N γείτονες ανά μέθοδο (εδώ π.χ. N = {min(20, knn)} για εκτύπωση)")
         print(f"Method: {method}")
-        print("Rank |     Neighbor ID    | L2 Dist | BLAST Identity | In BLAST Top-N? | Bio comment")
-        print("-----------------------------------------------------------------------------")
+
+        header = (
+            f"{'Rank':>4} | "
+            f"{'Neighbor ID':<21} | "
+            f"{'L2 Dist':>8} | "
+            f"{'BLAST Identity':>14} | "
+            f"{'In BLAST Top-N?':^16} | "
+            f"{'Bio comment':<40}"
+        )
+        print(header)
+        print("-" * len(header))
 
         to_print = min(20, knn)
         for rank in range(1, to_print + 1):
@@ -218,7 +233,14 @@ def main():
             elif pid is not None and pid >= 30.0 and in_blast == "Yes":
                 bio = "Close homolog (>=30%)"
 
-            print(f"{rank} | {nid} |   {fmt_float(dist, 4)}   |      {fmt_pct(pid)}       |        {in_blast}          | {bio}")
+            print(
+                f"{rank:>4} | "
+                f"{nid:<21} | "
+                f"{fmt_float(dist, 4):>8} | "
+                f"{fmt_pct(pid):>14} | "
+                f"{in_blast:^16} | "
+                f"{bio:<40}"
+            )
 
         print()
 

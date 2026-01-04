@@ -1,13 +1,16 @@
 import numpy as np
 
+
 def load_fvecs(path):
-    path = str(path)
-    a = np.fromfile(path, dtype=np.float32)
+    a = np.fromfile(path, dtype=np.int32)
     if a.size == 0:
         return np.empty((0, 0), dtype=np.float32)
-    dim = int(a[0])
-    a = a.reshape(-1, dim + 1)
-    return a[:, 1:].copy()
+    d = int(a[0])
+    assert d > 0, f"Invalid dimension {d} read from {path}"
+    a = a.reshape(-1, d + 1)
+    X = a[:, 1:].view(np.float32)
+    return X
+
 
 def add_l2_distances(neighbors_idx, data_path, query_path):
     X = load_fvecs(data_path)
