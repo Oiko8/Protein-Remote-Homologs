@@ -78,7 +78,13 @@ def HC(exe_path, data_path, query_path, k_neighbors=10, kproj=18,
             idx = int(line.split(":")[1].strip())
             neighbors[current_q].append(idx)
 
-    return neighbors
+        elif line.startswith("tApprox"):
+            tApprox = float(line.split(":")[1].strip())
+        
+        elif line.startswith("QPS"):
+            qps = float(line.split(":")[1].strip())
+
+    return neighbors, tApprox, qps
 
 
 def run_hc(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):
@@ -91,11 +97,11 @@ def run_hc(data_file="protein_vectors.dat", query_file="protein_queries.dat", kn
     query_path = base_dir.parent / "artifacts" / "embeddings" / query_file
 
     run_make(classic_ann_dir / "src")
-    neighbors = HC(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=knn)
+    neighbors, tApprox, qps = HC(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=knn)
 
     run_make(classic_ann_dir / "src", "clean")
 
-    return neighbors
+    return neighbors, tApprox, qps
 
 
 def main():

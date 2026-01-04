@@ -78,7 +78,13 @@ def IVFFlat(exe_path, data_path, query_path, k_neighbors=10,
             idx = int(line.split(":")[1].strip())
             neighbors[current_q].append(idx)
 
-    return neighbors
+        elif line.startswith("tApprox"):
+            tApprox = float(line.split(":")[1].strip())
+        
+        elif line.startswith("QPS"):
+            qps = float(line.split(":")[1].strip())
+
+    return neighbors, tApprox, qps
 
 
 def run_ivfflat(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):
@@ -94,12 +100,12 @@ def run_ivfflat(data_file="protein_vectors.dat", query_file="protein_queries.dat
    
     run_make(classic_ann_dir / "src", target="ivfflat")
 
-    neighbors = IVFFlat(exe_path=exe_path, query_path=query_path, data_path=data_path,
+    neighbors, tApprox, qps = IVFFlat(exe_path=exe_path, query_path=query_path, data_path=data_path,
                         k_neighbors=knn, kclusters=128, nprobe=8)
 
     run_make(classic_ann_dir / "src", "clean")
 
-    return neighbors
+    return neighbors, tApprox, qps
 
 def main():
     run_ivfflat()

@@ -165,7 +165,7 @@ int main(int argc, char** argv) {
     double tApprox = (sum_tApprox_ms / qcount) / 1000.0;   // seconds
     double QPS = qcount / (sum_tApprox_ms / 1000.0);
 
-    std::cout << "tApprox: " << tApprox << " s\n";
+    std::cout << "tApprox: " << tApprox << "\n";
     std::cout << "QPS: " << QPS << "\n";
 
     return 0; // telos main

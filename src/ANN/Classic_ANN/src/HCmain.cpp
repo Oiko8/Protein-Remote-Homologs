@@ -126,14 +126,15 @@ static void search_in_dataset(Args args , string type){
             cout << "\n";
 
         }
-    }
+        }
     // ================= FINAL METRICS =================
     double tApprox = (sum_tApprox_ms / qcount) / 1000.0;
     double QPS = qcount / (sum_tApprox_ms / 1000.0);
 
-    cout << "tApprox: " << tApprox << " s\n";
+    cout << "tApprox: " << tApprox << "\n";
     cout << "QPS: " << QPS << "\n";
 
+    }
 }
 
 //$./main -d <input file> -q <query file> -kproj <int> -w <float> -M <int> -probes <int> -N <number of nearest> -R <radius> 

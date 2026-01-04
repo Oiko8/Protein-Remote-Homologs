@@ -129,7 +129,7 @@ static void search_in_dataset(Args args , string type){
     double tApprox = (sum_tApprox_ms / qcount) / 1000.0;
     double QPS = qcount / (sum_tApprox_ms / 1000.0);
 
-    cout << "tApprox: " << tApprox << " s\n";
+    cout << "tApprox: " << tApprox << "\n";
     cout << "QPS: " << QPS << "\n";
     
 }

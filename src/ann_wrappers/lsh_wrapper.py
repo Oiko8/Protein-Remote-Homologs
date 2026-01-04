@@ -77,7 +77,13 @@ def LSH(exe_path, data_path, query_path, k_neighbors=10, khash=10,
             idx = int(line.split(":")[1].strip())
             neighbors[current_q].append(idx)
 
-    return neighbors
+        elif line.startswith("tApprox"):
+            tApprox = float(line.split(":")[1].strip())
+        
+        elif line.startswith("QPS"):
+            qps = float(line.split(":")[1].strip())
+
+    return neighbors, tApprox, qps
 
 
 def run_lsh(data_file="protein_vectors.dat", query_file="protein_queries.dat", knn=5):
@@ -90,14 +96,17 @@ def run_lsh(data_file="protein_vectors.dat", query_file="protein_queries.dat", k
     query_path = base_dir.parent / "artifacts" / "embeddings" / query_file
 
     run_make(classic_ann_dir / "src")
-    neighbors = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=knn)
+    neighbors, tApprox, qps = LSH(exe_path=exe_path, query_path=query_path, data_path=data_path, k_neighbors=knn)
     
     run_make(classic_ann_dir / "src", "clean")
 
-    return neighbors
+    return neighbors, tApprox, qps
 
 def main():
-    run_lsh()
+
+    neighbors, tApprox, qps = run_lsh()
+    print(f"tApprox: {tApprox}")
+    print(f"QPS: {qps}")
 
 
 if __name__=="__main__":
