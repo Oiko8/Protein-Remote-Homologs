@@ -13,6 +13,10 @@ from ann_wrappers.neural_wrapper import run_neural
 BLAST_TOTAL_TIME = 3.932
 BLAST_NUM_QUERIES = 12
 
+TWILIGHT_MAX_IDENTITY = 30.0
+MAX_TWILIGHT_ROWS = 10
+
+
 BLAST_TIME_QUERY = BLAST_TOTAL_TIME / BLAST_NUM_QUERIES
 BLAST_QPS = BLAST_NUM_QUERIES / BLAST_TOTAL_TIME
 
@@ -248,33 +252,28 @@ def main():
         print_output(report_fh, header)
         print_output(report_fh, "-" * len(header))
 
-        to_print = min(50, knn)
-        for rank in range(1, to_print + 1):
+        shown = 0
+        to_scan = min(50, knn)
+
+        for rank in range(1, to_scan + 1):
             if rank - 1 >= len(neigh_list):
                 break
+
             idx, dist = unwrap_neighbor(neigh_list[rank - 1])
             nid = protein_ids[idx] if 0 <= idx < len(protein_ids) else str(idx)
 
             pid = blast_pident.get((qid, nid), None)
             in_blast = "Yes" if nid in gt else "No"
 
-            bio = "--"
-            if pid is not None and pid < 30.0 and in_blast == "Yes":
-                bio = "Remote homolog? (Twilight Zone, check Pfam/GO/EC)"
-            elif pid is not None and pid >= 30.0 and in_blast == "Yes":
-                bio = "Close homolog (>=30%)"
+            if pid is None or pid >= TWILIGHT_MAX_IDENTITY:
+                continue
 
-            # print(
-            #     f"{rank:>4} | "
-            #     f"{nid:<21} | "
-            #     f"{fmt_float(dist, 4):>8} | "
-            #     f"{fmt_pct(pid):>14} | "
-            #     f"{in_blast:^16} | "
-            #     f"{bio:<40}"
-            # )
+            bio = "Remote homolog? (Twilight Zone, check Pfam/GO/EC)"
+
+            shown += 1
             print_output(
-                report_fh, 
-                f"{rank:>4} | "
+                report_fh,
+                f"{shown:>4} | "
                 f"{nid:<25} | "
                 f"{fmt_float(dist, 4):>8} | "
                 f"{fmt_pct(pid):>14} | "
@@ -282,7 +281,20 @@ def main():
                 f"{bio:<40}"
             )
 
-        # print()
+            if shown >= MAX_TWILIGHT_ROWS:
+                break
+
+        if shown == 0:
+            print_output(
+                report_fh,
+                f"{'--':>4} | "
+                f"{'--':<25} | "
+                f"{'--':>8} | "
+                f"{'--':>14} | "
+                f"{'--':^16} | "
+                f"{'No BLAST hits with identity < 30% in Top-N neighbors':<40}"
+            )
+
         print_output(report_fh, )
 
     
