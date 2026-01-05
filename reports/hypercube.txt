@@ -12,7 +12,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-   1 | sp|P24362|KRB2_VACCW      |   2.0283 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   1 | sp|A5UG81|KDKA_HAEIG      |   1.7496 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q6C2A3|BUD32_YARLI     |   2.0189 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|P24362|KRB2_VACCW      |   2.0283 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q7MAX6|TRMA_PHOLL      |   2.0320 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q9LW62|CKL10_ARATH     |   2.1037 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q9CPH1|RLMC_PASMU      |   2.1160 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q9VM90|SBKH_DROME      |   2.1373 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|B4ET17|RLMC_PROMH      |   2.1498 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q11112|YX05_CAEEL      |   2.1812 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q2YDN8|VRK3_BOVIN      |   2.1828 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009PCK4
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -28,7 +37,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-   1 | sp|P24362|KRB2_VACCW      |   2.0025 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   1 | sp|A5UG81|KDKA_HAEIG      |   1.7197 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q6C2A3|BUD32_YARLI     |   2.0015 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|P24362|KRB2_VACCW      |   2.0025 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q7MAX6|TRMA_PHOLL      |   2.0360 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|B0BBT2|PKND_CHLTB      |   2.0551 |            33% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q9LW62|CKL10_ARATH     |   2.0861 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q9VM90|SBKH_DROME      |   2.1277 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|Q9CPH1|RLMC_PASMU      |   2.1313 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|B4ET17|RLMC_PROMH      |   2.1585 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q2YDN8|VRK3_BOVIN      |   2.1670 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A001
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -45,9 +63,15 @@ Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
    1 | sp|P9WQJ3|FATRP_MYCTU     |   1.3396 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   2 | sp|Q20Z38|NDVA_RHOPB      |   1.5256 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   3 | sp|Q8Z824|MACB_SALTI      |   2.4330 |            30% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   4 | sp|Q66CL2|MACB1_YERPS     |   2.4625 |            26% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q13BH6|NDVA_RHOPS      |   1.4232 |            33% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q20Z38|NDVA_RHOPB      |   1.5256 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q5P6D5|MACB_AROAE      |   2.0144 |            31% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q02998|YH19_RHOCA      |   2.1203 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|P9WQ35|CYA1_MYCTU      |   2.1583 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|P9WQ32|Y1318_MYCTO     |   2.1938 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|Q5YSA4|COBQ_NOCFA      |   2.2086 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|A3PHS8|MURG_CERS1      |   2.2880 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q9EX73|MLHB_RHOER      |   2.3000 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A002
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -65,13 +89,14 @@ Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  
 --------------------------------------------------------------------------------------------------------------------------
    1 | sp|P9WQJ3|FATRP_MYCTU     |   1.3344 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
    2 | sp|Q13BH6|NDVA_RHOPS      |   1.4329 |            29% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   3 | sp|Q20Z38|NDVA_RHOPB      |   1.5303 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   4 | sp|Q8P8W4|MSBA_XANCP      |   1.7463 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   5 | sp|Q83LP0|MSBA_SHIFL      |   2.0706 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   6 | sp|O07550|YHEI_BACSU      |   2.0745 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   7 | sp|Q5PGH0|MSBA_SALPA      |   2.0958 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   8 | sp|Q2NUA5|MSBA_SODGM      |   2.1010 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   9 | sp|Q2LVL0|MSBA_SYNAS      |   2.1273 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q03024|APRD_PSEAE      |   1.5033 |            31% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q20Z38|NDVA_RHOPB      |   1.5303 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q8P8W4|MSBA_XANCP      |   1.7463 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q13RD3|SSUB2_PARXL     |   1.9703 |            31% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q67JX3|ECFA1_SYMTH     |   1.9735 |            31% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|Q83LP0|MSBA_SHIFL      |   2.0706 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|O07550|YHEI_BACSU      |   2.0745 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q5PGH0|MSBA_SALPA      |   2.0958 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009HL96
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -88,14 +113,15 @@ Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
    1 | sp|Q5HI09|GRAR_STAAC      |   0.6392 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   2 | sp|Q99VW2|GRAR_STAAN      |   0.6598 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   3 | sp|Q8CQ37|GRAR_STAES      |   0.6748 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   4 | sp|Q6GFH3|VRAR_STAAR      |   1.3828 |            25% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   5 | sp|Q6G850|VRAR_STAAS      |   1.3828 |            25% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   6 | sp|Q8GVV6|ORR8_ORYSJ      |   1.7501 |            26% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   7 | sp|Q2KCH7|CHEY_RHIEC      |   1.8260 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   8 | sp|A5VUU3|DIVK_BRUO2      |   1.8262 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   9 | sp|A9MBQ2|DIVK_BRUC2      |   1.8262 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|P33112|SPAR_BACIU      |   0.6421 |            31% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q99VW2|GRAR_STAAN      |   0.6598 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q8CQ37|GRAR_STAES      |   0.6748 |            28% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q99RR6|HSSR_STAAM      |   0.7503 |            31% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|P28257|YCF27_GALSU     |   0.7835 |            33% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|P0CAW8|CTRA_CAUVC      |   0.7894 |            31% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|A6WZ81|CTRA_BRUA4      |   0.8532 |            33% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|P0A4H8|CIAR_STRR6      |   0.9803 |            32% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q2FH23|ARLR_STAA3      |   1.0548 |            35% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009HLV9
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -111,7 +137,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-  -- | --                        |       -- |             -- |        --        | No BLAST hits with identity < 30% in Top-N neighbors
+   1 | sp|O87455|LUXO_VIBC3      |   0.9553 |            40% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|A1KU52|RUVB_NEIMF      |   1.0106 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q8EEF3|RUVB_SHEON      |   1.0507 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|B5F3J7|RUVB_SALA4      |   1.0884 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|P66756|RUVB_SALTI      |   1.0884 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|P0A812|RUVB_ECOLI      |   1.0946 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q15RN6|RUVB_PSEA6      |   1.1001 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|B7NBL1|RUVB_ECOLU      |   1.1030 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q03R36|RUVB_LEVBA      |   1.1033 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q03YJ6|RUVB_LEUMM      |   1.1049 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009HN45
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -127,8 +162,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-   1 | sp|Q9VMX6|SMAL1_DROME     |   1.2840 |            25% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   2 | sp|Q0DLB9|RH17_ORYSJ      |   1.4372 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   1 | sp|P52126|ABPB_ECOLI      |   0.7920 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q99ZA5|UVRB_STRP1      |   0.8060 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q1JBD1|UVRB_STRPB      |   0.8068 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|Q5X0E6|UVRB_LEGPL      |   0.8284 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|A6QKD8|SECA2_STAAE     |   0.8316 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q3K063|SECA2_STRA1     |   0.8402 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q03AL7|UVRB_LACP3      |   0.8561 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|Q1MQP3|SECA_LAWIP      |   0.8669 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q9ZKA0|UVRB_HELPJ      |   0.8680 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q50939|UVRB_NEIGO      |   0.8689 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009HQC9
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -144,7 +187,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-   1 | sp|B2ZFP3|SMAL1_DANRE     |   1.4904 |            23% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   1 | sp|C5BEJ2|UVRB_EDWI9      |   0.9428 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|B2UCW7|SECA_RALPJ      |   1.1185 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q9JYK8|SECA_NEIMB      |   1.1675 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|A4SV83|SECA_POLAQ      |   1.1704 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q8ZQN7|DING_SALTY      |   1.1717 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|A3NZK5|SECA_BURP0      |   1.2625 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|A3NDV4|SECA_BURP6      |   1.2693 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|Q88NV1|LHRC_PSEPK      |   1.3059 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|A2BZ24|SECA_PROM5      |   1.3371 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|B2J6D3|UVRC_NOSP7      |   1.3399 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009HPM0
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -160,7 +212,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-  -- | --                        |       -- |             -- |        --        | No BLAST hits with identity < 30% in Top-N neighbors
+   1 | sp|B2TWG0|TRMA_SHIB3      |   1.4365 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|B1LNS5|TRMA_ECOSM      |   1.4492 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|Q5PK68|TRMA_SALPA      |   1.4570 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|B5BJN9|TRMA_SALPK      |   1.4570 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q5E320|RLMD_ALIF1      |   1.4799 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|B0VRJ4|RSMC_ACIBS      |   1.4815 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q7MHY6|RSMC_VIBVY      |   1.4859 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|A6VLF9|TRMA_ACTSZ      |   1.4871 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q7MAX6|TRMA_PHOLL      |   1.4953 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|A3QHZ8|RSMC_SHELP      |   1.4971 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A009IB02
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -176,7 +237,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-  -- | --                        |       -- |             -- |        --        | No BLAST hits with identity < 30% in Top-N neighbors
+   1 | sp|P11961|ODP2_GEOSE      |   1.9830 |            38% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q00045|FMD1_NEIGO      |   3.0076 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|P13794|PORF_PSEAE      |   3.1062 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|O02621|GPX1_CAEEL      |   3.4206 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|O80871|P2C25_ARATH     |   3.4248 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|C0ZB50|PRMA_BREBN      |   3.4551 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|D3Z7A5|DAW1_MOUSE      |   3.7121 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|A6LT26|TIG_CLOB8       |   3.8147 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q9CHX0|PRMC_LACLA      |   3.8209 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q28658|SPRR3_RABIT     |   3.8479 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A010Q3W2
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -192,16 +262,16 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-   1 | sp|Q9NRL3|STRN4_HUMAN     |   1.3099 |            28% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   2 | sp|Q8VYZ5|PWP2_ARATH      |   1.3515 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   3 | sp|O82266|SWA1_ARATH      |   1.3581 |            27% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   4 | sp|Q20059|WDR48_CAEEL     |   1.3710 |            23% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   5 | sp|A8NZM5|JIP5_COPC7      |   1.3814 |            22% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   6 | sp|A8XSW2|WDR48_CAEBR     |   1.4201 |            23% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   7 | sp|G5EEG7|SMU1_CAEEL      |   1.4372 |            24% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   8 | sp|Q8CFJ9|WDR24_MOUSE     |   1.4514 |            27% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-   9 | sp|Q8BH57|WDR48_MOUSE     |   1.4834 |            26% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
-  10 | sp|P54319|PLAP_RAT        |   1.5496 |            24% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   1 | sp|Q2UUT4|CMR1_ASPOR      |   1.1791 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|A2QI22|YTM1_ASPNC      |   1.2346 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|P0CS56|CMR1_CRYNJ      |   1.2372 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|P0CS29|ATG18_CRYNB     |   1.2859 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q9NRL3|STRN4_HUMAN     |   1.3099 |            28% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q9SU78|MSI5_ARATH      |   1.3118 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q9P7C0|YKU5_SCHPO      |   1.3181 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|A2RAG5|ATG18_ASPNC     |   1.3256 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|O35828|CORO7_RAT       |   1.3315 |            30% |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q8VYZ5|PWP2_ARATH      |   1.3515 |            26% |       Yes        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 
 Query Protein: A0A010Q8R4
 N = 50 (μέγεθος λίστας Top-N για την αξιολόγηση Recall@N)
@@ -217,5 +287,14 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 Method: hypercube
 Rank | Neighbor ID               |  L2 Dist | BLAST Identity | In BLAST Top-N?  | Bio comment                             
 --------------------------------------------------------------------------------------------------------------------------
-  -- | --                        |       -- |             -- |        --        | No BLAST hits with identity < 30% in Top-N neighbors
+   1 | sp|Q9P4R5|CREC_EMENI      |   1.2205 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   2 | sp|Q652L2|HIRA_ORYSJ      |   1.2259 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   3 | sp|P0CS56|CMR1_CRYNJ      |   1.2439 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   4 | sp|P0CS29|ATG18_CRYNB     |   1.2683 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   5 | sp|Q5NVM2|DC1I2_PONAB     |   1.3301 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   6 | sp|Q2UUT4|CMR1_ASPOR      |   1.3410 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   7 | sp|Q6CXX3|HIR1_KLULA      |   1.3490 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   8 | sp|A1CBB8|ATG18_ASPCL     |   1.3727 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+   9 | sp|Q9P7C0|YKU5_SCHPO      |   1.3789 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
+  10 | sp|Q24246|DYIN_DROME      |   1.3855 |             -- |        No        | Remote homolog? (Twilight Zone, check Pfam/GO/EC)
 

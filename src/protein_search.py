@@ -13,7 +13,7 @@ from ann_wrappers.neural_wrapper import run_neural
 BLAST_TOTAL_TIME = 3.932
 BLAST_NUM_QUERIES = 12
 
-TWILIGHT_MAX_IDENTITY = 30.0
+TWILIGHT_MAX_IDENTITY = 40.0
 MAX_TWILIGHT_ROWS = 10
 
 
@@ -265,7 +265,9 @@ def main():
             pid = blast_pident.get((qid, nid), None)
             in_blast = "Yes" if nid in gt else "No"
 
-            if pid is None or pid >= TWILIGHT_MAX_IDENTITY:
+            if pid is None:
+                pass
+            elif  pid >= TWILIGHT_MAX_IDENTITY:
                 continue
 
             bio = "Remote homolog? (Twilight Zone, check Pfam/GO/EC)"
