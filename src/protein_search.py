@@ -232,7 +232,7 @@ def main():
         print_output(report_fh, "----------------------------------------------------------------------")
         print_output(report_fh, f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'Recall@N vs BLAST Top-N':>24}")
         print_output(report_fh, "----------------------------------------------------------------------")
-        print_output(report_fh, f"{method:<12} | {fmt_float(tApprox, 6):>14} | {fmt_float(qps, 2):>7} | {avg_recall:>24.4f}")
+        print_output(report_fh, f"{method:<12} | {fmt_float(tApprox, 6):>14} | {fmt_float(qps, 2):>7} | {recalls[qi]:>24.4f}")
         print_output(report_fh, f"{'BLAST (Ref)':<12} | {BLAST_TIME_QUERY:>14.4f} | {BLAST_QPS:>7.2f} | {'1.0000':>24}")
         print_output(report_fh, "----------------------------------------------------------------------")
         print_output(report_fh, )
@@ -299,6 +299,13 @@ def main():
 
         print_output(report_fh, )
 
+    
+    print_output(report_fh, "----------------------- Average Metrics ------------------------------")
+    print_output(report_fh, f"{'Method':<12} | {'Time/query (s)':>13} | {'QPS':>7} | {'AverageRecall@N vs BLAST Top-N':>28}")
+    print_output(report_fh, "----------------------------------------------------------------------")
+    print_output(report_fh, f"{method:<12} | {fmt_float(tApprox, 6):>14} | {fmt_float(qps, 2):>7} | {avg_recall:>28.4f}")
+    print_output(report_fh, f"{'BLAST (Ref)':<12} | {BLAST_TIME_QUERY:>14.4f} | {BLAST_QPS:>7.2f} | {'1.0000':>28}")
+    print_output(report_fh, "----------------------------------------------------------------------")
     
     report_fh.close()
 
