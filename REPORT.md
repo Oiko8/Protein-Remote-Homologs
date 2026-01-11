@@ -41,15 +41,56 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 ## **Twilight Zone Analysis**
 
 ### *Query Protein: A0A009I3Y5*
+sp|A5UG81|KDKA_HAEIG kai stous 5
+sp|P14181|LICA2_HAEIF se LSH Neural IVFPQ IVFFlat
+sp|Q8E9R5|UBIB_SHEON se LSH Neural IVFFlat Hypercube
 ### *Query Protein: A0A009PCK4*
+sp|A5UG81|KDKA_HAEIG
+sp|P14181|LICA2_HAEIF
+sp|Q6C2A3|BUD32_YARLI
 ### *Query Protein: A0A001*
+kamia protein koini stoys 5
+sp|P9WQJ3|FATRP_MYCTU lsh, hypercube, ivfflat, neural
+sp|Q13BH6|NDVA_RHOPS
+sp|Q03024|APRD_PSEAE lsh, ivfflat, ivfpq, neural
 ### *Query Protein: A0A002*
+sp|P9WQJ3|FATRP_MYCTU kai stoys 5
+sp|Q13BH6|NDVA_RHOPS
+sp|Q20Z38|NDVA_RHOPB oxi ston ivfpq
 ### *Query Protein: A0A009HL96*
+sp|Q9AE24|RPRY_BACFR koina kai stous 5
+sp|Q5HI09|GRAR_STAAC oxi ston ivfpq
+sp|Q99VW2|GRAR_STAAN oxi ston ivfpq
 ### *Query Protein: A0A009HLV9*
+o IVFpq den parousiazei kanena koino 
+sp|A1KU52|RUVB_NEIMF stous 4
+sp|Q8EEF3|RUVB_SHEON
+sp|P66756|RUVB_SALTI
 ### *Query Protein: A0A009HN45*
+sp|P52126|ABPB_ECOLI
+sp|Q99ZA5|UVRB_STRP1
+sp|Q1JBD1|UVRB_STRPB
 ### *Query Protein: A0A009HQC9*
+sp|C5BEJ2|UVRB_EDWI9 se ola
+sp|C0PWY7|UVRB_SALPC oxi se hyper 
+sp|A7FKM4|UVRB_YERP3 oxi se hyper
 ### *Query Protein: A0A009HPM0*
+ivfpq kanena koino 
+sp|B2TWG0|TRMA_SHIB3 → lsh, hypercube, ivfflat, neural
+sp|B1LNS5|TRMA_ECOSM → lsh, hypercube, ivfflat, neural
+sp|Q5PK68|TRMA_SALPA → lsh, hypercube, ivfflat, neural
 ### *Query Protein: A0A009IB02*
+hyper kanena koino 
+sp|Q9SQI8|ODP24_ARATH
+sp|P49786|BCCP_BACSU
+sp|P0ABE1|BCCP_SHIFL
 ### *Query Protein: A0A010Q3W2*
+sp|Q2UUT4|CMR1_ASPOR
+sp|A2QI22|YTM1_ASPNC oxi lsh
+sp|P0CS56|CMR1_CRYNJ oxi ivfpq
 ### *Query Protein: A0A010Q8R4*
+sp|Q652L2|HIRA_ORYSJ
+sp|P0CS56|CMR1_CRYNJ
+sp|Q2UUT4|CMR1_ASPOR
 
+έναν πίνακα με όλα τα κοινά Neighbor ανά query και μέθοδο, για να φαίνεται καθαρά ποιος γείτονας εμφανίζεται σε ποιες μεθόδους
