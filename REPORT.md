@@ -40,10 +40,36 @@ BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 
 ## **Twilight Zone Analysis**
 
-### *Query Protein: A0A009I3Y5*
-sp|A5UG81|KDKA_HAEIG kai stous 5
-sp|P14181|LICA2_HAEIF se LSH Neural IVFPQ IVFFlat
-sp|Q8E9R5|UBIB_SHEON se LSH Neural IVFFlat Hypercube
+### *Query Protein: A0A009I3Y5 (Protein kinase domain-containing protein)* 
+- biological process : protein phosphorylation (GO:0006468)
+- molecular function : protein kinase activity (GO:0004672)  ATP binding (GO:0005524)
+- cellular component : none
+- Pfam : PF00069
+- SUPFAM : SSF56112 Protein kinase-like
+
+Potential homologs
+1. sp|A5UG81|KDKA_HAEIG
+- L2: 1.7496
+- no in blast top n and no blast ident
+- molecular function: phosphotransferase activity, alcohol group as acceptor (GO:0016773)  
+- Pfam : PF06293  
+Conclusion : False positive (more comments why?) 
+
+2. sp|P33800|PG187_VAR67  : B1 Kinase
+- L2:  
+- no in blast top n and no blast ident
+- biological process : protein phosphorylation (GO:0006468)
+- molecular function : protein kinase activity (GO:0004672) ATP binding (GO:0005524)
+- Pfam: PF00069  
+- Conclusion : Remote homolog with similar biological process, molecular function, pfam
+
+3. sp|P14181|LICA2_HAEIF
+- 1.6867
+- no in blast top n and no blast ident
+- SUPFAM : SSF56112 Protein kinase-like
+- Domain : Phosphorylase , same like the query  
+- Conclusion : the proteins are possibly remote homologs and that's why they are so near in the embedding space, they share same SuperFamily (SUPERFAMILY provides structure-level annotations, which are especially useful for remote homology detection.). The two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
+
 ### *Query Protein: A0A009PCK4*
 sp|A5UG81|KDKA_HAEIG
 sp|P14181|LICA2_HAEIF
@@ -53,10 +79,12 @@ kamia protein koini stoys 5
 sp|P9WQJ3|FATRP_MYCTU lsh, hypercube, ivfflat, neural
 sp|Q13BH6|NDVA_RHOPS
 sp|Q03024|APRD_PSEAE lsh, ivfflat, ivfpq, neural
+sp|Q51719|YCOBA_PROFR 
 ### *Query Protein: A0A002*
 sp|P9WQJ3|FATRP_MYCTU kai stoys 5
 sp|Q13BH6|NDVA_RHOPS
 sp|Q20Z38|NDVA_RHOPB oxi ston ivfpq
+sp|Q51719|YCOBA_PROFR 
 ### *Query Protein: A0A009HL96*
 sp|Q9AE24|RPRY_BACFR koina kai stous 5
 sp|Q5HI09|GRAR_STAAC oxi ston ivfpq
