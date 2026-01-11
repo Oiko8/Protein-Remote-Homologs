@@ -94,7 +94,7 @@ Potential homologs
 
 
 3. sp|Q6C2A3|BUD32_YARLI (EKC/KEOPS complex subunit BUD32)
-- L2: 
+- L2: 2.0015
 - biological process : protein phosphorylation (GO:0006468)
 - molecular function : protein kinase activity (GO:0004672), ATP binding (GO:0005524), protein serine/threonine kinase activity (GO:0004674)
 - SUPFAM : SSF56112 Protein kinase-like
