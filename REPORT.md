@@ -70,10 +70,36 @@ Conclusion : False positive (more comments why?)
 - Domain : Phosphorylase , same like the query  
 - Conclusion : the proteins are possibly remote homologs and that's why they are so near in the embedding space, they share same SuperFamily (SUPERFAMILY provides structure-level annotations, which are especially useful for remote homology detection.). The two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
 
-### *Query Protein: A0A009PCK4*
-sp|A5UG81|KDKA_HAEIG
-sp|P14181|LICA2_HAEIF
-sp|Q6C2A3|BUD32_YARLI
+### *Query Protein: A0A009PCK4 (Protein kinase domain-containing protein)*
+- biological process : protein phosphorylation (GO:0006468)
+- molecular function : protein kinase activity (GO:0004672)  ATP binding (GO:0005524)
+- cellular component : none
+- Pfam : PF00069
+- SUPFAM : SSF56112 Protein kinase-like
+
+Potential homologs  
+
+1. sp|P14181|LICA2_HAEIF
+- L2: 1.6715
+- no in blast top n and no blast ident
+- SUPFAM : SSF56112 Protein kinase-like
+- Domain : Phosphorylase , same like the query  
+- Conclusion : the proteins are possibly remote homologs and that's why they are so near in the embedding space, they share same SuperFamily (SUPERFAMILY provides structure-level annotations, which are especially useful for remote homology detection.). The two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
+
+2. sp|P44033|Y665_HAEIN  Putative kinase HI_0665
+- L2: 1.8396
+- no in blast top n and no blast ident
+- Seems like they have a small similarity because they both are kinase related, but they have significant differences in pfam and GO descriptions.
+- Conclusion: False positive.
+
+
+3. sp|Q6C2A3|BUD32_YARLI (EKC/KEOPS complex subunit BUD32)
+- L2: 
+- biological process : protein phosphorylation (GO:0006468)
+- molecular function : protein kinase activity (GO:0004672), ATP binding (GO:0005524), protein serine/threonine kinase activity (GO:0004674)
+- SUPFAM : SSF56112 Protein kinase-like
+- Conclusion:  Remote homolog with similar biological process, molecular function. Moreover, the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
+
 ### *Query Protein: A0A001*
 kamia protein koini stoys 5
 sp|P9WQJ3|FATRP_MYCTU lsh, hypercube, ivfflat, neural
