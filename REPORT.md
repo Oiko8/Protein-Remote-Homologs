@@ -56,7 +56,7 @@ Potential homologs
 Conclusion : False positive (more comments why?) 
 
 2. sp|P33800|PG187_VAR67  : B1 Kinase
-- L2:  
+- L2: 2.0267 
 - no in blast top n and no blast ident
 - biological process : protein phosphorylation (GO:0006468)
 - molecular function : protein kinase activity (GO:0004672) ATP binding (GO:0005524)
@@ -64,7 +64,7 @@ Conclusion : False positive (more comments why?)
 - Conclusion : Remote homolog with similar biological process, molecular function, pfam
 
 3. sp|P14181|LICA2_HAEIF
-- 1.6867
+- L2: 1.6867
 - no in blast top n and no blast ident
 - SUPFAM : SSF56112 Protein kinase-like
 - Domain : Phosphorylase , same like the query  
