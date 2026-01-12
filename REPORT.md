@@ -140,7 +140,7 @@ Potential homologs
 - conclusion : no the same pfam, but the same molecular function and same supfam. the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship. Also high indentity sequence despite the low blast score. The two proteins can be named remote homologs.
 
 
-### *Query Protein: A0A002*
+### *Query Protein: A0A002 (ABC transporter ATP-binding protein)*
 - biological process : transmembrane transport (GO:0055085)
 - molecular function : ATP binding (GO:0005524), ABC-type transporter activity (GO:0140359), ATP hydrolysis activity (GO:0016887)
 - cellular component : membrane (GO:0016020)
@@ -206,9 +206,36 @@ sp|P0ABE1|BCCP_SHIFL
 sp|Q2UUT4|CMR1_ASPOR
 sp|A2QI22|YTM1_ASPNC oxi lsh
 sp|P0CS56|CMR1_CRYNJ oxi ivfpq
+
+
 ### *Query Protein: A0A010Q8R4*
-sp|Q652L2|HIRA_ORYSJ
-sp|P0CS56|CMR1_CRYNJ
-sp|Q2UUT4|CMR1_ASPOR
+- molecular function : protein binding (GO:0005515), transcription corepressor activity (GO:0003714)
+- pfam : PF08512, PF00400
+- supfam : SSF50978
+
+1. sp|Q652L2|HIRA_ORYSJ  (Protein HIRA)
+- L2 : 1.2259
+- no in blast topn and no identity, super close in embedding space
+- biological process : chromatin remodeling (GO:0006338), regulation of DNA-templated transcription (GO:0006355), chromatin organization (GO:0006325), DNA-templated transcription (GO:0006351)
+- molecular function : protein binding (GO:0005515)
+- Pfam: PF24105Beta-prop_CAF1B_HIR1 1 hit , PF07569
+- SUPFAM : SSF50978
+- Conclusion: the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship. Also the same molecular function supports strongly this belief. Despite not be in the blast topN, the protein seems to be remote homolog with the query and the ANN algorithms work better.
+
+2. sp|P0CS56|CMR1_CRYNJ (DNA damage-binding protein CMR1)
+- L2 : 1.2439 
+- no in blast topn and no identity, super close in embedding space
+- molecular function : protein binding (GO:0005515)
+- SUPFAM : SSF50978
+- Conclusion: the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship. Also the same molecular function supports strongly this belief. Despite not be in the blast topN, the protein seems to be remote homolog with the query and the ANN algorithms work better.
+
+
+3. sp|Q9P4R5|CREC_EMENI (Catabolite repression protein creC)
+- L2 : 1.2205
+- no in blast topn and no identity, super close in embedding space
+- molecular function : protein binding (GO:0005515)
+- pfam :  PF00400
+- supfam : SSF50978
+- Conclusion : same pfam and sam supfam, superr close in embedding space, same molecular function. Remote homologs
 
 έναν πίνακα με όλα τα κοινά Neighbor ανά query και μέθοδο, για να φαίνεται καθαρά ποιος γείτονας εμφανίζεται σε ποιες μεθόδους
