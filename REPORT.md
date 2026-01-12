@@ -23,7 +23,6 @@ Only proteins that combine embedding-level proximity with weak or absent sequenc
  
 The final step of the assignment involves the manual biological validation of selected candidate proteins using external annotations (UniProt, Pfam, GO), in order to assess whether the retrieved neighbors can be considered true remote homologs.
 
-The total reports for each algorithm can be found on [reports](reports/).
 
 ## **ANN Algorithms - Blast comparison**
 ----------------------------------------------------------------------
@@ -37,6 +36,12 @@ neural LSH   |       0.011608 |   86.15 |                   0.3194
 BLAST (Ref)  |         0.3277 |    3.05 |                   1.0000
 ----------------------------------------------------------------------
 
+
+In addition to the focused Twilight Zone analysis presented below, we retain the full, detailed output of each ANN algorithm in the [reports](reports/) directory, including all retrieved neighbors and performance metrics.
+
+From these complete reports, we select 3–4 representative examples per query protein to highlight characteristic cases in which embedding-based ANN methods retrieve biologically meaningful candidates that are weakly detected or entirely missed by BLAST.
+
+For each selected example, we provide biological justification based on independent annotations, such as shared Pfam domains, similar GO terms, UniProt functional descriptions, or common SUPERFAMILY assignments, in order to assess whether the retrieved neighbors represent plausible cases of remote homology.
 
 ## **Twilight Zone Analysis**
 
@@ -100,17 +105,76 @@ Potential homologs
 - SUPFAM : SSF56112 Protein kinase-like
 - Conclusion:  Remote homolog with similar biological process, molecular function. Moreover, the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
 
-### *Query Protein: A0A001*
-kamia protein koini stoys 5
-sp|P9WQJ3|FATRP_MYCTU lsh, hypercube, ivfflat, neural
-sp|Q13BH6|NDVA_RHOPS
-sp|Q03024|APRD_PSEAE lsh, ivfflat, ivfpq, neural
-sp|Q51719|YCOBA_PROFR 
+### *Query Protein: A0A001 (ABC transporter)*
+- biological process : transmembrane transport (GO:0055085)
+- molecular function : ATP binding (GO:0005524), ABC-type transporter activity (GO:0140359), ATP hydrolysis activity (GO:0016887)
+- cellular component : membrane (GO:0016020)
+- pfam : PF00664 ABC_membrane, PF00005 ABC_tran 
+- supfam : SSF90123, SSF52540
+
+1. sp|Q51719|YCOBA_PROFR (Putative ABC transporter ATP-binding protein in cobA 5'region)
+- L2 : 1.7701
+- no in blast top N, 30% identity
+- biological process : transmembrane transport (GO:0055085), cobalt ion transport (GO:0006824)
+- molecular function : ATP binding (GO:0005524), ATP hydrolysis activity (GO:0016887)
+- cellular component : membrane (GO:0016020)
+- pfam : PF00005
+- supfam: SSF52540
+- Conclusion :  Remote homolog with similar biological process, molecular function and cellular component. Moreover, the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity. Also the share the same pfam.
+
+2. sp|Q13BH6|NDVA_RHOPS (Beta-(1-->2)glucan export ATP-binding/permease protein NdvA)
+- L2 : 1.4232
+- in blast top50, 33% identity, also very close in embedding space
+- biological process : transmembrane transport (GO:0055085)
+- molecular function : ATP binding (GO:0005524), ABC-type transporter activity (GO:0140359), ATP hydrolysis activity (GO:0016887)
+- cellular component : membrane (GO:0016020)
+- pfam : PF00664 ABC_membrane, PF00005 ABC_tran 
+- supfam : SSF52540
+- Conclusion :  Remote homolog with similar biological process, molecular function and cellular component. Moreover, the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity. Also the share the same pfam. Both blast and ANN works good on this one.
+
+3. sp|Q3JSR6|SSUB_BURP1 (Aliphatic sulfonates import ATP-binding protein SsuB)
+- L2 : 1.7942
+- no in blast top50, 37% identity.
+- molecular function : ATP binding (GO:0005524), ATP hydrolysis activity (GO:0016887)
+- supfam : SSF52540
+- conclusion : no the same pfam, but the same molecular function and same supfam. the two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship. Also high indentity sequence despite the low blast score. The two proteins can be named remote homologs.
+
+
 ### *Query Protein: A0A002*
-sp|P9WQJ3|FATRP_MYCTU kai stoys 5
-sp|Q13BH6|NDVA_RHOPS
-sp|Q20Z38|NDVA_RHOPB oxi ston ivfpq
-sp|Q51719|YCOBA_PROFR 
+- biological process : transmembrane transport (GO:0055085)
+- molecular function : ATP binding (GO:0005524), ABC-type transporter activity (GO:0140359), ATP hydrolysis activity (GO:0016887)
+- cellular component : membrane (GO:0016020)
+- pfam : PF00664 ABC_membrane, PF00005 ABC_tran 
+- supfam : SSF90123, SSF52540
+
+
+1. sp|P9WQJ3|FATRP_MYCTU (Fatty acid ABC transporter ATP-binding/permease protein)
+- L2 : 1.3344 
+- in blast top50 and 27% identity.
+- biological process : transmembrane transport (GO:0055085)
+- molecular function : ATP binding (GO:0005524), ABC-type transporter activity (GO:0140359), ATP hydrolysis activity (GO:0016887)
+- cellular component : membrane (GO:0016020)
+- pfam : PF00664 ABC_membrane, PF00005 ABC_tran 
+- supfam : SSF90123, SSF52540
+- conclusion : both the ann and the blast along with the pfam,supfam and go descriptions agree that the two proteins are remote homologs.
+
+2. sp|Q63NR0|HMUV_BURPS (Hemin import ATP-binding protein HmuV)
+- L2 : 2.0712
+- no in blast topN, 29% identity
+- molecular function : ATP binding (GO:0005524), ATP hydrolysis activity (GO:0016887)
+- pfam :  PF00005 ABC_tran 
+- supfam : SSF52540
+- Conclusion : similar pfam and supfam, very close in the embedding space, similar molecular function. Another case that the ANN algorithms works better than the blast.
+
+3. sp|Q82MV1|SSUB1_STRAW (Aliphatic sulfonates import ATP-binding protein SsuB 1)
+- L2 : 1.7931
+- no in blast topn, 30% identity match
+- molecular function : ATP binding (GO:0005524), ATP hydrolysis activity (GO:0016887)
+- pfam :  PF00005 ABC_tran 
+- supfam : SSF52540
+- Conclusion : similar pfam and supfam, very close in the embedding space, similar molecular function. Another case that the ANN algorithms works better than the blast
+
+
 ### *Query Protein: A0A009HL96*
 sp|Q9AE24|RPRY_BACFR koina kai stous 5
 sp|Q5HI09|GRAR_STAAC oxi ston ivfpq
