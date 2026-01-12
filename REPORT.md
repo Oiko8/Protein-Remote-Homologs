@@ -46,34 +46,23 @@ For each selected example, we provide biological justification based on independ
 ## **Twilight Zone Analysis**
 
 ### *Query Protein: A0A009I3Y5 (Protein kinase domain-containing protein)* 
-- biological process : protein phosphorylation (GO:0006468)
-- molecular function : protein kinase activity (GO:0004672)  ATP binding (GO:0005524)
-- cellular component : none
-- Pfam : PF00069
-- SUPFAM : SSF56112 Protein kinase-like
+| Property           | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| Biological process | Protein phosphorylation (GO:0006468)                           |
+| Molecular function | Protein kinase activity (GO:0004672), ATP binding (GO:0005524) |
+| Cellular component | –                                                              |
+| Pfam               | PF00069                                                        |
+| SUPERFAMILY        | SSF56112 (Protein kinase-like)                                 |
 
-Potential homologs
-1. sp|A5UG81|KDKA_HAEIG
-- L2: 1.7496
-- no in blast top n and no blast ident
-- molecular function: phosphotransferase activity, alcohol group as acceptor (GO:0016773)  
-- Pfam : PF06293  
-Conclusion : False positive (more comments why?) 
 
-2. sp|P33800|PG187_VAR67  : B1 Kinase
-- L2: 2.0267 
-- no in blast top n and no blast ident
-- biological process : protein phosphorylation (GO:0006468)
-- molecular function : protein kinase activity (GO:0004672) ATP binding (GO:0005524)
-- Pfam: PF00069  
-- Conclusion : Remote homolog with similar biological process, molecular function, pfam
+**Candidate neighbors**
 
-3. sp|P14181|LICA2_HAEIF
-- L2: 1.6867
-- no in blast top n and no blast ident
-- SUPFAM : SSF56112 Protein kinase-like
-- Domain : Phosphorylase , same like the query  
-- Conclusion : the proteins are possibly remote homologs and that's why they are so near in the embedding space, they share same SuperFamily (SUPERFAMILY provides structure-level annotations, which are especially useful for remote homology detection.). The two proteins belong to the same structural superfamily according to SUPERFAMILY, supporting a remote evolutionary relationship despite low sequence identity.
+| Neighbor Protein | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                        | Conclusion                                                                                                                                                                                              |
+| ---------------- | ------: | :------: | :-------: | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A5UG81**       |  1.7496 |     –    |     No    | Phosphotransferase activity (GO:0016773); Pfam PF06293 (different from kinase Pfam) | **False positive.** The protein lacks the protein kinase Pfam domain and does not participate in protein phosphorylation, indicating that embedding proximity is not due to shared evolutionary origin. |
+| **P33800**       |  2.0267 |     –    |     No    | Protein phosphorylation; protein kinase activity; ATP binding; Pfam PF00069         | **Remote homolog.** The shared biological role, molecular function, and conserved kinase Pfam domain strongly support a remote evolutionary relationship despite the absence of BLAST hits.             |
+| **P14181**       |  1.6867 |     –    |     No    | Same SUPERFAMILY (SSF56112, protein kinase-like); kinase-related domain             | **Remote homolog.** Structural superfamily conservation explains the close embedding distance and supports remote homology despite low sequence similarity.                                             |
+
 
 ### *Query Protein: A0A009PCK4 (Protein kinase domain-containing protein)*
 - biological process : protein phosphorylation (GO:0006468)
