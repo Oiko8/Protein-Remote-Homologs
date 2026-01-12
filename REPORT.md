@@ -163,16 +163,80 @@ Potential homologs
 - supfam : SSF52540
 - Conclusion : similar pfam and supfam, very close in the embedding space, similar molecular function. Another case that the ANN algorithms works better than the blast
 
+### *Query Protein: A0A009HL96 (Response regulator)*
+- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
+- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
+- cellular component : NONE
+- pfam : PF00072 Response_reg, PF00486 Trans_reg_C 
+- supfam : SSF46894, SSF52172
 
-### *Query Protein: A0A009HL96*
-sp|Q9AE24|RPRY_BACFR koina kai stous 5
-sp|Q5HI09|GRAR_STAAC oxi ston ivfpq
-sp|Q99VW2|GRAR_STAAN oxi ston ivfpq
-### *Query Protein: A0A009HLV9*
-o IVFpq den parousiazei kanena koino 
-sp|A1KU52|RUVB_NEIMF stous 4
-sp|Q8EEF3|RUVB_SHEON
-sp|P66756|RUVB_SALTI
+1. sp|Q9AE24|RPRY_BACFR (Transcriptional regulatory protein RprY)
+- L2 : 0.7792
+- Yes in BLAST topn, 28% identity match
+- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
+- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
+- cellular component : NONE
+- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
+- supfam : SSF46894, SSF52172
+- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
+
+2. sp|Q5HI09|GRAR_STAAC (Response regulator protein GraR)
+- L2 : 0.6392
+- Yes in BLAST topn, 26% identity match
+- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
+- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
+- cellular component : NONE
+- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
+- supfam : SSF46894, SSF52172
+- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
+
+3. sp|Q99VW2|GRAR_STAAN (Response regulator protein GraR)
+- L2 : 0.6598
+- Yes in BLAST topn, 26% identity match
+- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
+- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
+- cellular component : NONE
+- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
+- supfam : SSF46894, SSF52172
+- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
+
+### *Query Protein: A0A009HLV9 (DNA-binding transcriptional regulator NtrC)*
+- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355), regulation of nitrogen utilization (GO:0006808)
+- molecular function : DNA binding (GO:0003677), ATP binding (GO:0005524), transcription factor binding (GO:0008134), sequence-specific DNA binding (GO:0043565), phosphorelay response regulator activity (GO:0000156)
+- cellular component : NONE
+- pfam : PF25601 AAA_lid_14, PF02954 HTH_8, PF00072 Response_reg, PF00158 Sigma54_activat  
+- supfam : SSF52172, SSF46689, SSF52540
+
+1. sp|A1KU52|RUVB_NEIMF (Holliday junction branch migration complex subunit RuvB)
+- L2 : 1.0106
+- No in BLAST topn, No BLAST identity match
+- biological process : DNA repair (GO:0006281), DNA recombination (GO:0006310)
+- molecular function : DNA binding (GO:0003677), ATP binding (GO:0005524), four-way junction helicase activity (GO:0009378)
+- cellular component : NONE
+- pfam :  PF17864 AAA_lid_4, PF05491 RuvB_C, PF05496 RuvB_N
+- supfam : SSF46894, SSF52172
+- Conclusion : Τhe ANN methods retrieve the neighbor due to shared generic structural features, such as ATP-binding, rather than true evolutionary homology. The lack of shared Pfam domains and distinct biological functions indicate a false positive for remote homolog detection, consistent with the BLAST results.
+
+2. sp|A8A3I6|NORR_ECOHS (Anaerobic nitric oxide reductase transcription regulator NorR)
+- L2 : 0.9989
+- Yes in BLAST topn, 38% BLAST identity match
+- biological process : regulation of DNA-templated transcription (GO:0006355)
+- molecular function : protein binding (GO:0005515), ATP binding (GO:0005524), transcription factor binding (GO:0008134), DNA-binding transcription factor activity (GO:0003700)
+- cellular component : NONE
+- pfam :  PF01590 GAF, PF00158 Sigma54_activat
+- supfam : SSF55781, SSF46689, SSF52540
+- Conclusion : The neighbor is retrieved by ANN due to shared regulatory features that are also detected by BLAST. The relatively high BLAST identity (38%) and overlapping Pfam and GO annotations indicate a conventional homolog rather than a remote one, showing agreement between ANN and BLAST.
+
+3. sp|P66756|RUVB_SALTI (Anaerobic nitric oxide reductase transcription regulator NorR)
+- L2 : 1.0884
+- Νο in BLAST topn, Νο BLAST identity match
+- biological process : DNA repair (GO:0006281), DNA recombination (GO:0006310)
+- molecular function : four-way junction helicase activity (GO:0009378), ATP binding (GO:0005524), DNA binding (GO:0003677)
+- cellular component : NONE
+- pfam :  PF17864 AAA_lid_4, PF05491 RuvB_C, PF05496 RuvB_N
+- supfam : SSF46785, SSF52540
+- Conclusion : The ANN algorithms detect this neighbor likely due to functional or structural similarity, while BLAST misses it because of low sequence identity. This suggests a distant or analogous relationship rather than a true homolog, highlighting the different sensitivities of the methods.
+  
 ### *Query Protein: A0A009HN45*
 sp|P52126|ABPB_ECOLI
 sp|Q99ZA5|UVRB_STRP1
