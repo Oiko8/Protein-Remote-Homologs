@@ -202,23 +202,58 @@ For each selected example, we provide biological justification based on independ
 | **C0PWY7** (UVRB_SALPC)      | 0.9867  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains with ATP-binding and hydrolase activity reveal a conserved functional core, effectively identified by ANN even though BLAST misses it. |
 | **A7FKM4** (UVRB_YERP3)      | 0.9403  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains and ATP-binding/hydrolase functions reveal a conserved functional core, captured more reliably by ANN despite BLAST failing. |
 
-### 9. *Query Protein: A0A009HPM0*
-ivfpq kanena koino 
-sp|B2TWG0|TRMA_SHIB3 → lsh, hypercube, ivfflat, neural
-sp|B1LNS5|TRMA_ECOSM → lsh, hypercube, ivfflat, neural
-sp|Q5PK68|TRMA_SALPA → lsh, hypercube, ivfflat, neural
-### 10. *Query Protein: A0A009IB02*
-hyper kanena koino 
-sp|Q9SQI8|ODP24_ARATH
-sp|P49786|BCCP_BACSU
-sp|P0ABE1|BCCP_SHIFL
-### 11. *Query Protein: A0A010Q3W2*
-sp|Q2UUT4|CMR1_ASPOR
-sp|A2QI22|YTM1_ASPNC oxi lsh
-sp|P0CS56|CMR1_CRYNJ oxi ivfpq
+### 9. *Query Protein: A0A009HPM0 (Biotin carboxylase)*
+| Property           | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| Biological process | NONE                                                                                                  |
+| Molecular function | ATP binding (GO:0005524); metal ion binding (GO:0046872)                                             |
+| Cellular component | NONE                                                                                                  |
+| Pfam               | PF02785 Biotin_carb_C, PF00289 Biotin_carb_N, PF00364 Biotin_lipoyl, PF02786 CPSase_L_D2             |
+| SUPERFAMILY        | SSF56059, SSF52440, SSF51246, SSF51230                                                               |
 
----
----
+**Candidate neighbors**
+
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                  | Conclusion                                                                                                                                        |
+| ----------------------------- | ------: | :------: | :-------: | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **B2TWG0** (TRMA_SHIB3)      | 1.4365  | –        | No        | RNA processing; RNA methyltransferase activity; tRNA (uracil(54)-C5)-methyltransferase; S-adenosyl methionine-dependent; Pfam PF05958; SUPERFAMILY SSF53335 | **False positive.** Despite being retrieved by the ANN algorithm, the complete lack of shared Pfam domains, superfamilies, and biological functions indicates a false positive, which BLAST correctly excludes by sequence-based similarity. |
+| **B1LNS5** (TRMA_ECOSM)      | 1.4492  | –        | No        | RNA processing; RNA methyltransferase activity; tRNA (uracil(54)-C5)-methyltransferase; S-adenosyl methionine-dependent; Pfam PF05958; SUPERFAMILY SSF53335 | **False positive.** Even though it is retrieved by the ANN method, the lack of common domains, superfamily membership, and functional similarity suggests a spurious match that BLAST appropriately filters out based on sequence similarity. |
+| **Q9CMJ8** (RIMK_PASMU)      | 1.3521  | –        | No        | Protein modification process; ATP binding; metal ion binding; Pfam PF08443, PF18030; SUPERFAMILY SSF56059   | **False positive.** Despite ANN detection based on generic ATP-binding features, the lack of shared Pfam domains and functional divergence supports a false positive that BLAST correctly filters out. |
+
+### 10. *Query Protein: A0A009IB02 (Dihydrolipoamide acetyltransferase component of pyruvate dehydrogenase complex)*
+| Property           | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| Biological process | NONE                                                                                                  |
+| Molecular function | Acyltransferase activity (GO:0016746)                                                                |
+| Cellular component | NONE                                                                                                  |
+| Pfam               | PF00198 2-oxoacid_dh, PF00364 Biotin_lipoyl, PF02817 E3_binding                                       |
+| SUPERFAMILY        | SSF52777, SSF51230, SSF47005                                                                         |
+
+**Candidate neighbors**
+
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                  | Conclusion                                                                                                                                        |
+| ----------------------------- | ------: | :------: | :-------: | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Q9SQI8** (ODP24_ARATH)     | 2.0060  | 29%      | Yes       | Pyruvate decarboxylation to acetyl-CoA; acyltransferase activity; pyruvate dehydrogenase complex; Pfam PF00198, PF00364, PF02817; SUPERFAMILY SSF52777, SSF51230, SSF47005 | **Conventional homolog.** Clear homolog rather than a remote one. The strong overlap in Pfam domains, superfamily membership, and enzymatic function, together with BLAST detection, indicates a conserved and well-established evolutionary relationship. |
+| **P49786** (BCCP_BACSU)      | 2.0085  | –        | No        | Fatty acid biosynthetic process; acetyl-CoA carboxylase activity; acetyl-CoA carboxylase complex; Pfam PF00364; SUPERFAMILY SSF51230 | **False positive.** ANN detects it due to the shared Biotin_lipoyl domain, but the limited domain overlap and functional differences indicate a false positive that BLAST correctly ignores. |
+| **P11961** (ODP2_GEOSE)      | 1.9830  | 38%      | Yes       | Acyltransferase activity; Pfam PF00198, PF00364, PF02817; SUPERFAMILY SSF52777, SSF51230, SSF47005             | **Remote homolog.** Both BLAST and ANN captured this as remote homolog due to shared Pfam domains, superfamily membership, and acyltransferase function. |
+
+### 11. *Query Protein: A0A010Q3W2 (U3 small nucleolar RNA-associated protein 15 C-terminal domain-containing protein)*
+| Property           | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| Biological process | rRNA processing (GO:0006364)                                                                          |
+| Molecular function | Protein binding (GO:0005515)                                                                          |
+| Cellular component | Nucleolus (GO:0005730)                                                                                |
+| Pfam               | PF09384 UTP15_C, PF00400 WD40                                                                         |
+| SUPERFAMILY        | SSF50978                                                                                               |
+
+**Candidate neighbors**
+
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                  | Conclusion                                                                                                                                        |
+| ----------------------------- | ------: | :------: | :-------: | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Q2UUT4** (CMR1_ASPOR)      | 1.1791  | –        | No        | Protein binding; Pfam PF00400; SUPERFAMILY SSF50978                                                         | **False positive.** Despite ANN detection via the shared WD40 domain and superfamily, the lack of overlapping biological process and low sequence similarity suggest a spurious match. |
+| **A2QI22** (YTM1_ASPNC)      | 1.2346  | –        | No        | Ribosome biogenesis; protein binding; Pfam PF00400, PF08154; SUPERFAMILY SSF50978                             | **False positive.** Despite ANN detection via the shared WD40 domain and superfamily, the lack of overlapping biological process and low sequence similarity suggest a spurious match. |
+| **Q9NRL3** (STRN4_HUMAN)     | 1.3099  | 28%      | No        | Protein binding; Pfam PF00400, PF08232; SUPERFAMILY SSF50978                                                | **False positive.** While ANN picks up the common WD40 domain there is low sequence identity and different biological roles.                        |
+
+
 ### 12. *Query Protein: A0A010Q8R4*
 | Property           | Description                                                                   |
 | ------------------ | ----------------------------------------------------------------------------- |
@@ -238,4 +273,3 @@ sp|P0CS56|CMR1_CRYNJ oxi ivfpq
 
 ---
 ---
-έναν πίνακα με όλα τα κοινά Neighbor ανά query και μέθοδο, για να φαίνεται καθαρά ποιος γείτονας εμφανίζεται σε ποιες μεθόδους
