@@ -131,90 +131,77 @@ For each selected example, we provide biological justification based on independ
 
 
 ### 5. *Query Protein: A0A009HL96 (Response regulator)*
-- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
-- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
-- cellular component : NONE
-- pfam : PF00072 Response_reg, PF00486 Trans_reg_C 
-- supfam : SSF46894, SSF52172
+| Property           | Description                                                                                                     |
+| ------------------ | --------------------------------------------------------------------------------------------------------------- |
+| Biological process | Phosphorelay signal transduction system (GO:0000160); regulation of DNA-templated transcription (GO:0006355)    |
+| Molecular function | DNA binding (GO:0003677); transcription cis-regulatory region binding (GO:0000976)                               |
+| Cellular component | NONE                                                                                                           |
+| Pfam               | PF00072 Response_reg, PF00486 Trans_reg_C                                                                      |
+| SUPERFAMILY        | SSF46894, SSF52172                                                                                             |
 
-1. sp|Q9AE24|RPRY_BACFR (Transcriptional regulatory protein RprY)
-- L2 : 0.7792
-- Yes in BLAST topn, 28% identity match
-- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
-- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
-- cellular component : NONE
-- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
-- supfam : SSF46894, SSF52172
-- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
+**Candidate neighbors**
 
-2. sp|Q5HI09|GRAR_STAAC (Response regulator protein GraR)
-- L2 : 0.6392
-- Yes in BLAST topn, 26% identity match
-- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
-- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
-- cellular component : NONE
-- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
-- supfam : SSF46894, SSF52172
-- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                    | Conclusion                                                                                                                                                |
+| ----------------------------- | ------: | :------: | :-------: | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Q9AE24** (RPRY_BACFR)      | 0.7792  | 28%      | Yes       | Phosphorelay signal transduction; regulation of DNA-templated transcription; DNA binding; transcription cis-regulatory region binding; Pfam PF00072, PF00486; SUPERFAMILY SSF46894, SSF52172 | **Remote homolog.** Both the ANN and the BLAST along with the Pfam, SUPERFAMILY, and GO descriptions agree that the two proteins are remote homologs. |
+| **Q5HI09** (GRAR_STAAC)      | 0.6392  | 26%      | Yes       | Phosphorelay signal transduction; regulation of DNA-templated transcription; DNA binding; transcription cis-regulatory region binding; Pfam PF00072, PF00486; SUPERFAMILY SSF46894, SSF52172 | **Remote homolog.** Both the ANN and the BLAST along with the Pfam, SUPERFAMILY, and GO descriptions agree that the two proteins are remote homologs. |
+| **Q99VW2** (GRAR_STAAN)      | 0.6598  | 26%      | Yes       | Phosphorelay signal transduction; regulation of DNA-templated transcription; DNA binding; transcription cis-regulatory region binding; Pfam PF00072, PF00486; SUPERFAMILY SSF46894, SSF52172 | **Remote homolog.** Both the ANN and the BLAST along with the Pfam, SUPERFAMILY, and GO descriptions agree that the two proteins are remote homologs. |
 
-3. sp|Q99VW2|GRAR_STAAN (Response regulator protein GraR)
-- L2 : 0.6598
-- Yes in BLAST topn, 26% identity match
-- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355)
-- molecular function : DNA binding (GO:0003677), transcription cis-regulatory region binding (GO:0000976)
-- cellular component : NONE
-- pfam :  PF00072 Response_reg, PF00486 Trans_reg_C  
-- supfam : SSF46894, SSF52172
-- Conclusion : Both the ANN and the BLAST along with the pfam,supfam and GO descriptions agree that the two proteins are remote homologs.
-
----
----
 
 ### 6. *Query Protein: A0A009HLV9 (DNA-binding transcriptional regulator NtrC)*
-- biological process : phosphorelay signal transduction system(GO:0000160), regulation of DNA-templated transcription (GO:0006355), regulation of nitrogen utilization (GO:0006808)
-- molecular function : DNA binding (GO:0003677), ATP binding (GO:0005524), transcription factor binding (GO:0008134), sequence-specific DNA binding (GO:0043565), phosphorelay response regulator activity (GO:0000156)
-- cellular component : NONE
-- pfam : PF25601 AAA_lid_14, PF02954 HTH_8, PF00072 Response_reg, PF00158 Sigma54_activat  
-- supfam : SSF52172, SSF46689, SSF52540
+| Property           | Description                                                                                                           |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| Biological process | Phosphorelay signal transduction system (GO:0000160); regulation of DNA-templated transcription (GO:0006355); regulation of nitrogen utilization (GO:0006808) |
+| Molecular function | DNA binding (GO:0003677); ATP binding (GO:0005524); transcription factor binding (GO:0008134); sequence-specific DNA binding (GO:0043565); phosphorelay response regulator activity (GO:0000156) |
+| Cellular component | NONE                                                                                                                 |
+| Pfam               | PF25601 AAA_lid_14, PF02954 HTH_8, PF00072 Response_reg, PF00158 Sigma54_activat                                      |
+| SUPERFAMILY        | SSF52172, SSF46689, SSF52540                                                                                          |
 
-1. sp|A1KU52|RUVB_NEIMF (Holliday junction branch migration complex subunit RuvB)
-- L2 : 1.0106
-- No in BLAST topn, No BLAST identity match
-- biological process : DNA repair (GO:0006281), DNA recombination (GO:0006310)
-- molecular function : DNA binding (GO:0003677), ATP binding (GO:0005524), four-way junction helicase activity (GO:0009378)
-- cellular component : NONE
-- pfam :  PF17864 AAA_lid_4, PF05491 RuvB_C, PF05496 RuvB_N
-- supfam : SSF46894, SSF52172
-- Conclusion : Τhe ANN methods retrieve the neighbor due to shared generic structural features, such as ATP-binding, rather than true evolutionary homology. The lack of shared Pfam domains and distinct biological functions indicate a false positive for remote homolog detection, consistent with the BLAST results.
+**Candidate neighbors**
 
-2. sp|A8A3I6|NORR_ECOHS (Anaerobic nitric oxide reductase transcription regulator NorR)
-- L2 : 0.9989
-- Yes in BLAST topn, 38% BLAST identity match
-- biological process : regulation of DNA-templated transcription (GO:0006355)
-- molecular function : protein binding (GO:0005515), ATP binding (GO:0005524), transcription factor binding (GO:0008134), DNA-binding transcription factor activity (GO:0003700)
-- cellular component : NONE
-- pfam :  PF01590 GAF, PF00158 Sigma54_activat
-- supfam : SSF55781, SSF46689, SSF52540
-- Conclusion : The neighbor is retrieved by ANN due to shared regulatory features that are also detected by BLAST. The relatively high BLAST identity (38%) and overlapping Pfam and GO annotations indicate a conventional homolog rather than a remote one, showing agreement between ANN and BLAST.
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                                 | Conclusion                                                                                                                                                      |
+| ----------------------------- | ------: | :------: | :-------: | ---------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **A1KU52** (RUVB_NEIMF)      | 1.0106  | –        | No        | DNA repair; DNA recombination; DNA binding; ATP binding; four-way junction helicase activity; Pfam PF17864, PF05491, PF05496; SUPERFAMILY SSF46894, SSF52172 | **False positive.** ANN retrieves the neighbor due to shared generic structural features, such as ATP-binding, rather than true evolutionary homology. The lack of shared Pfam domains and distinct biological functions is consistent with BLAST. |
+| **A8A3I6** (NORR_ECOHS)      | 0.9989  | 38%      | Yes       | Regulation of DNA-templated transcription; protein binding; ATP binding; transcription factor binding; DNA-binding transcription factor activity; Pfam PF01590, PF00158; SUPERFAMILY SSF55781, SSF46689, SSF52540 | **Conventional homolog.** The neighbor is retrieved by ANN due to shared regulatory features, which are also detected by BLAST. Overlapping Pfam and GO annotations and 38% BLAST identity support conventional homology. |
+| **P66756** (RUVB_SALTI)      | 1.0884  | –        | No        | DNA repair; DNA recombination; four-way junction helicase activity; ATP binding; DNA binding; Pfam PF17864, PF05491, PF05496; SUPERFAMILY SSF46785, SSF52540 | **Distant / analogous.** ANN detects this neighbor likely due to functional or structural similarity, while BLAST misses it because of low sequence identity. This indicates a distant or analogous relationship rather than a true homolog, highlighting the different sensitivities of the methods. |
 
-3. sp|P66756|RUVB_SALTI (Anaerobic nitric oxide reductase transcription regulator NorR)
-- L2 : 1.0884
-- Νο in BLAST topn, Νο BLAST identity match
-- biological process : DNA repair (GO:0006281), DNA recombination (GO:0006310)
-- molecular function : four-way junction helicase activity (GO:0009378), ATP binding (GO:0005524), DNA binding (GO:0003677)
-- cellular component : NONE
-- pfam :  PF17864 AAA_lid_4, PF05491 RuvB_C, PF05496 RuvB_N
-- supfam : SSF46785, SSF52540
-- Conclusion : The ANN algorithms detect this neighbor likely due to functional or structural similarity, while BLAST misses it because of low sequence identity. This suggests a distant or analogous relationship rather than a true homolog, highlighting the different sensitivities of the methods.
+
   
-### 7. *Query Protein: A0A009HN45*
-sp|P52126|ABPB_ECOLI
-sp|Q99ZA5|UVRB_STRP1
-sp|Q1JBD1|UVRB_STRPB
-### 8. *Query Protein: A0A009HQC9*
-sp|C5BEJ2|UVRB_EDWI9 se ola
-sp|C0PWY7|UVRB_SALPC oxi se hyper 
-sp|A7FKM4|UVRB_YERP3 oxi se hyper
+### 7. *Query Protein: A0A009HN45 (DEAD/DEAH box helicase family protein)*
+| Property           | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| Biological process | NONE                                                                        |
+| Molecular function | ATP binding (GO:0005524)                                                    |
+| Cellular component | NONE                                                                        |
+| Pfam               | PF00271 Helicase_C, PF00176 SNF2-rel_dom                                     |
+| SUPERFAMILY        | SSF52540                                                                    |
+
+**Candidate neighbors**
+
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                  | Conclusion                                                                                                                                        |
+| ----------------------------- | ------: | :------: | :-------: | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **P52126** (ABPB_ECOLI)      | 0.7920  | –        | No        | Nucleic acid binding; ATP binding; Pfam PF00270, PF00271; SUPERFAMILY SSF52540                               | **Remote homolog.** Shared helicase-related Pfam domains and ATP-binding activity support remote homology, despite no BLAST match.             |
+| **Q99ZA5** (UVRB_STRP1)      | 0.8060  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Shared helicase-related domains and ATP-binding indicate a conserved functional and structural core, captured by ANN.        |
+| **Q0HMR2** (RAPA_SHESM)      | 0.7921  | 30%      | Yes       | ATP binding; hydrolase activity; Pfam PF00271, PF12137, PF00176, PF18339, PF18337; SUPERFAMILY SSF52540      | **Remote homolog.** Shared helicase-related domains and ATP-binding function suggest a conserved core, detected by both ANN and BLAST.         |
+
+
+### 8. *Query Protein: A0A009HQC9 (RNA polymerase-associated protein RapA)*
+| Property           | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| Biological process | Regulation of DNA-templated transcription (GO:0006355)                                                |
+| Molecular function | ATP binding (GO:0005524); hydrolase activity acting on acid anhydrides (GO:0016817)                   |
+| Cellular component | NONE                                                                                                  |
+| Pfam               | PF00271 Helicase_C, PF00176 SNF2-rel_dom, PF12137 RapA_C, PF18339 Tudor_1_RapA, PF18337 Tudor_RapA  |
+| SUPERFAMILY        | SSF52540                                                                                               |
+
+**Candidate neighbors**
+
+| Neighbor Protein              | L2 Dist | Identity | BLAST hit | Functional / Domain Evidence                                                                                  | Conclusion                                                                                                                                        |
+| ----------------------------- | ------: | :------: | :-------: | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **C5BEJ2** (UVRB_EDWI9)      | 0.9428  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Shared helicase-related domains and ATP-binding/hydrolase functions indicate a conserved functional core, captured by ANN despite BLAST not detecting it. |
+| **C0PWY7** (UVRB_SALPC)      | 0.9867  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains with ATP-binding and hydrolase activity reveal a conserved functional core, effectively identified by ANN even though BLAST misses it. |
+| **A7FKM4** (UVRB_YERP3)      | 0.9403  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains and ATP-binding/hydrolase functions reveal a conserved functional core, captured more reliably by ANN despite BLAST failing. |
+
 ### 9. *Query Protein: A0A009HPM0*
 ivfpq kanena koino 
 sp|B2TWG0|TRMA_SHIB3 → lsh, hypercube, ivfflat, neural
