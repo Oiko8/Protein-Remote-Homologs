@@ -129,6 +129,8 @@ For each selected example, we provide biological justification based on independ
 | **Q63NR0**       |  2.0712 |    29%   |     No    | ATP binding; ATP hydrolysis; Pfam PF00005; SUPERFAMILY SSF52540                                                                                       | **Remote homolog.** Shared Pfam domain and structural superfamily plus embedding proximity support remote homology, representing a case where ANN retrieves a candidate that BLAST does not rank in Top-N. |
 | **Q82MV1**       |  1.7931 |    30%   |     No    | ATP binding; ATP hydrolysis; Pfam PF00005; SUPERFAMILY SSF52540                                                                                       | **Remote homolog.** Functional similarity and conserved Pfam/SUPERFAMILY support a remote relationship even though BLAST does not return a strong ranked hit.                                              |
 
+---
+---
 
 ### 5. *Query Protein: A0A009HL96 (Response regulator)*
 | Property           | Description                                                                                                     |
@@ -147,6 +149,8 @@ For each selected example, we provide biological justification based on independ
 | **Q5HI09** (GRAR_STAAC)      | 0.6392  | 26%      | Yes       | Phosphorelay signal transduction; regulation of DNA-templated transcription; DNA binding; transcription cis-regulatory region binding; Pfam PF00072, PF00486; SUPERFAMILY SSF46894, SSF52172 | **Remote homolog.** Both the ANN and the BLAST along with the Pfam, SUPERFAMILY, and GO descriptions agree that the two proteins are remote homologs. |
 | **Q99VW2** (GRAR_STAAN)      | 0.6598  | 26%      | Yes       | Phosphorelay signal transduction; regulation of DNA-templated transcription; DNA binding; transcription cis-regulatory region binding; Pfam PF00072, PF00486; SUPERFAMILY SSF46894, SSF52172 | **Remote homolog.** Both the ANN and the BLAST along with the Pfam, SUPERFAMILY, and GO descriptions agree that the two proteins are remote homologs. |
 
+---
+---
 
 ### 6. *Query Protein: A0A009HLV9 (DNA-binding transcriptional regulator NtrC)*
 | Property           | Description                                                                                                           |
@@ -165,7 +169,8 @@ For each selected example, we provide biological justification based on independ
 | **A8A3I6** (NORR_ECOHS)      | 0.9989  | 38%      | Yes       | Regulation of DNA-templated transcription; protein binding; ATP binding; transcription factor binding; DNA-binding transcription factor activity; Pfam PF01590, PF00158; SUPERFAMILY SSF55781, SSF46689, SSF52540 | **Conventional homolog.** The neighbor is retrieved by ANN due to shared regulatory features, which are also detected by BLAST. Overlapping Pfam and GO annotations and 38% BLAST identity support conventional homology. |
 | **P66756** (RUVB_SALTI)      | 1.0884  | –        | No        | DNA repair; DNA recombination; four-way junction helicase activity; ATP binding; DNA binding; Pfam PF17864, PF05491, PF05496; SUPERFAMILY SSF46785, SSF52540 | **Distant / analogous.** ANN detects this neighbor likely due to functional or structural similarity, while BLAST misses it because of low sequence identity. This indicates a distant or analogous relationship rather than a true homolog, highlighting the different sensitivities of the methods. |
 
-
+---
+---
   
 ### 7. *Query Protein: A0A009HN45 (DEAD/DEAH box helicase family protein)*
 | Property           | Description                                                                 |
@@ -184,6 +189,8 @@ For each selected example, we provide biological justification based on independ
 | **Q99ZA5** (UVRB_STRP1)      | 0.8060  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Shared helicase-related domains and ATP-binding indicate a conserved functional and structural core, captured by ANN.        |
 | **Q0HMR2** (RAPA_SHESM)      | 0.7921  | 30%      | Yes       | ATP binding; hydrolase activity; Pfam PF00271, PF12137, PF00176, PF18339, PF18337; SUPERFAMILY SSF52540      | **Remote homolog.** Shared helicase-related domains and ATP-binding function suggest a conserved core, detected by both ANN and BLAST.         |
 
+---
+---
 
 ### 8. *Query Protein: A0A009HQC9 (RNA polymerase-associated protein RapA)*
 | Property           | Description                                                                                           |
@@ -202,6 +209,9 @@ For each selected example, we provide biological justification based on independ
 | **C0PWY7** (UVRB_SALPC)      | 0.9867  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains with ATP-binding and hydrolase activity reveal a conserved functional core, effectively identified by ANN even though BLAST misses it. |
 | **A7FKM4** (UVRB_YERP3)      | 0.9403  | –        | No        | Protein binding; DNA binding; ATP binding; ATP hydrolysis activity; hydrolase activity; excinuclease repair complex; Pfam PF00271, PF04851, PF02151, PF12344, PF17757; SUPERFAMILY SSF52540, SSF46600 | **Remote homolog.** Helicase-related domains and ATP-binding/hydrolase functions reveal a conserved functional core, captured more reliably by ANN despite BLAST failing. |
 
+---
+---
+
 ### 9. *Query Protein: A0A009HPM0 (Biotin carboxylase)*
 | Property           | Description                                                                                           |
 | ------------------ | ----------------------------------------------------------------------------------------------------- |
@@ -218,6 +228,9 @@ For each selected example, we provide biological justification based on independ
 | **B2TWG0** (TRMA_SHIB3)      | 1.4365  | –        | No        | RNA processing; RNA methyltransferase activity; tRNA (uracil(54)-C5)-methyltransferase; S-adenosyl methionine-dependent; Pfam PF05958; SUPERFAMILY SSF53335 | **False positive.** Despite being retrieved by the ANN algorithm, the complete lack of shared Pfam domains, superfamilies, and biological functions indicates a false positive, which BLAST correctly excludes by sequence-based similarity. |
 | **B1LNS5** (TRMA_ECOSM)      | 1.4492  | –        | No        | RNA processing; RNA methyltransferase activity; tRNA (uracil(54)-C5)-methyltransferase; S-adenosyl methionine-dependent; Pfam PF05958; SUPERFAMILY SSF53335 | **False positive.** Even though it is retrieved by the ANN method, the lack of common domains, superfamily membership, and functional similarity suggests a spurious match that BLAST appropriately filters out based on sequence similarity. |
 | **Q9CMJ8** (RIMK_PASMU)      | 1.3521  | –        | No        | Protein modification process; ATP binding; metal ion binding; Pfam PF08443, PF18030; SUPERFAMILY SSF56059   | **False positive.** Despite ANN detection based on generic ATP-binding features, the lack of shared Pfam domains and functional divergence supports a false positive that BLAST correctly filters out. |
+
+---
+---
 
 ### 10. *Query Protein: A0A009IB02 (Dihydrolipoamide acetyltransferase component of pyruvate dehydrogenase complex)*
 | Property           | Description                                                                                           |
@@ -236,6 +249,9 @@ For each selected example, we provide biological justification based on independ
 | **P49786** (BCCP_BACSU)      | 2.0085  | –        | No        | Fatty acid biosynthetic process; acetyl-CoA carboxylase activity; acetyl-CoA carboxylase complex; Pfam PF00364; SUPERFAMILY SSF51230 | **False positive.** ANN detects it due to the shared Biotin_lipoyl domain, but the limited domain overlap and functional differences indicate a false positive that BLAST correctly ignores. |
 | **P11961** (ODP2_GEOSE)      | 1.9830  | 38%      | Yes       | Acyltransferase activity; Pfam PF00198, PF00364, PF02817; SUPERFAMILY SSF52777, SSF51230, SSF47005             | **Remote homolog.** Both BLAST and ANN captured this as remote homolog due to shared Pfam domains, superfamily membership, and acyltransferase function. |
 
+---
+---
+
 ### 11. *Query Protein: A0A010Q3W2 (U3 small nucleolar RNA-associated protein 15 C-terminal domain-containing protein)*
 | Property           | Description                                                                                           |
 | ------------------ | ----------------------------------------------------------------------------------------------------- |
@@ -253,6 +269,8 @@ For each selected example, we provide biological justification based on independ
 | **A2QI22** (YTM1_ASPNC)      | 1.2346  | –        | No        | Ribosome biogenesis; protein binding; Pfam PF00400, PF08154; SUPERFAMILY SSF50978                             | **False positive.** Despite ANN detection via the shared WD40 domain and superfamily, the lack of overlapping biological process and low sequence similarity suggest a spurious match. |
 | **Q9NRL3** (STRN4_HUMAN)     | 1.3099  | 28%      | No        | Protein binding; Pfam PF00400, PF08232; SUPERFAMILY SSF50978                                                | **False positive.** While ANN picks up the common WD40 domain there is low sequence identity and different biological roles.                        |
 
+---
+---
 
 ### 12. *Query Protein: A0A010Q8R4*
 | Property           | Description                                                                   |
@@ -270,6 +288,9 @@ For each selected example, we provide biological justification based on independ
 | **Q652L2**       |  1.2259 |     –    |     No    | Chromatin remodeling and transcription regulation; protein binding; Pfam PF24105, PF07569; SUPERFAMILY SSF50978 | **Remote homolog.** Shared structural superfamily and overlapping functional annotations explain close embedding proximity despite absence of BLAST hits. |
 | **P0CS56**       |  1.2439 |     –    |     No    | Protein binding; SUPERFAMILY SSF50978                                                                           | **Remote homolog.** Structural superfamily conservation supports a remote evolutionary relationship even when BLAST provides no evidence.                 |
 | **Q9P4R5**       |  1.2205 |     –    |     No    | Protein binding; Pfam PF00400; SUPERFAMILY SSF50978                                                             | **Remote homolog.** Shared Pfam domain and shared structural superfamily provide strong evidence of remote homology.                                      |
+
+---
+---
 
 ## Conclusion
 
