@@ -271,5 +271,16 @@ For each selected example, we provide biological justification based on independ
 | **P0CS56**       |  1.2439 |     –    |     No    | Protein binding; SUPERFAMILY SSF50978                                                                           | **Remote homolog.** Structural superfamily conservation supports a remote evolutionary relationship even when BLAST provides no evidence.                 |
 | **Q9P4R5**       |  1.2205 |     –    |     No    | Protein binding; Pfam PF00400; SUPERFAMILY SSF50978                                                             | **Remote homolog.** Shared Pfam domain and shared structural superfamily provide strong evidence of remote homology.                                      |
 
----
----
+## Conclusion
+
+In this assignment, we investigated the problem of protein homology detection with an emphasis on remote homologs, comparing traditional sequence-based approaches (BLAST) with embedding-based Approximate Nearest Neighbor (ANN) methods. The results clearly demonstrate that these two approaches are complementary rather than competitive, each excelling in different regions of the homology detection space.
+
+BLAST remains the gold standard for identifying conventional homologs, offering high precision when sufficient sequence similarity is present. However, as confirmed by the Twilight Zone analysis (sequence identity < 30%), its sensitivity drops substantially for distantly related proteins whose sequences have diverged while their structural or functional cores remain conserved.
+
+In contrast, ANN methods operating in the embedding space successfully retrieved many biologically meaningful candidates that were weakly detected or entirely missed by BLAST. Manual biological validation using Pfam domains, SUPERFAMILY classifications, and Gene Ontology annotations showed that, in numerous cases—such as protein kinases, ABC transporters, response regulators, and helicase-related proteins—embedding proximity reflects conserved structural and functional features, supporting true remote evolutionary relationships.
+
+At the same time, the analysis highlighted the limitations of embedding-based approaches. Proteins sharing generic motifs or broad functional features (e.g., ATP-binding, WD40 repeats) occasionally led to false positives, where embedding similarity did not correspond to true homology. In such cases, BLAST effectively filtered out spurious matches based on sequence-level evidence, underscoring the importance of biological validation.
+
+From a performance perspective, ANN algorithms achieved orders-of-magnitude faster query times compared to BLAST, enabling high-throughput similarity searches and large-scale exploratory analyses. Although ANN recall with respect to BLAST Top-N results is lower by design, this does not represent a weakness when the objective is the discovery of novel or difficult-to-detect remote homologs rather than reproducing sequence-based rankings.
+
+Overall, the findings indicate that BLAST is best suited for reliable detection of close and moderately distant homologs, while embedding-based ANN methods provide a powerful means to explore the remote homology landscape, particularly within the Twilight Zone. A combined workflow—using ANN for candidate discovery and BLAST together with biological annotations for validation—emerges as an effective and biologically meaningful strategy for comprehensive protein homology analysis.
