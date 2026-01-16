@@ -1,0 +1,11 @@
+torch>=2.0
+fair-esm
+transformers
+tokenizers
+numpy
+scipy
+scikit-learn
+pandas
+matplotlib
+tqdm
+
