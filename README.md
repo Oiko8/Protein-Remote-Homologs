@@ -1,13 +1,5 @@
 # Protein Remote Homolog Search with ESM-2 and ANN
 ---
-### Contributors
-1. - Name : ***Polyxeni Kollia***
-   - Email : ***sdi1800280@di.uoa.gr***
-   - AM : 1115201800280
-2. - Name : ***Ioannis Oikonomidis***
-   - Email : ***sdi1600120@di.uoa.gr***
-   - AM : 1115201600120
----
 ## Introduction
 
 Traditional sequence alignment tools such as BLAST are highly effective for detecting close and medium-range protein homologs. However, they often fail in the Twilight Zone of sequence similarity (identity < 30%), where proteins may share conserved structure and function despite strong sequence divergence.  
